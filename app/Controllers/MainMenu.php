@@ -16,8 +16,21 @@ class MainMenu extends BaseController
 
         $data['tb_dosen'] = $query->getResult();
         return view('main_menu/get' , $data);
+    }
 
-        
-    
+    public function create() {
+        return view('main_menu/add');
+    }
+
+    public function store() {
+
+        // method 1 : same name
+        $data = $this->request->getPost();
+
+        $this->db->table('tb_dosen')->insert($data);
+
+        if($this->db->affectedRows() > 0 ) {
+            return redirect()->to(site_url('main_menu'))->with('success', 'Data Berhasil Disimpan');
+        }
     }
 }

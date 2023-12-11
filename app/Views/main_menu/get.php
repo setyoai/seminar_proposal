@@ -8,7 +8,29 @@
   <section class="section">
     <div class="section-header">
       <h1>Main Menu</h1>
+      <div class="section-header-button">
+      <a href="<?=site_url("main_menu/add")?>" class ="btn btn-primary">Add New</a>
+      </div>
     </div>
+
+    <?php if(session()->getFlashdata('success')) : ?>
+      <div class="alert alert-success alert-dismissable show fade">
+        <div class="alert-body">
+          <button class="close" data-dismiss="alert">x</button>
+          <b>Success !</b>
+          <?= session()->getFlashdata('success')?>
+        </div>
+      </div>
+    <?php endif; ?>  
+    <?php if(session()->getFlashdata('error')) : ?>
+      <div class="alert alert-danger alert-dismissable show fade">
+        <div class="alert-body">
+          <button class="close" data-dismiss="alert">x</button>
+          <b>Success !</b>
+          <?= session()->getFlashdata('success')?>
+        </div>
+      </div>
+    <?php endif; ?> 
 
     <div class="section-body">
       

@@ -8,6 +8,8 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 //$routes->addRedirect('/', 'home');
 $routes->get('main_menu', 'MainMenu::index');
+$routes->get('main_menu/add', 'MainMenu::create');
+$routes->post('main_menu', 'MainMenu::store');
 
 
 //make database
