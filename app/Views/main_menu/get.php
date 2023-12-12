@@ -26,8 +26,8 @@
       <div class="alert alert-danger alert-dismissable show fade">
         <div class="alert-body">
           <button class="close" data-dismiss="alert">x</button>
-          <b>Success !</b>
-          <?= session()->getFlashdata('success')?>
+          <b>Error !</b>
+          <?= session()->getFlashdata('error')?>
         </div>
       </div>
     <?php endif; ?> 
@@ -60,7 +60,7 @@
                 <td><?=$value->nohp_dosen?></td>
                 <td><?=$value->email_dosen?></td>
                 <td>
-                  <a href="" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                  <a href="<?=site_url('main_menu/edit/'.$value->id_dosen)?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
                   <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                 </td>
               </tr>

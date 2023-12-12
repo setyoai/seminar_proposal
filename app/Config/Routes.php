@@ -5,11 +5,17 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
-//$routes->addRedirect('/', 'home');
+
+$routes->setAutoRoute(true);
+
+//$routes->get('/', 'Home::index');
+$routes->addRedirect('/', 'home');
 $routes->get('main_menu', 'MainMenu::index');
 $routes->get('main_menu/add', 'MainMenu::create');
 $routes->post('main_menu', 'MainMenu::store');
+$routes->get('main_menu/edit/(:any)', 'MainMenu::edit/$1');
+$routes->put('main_menu/(:any)', 'MainMenu::update/$1');
+
 
 
 //make database

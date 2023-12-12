@@ -21,6 +21,7 @@
         </div>
             <div class="card-body col-md-6">
                 <form action="<?= site_url("main_menu")?>" method="post" autocomplete="off">
+                    <?= csrf_field() ?>
                     <div class="form-group">
                         <label>Nidn Dosen</label>
                         <input type="text" name="nidn_dosen" class="form-control" required autofocus>

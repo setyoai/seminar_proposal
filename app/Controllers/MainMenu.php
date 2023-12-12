@@ -33,4 +33,33 @@ class MainMenu extends BaseController
             return redirect()->to(site_url('main_menu'))->with('success', 'Data Berhasil Disimpan');
         }
     }
+
+    public function edit ($id = null) {
+        if($id != null) {
+            $query = $this->db->table('tb_dosen')->getwhere(['id_dosen' => $id]);
+            if($query->resultID->num_rows > 0) {
+                $data['tb_dosen'] = $query->getRow();
+                return view('main_menu/edit', $data);
+            } else {
+                throw \CodeIgniter\Exceptions\PageNotFoundException:: forPageNotFound();
+            }
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException:: forPageNotFound();
+        }
+    }
+
+    public function update($id) {
+        // cara 1 : name sama
+        $data = $this->request->getPost();
+        unset($data['_method']);
+
+        //cara 2 : name spesifik
+//        $data = [
+//            'name_dosen' => $this->request->getVar('name_gawe'),
+//            'date_gawe' => $this->request->getVar('date_gawe'),
+//            "info_gawe" => $this->request->getVar('info_gawe'),
+//        ];
+        $this->db->table('tb_dosen')->where(['id_dosen' => $id])->update($data);
+        return redirect()->to(site_url('main_menu'))->with('success', 'Data Berhasil Diupdate');
+    }
 }
