@@ -62,4 +62,9 @@ class MainMenu extends BaseController
         $this->db->table('tb_dosen')->where(['id_dosen' => $id])->update($data);
         return redirect()->to(site_url('main_menu'))->with('success', 'Data Berhasil Diupdate');
     }
+
+    public function destroy($id) {
+        $this->db->table('tb_dosen')->where(['id_dosen' => $id])->delete();
+        return redirect()->to(site_url('main_menu'))->with('success', 'Data Berhasil Dihapus');
+    }
 }

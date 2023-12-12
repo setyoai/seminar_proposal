@@ -61,7 +61,13 @@
                 <td><?=$value->email_dosen?></td>
                 <td>
                   <a href="<?=site_url('main_menu/edit/'.$value->id_dosen)?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                  <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                    <form action="<?=site_url('main_menu/'.$value->id_dosen)?>" method="post" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
+                        <?= csrf_field() ?>
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
                 </td>
               </tr>
               <?php endforeach; ?>

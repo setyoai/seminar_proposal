@@ -8,4 +8,8 @@ class Home extends BaseController
     {
         return view('home');
     }
+
+    public function generate() {
+        echo password_hash('1234', PASSWORD_BCRYPT);
+    }
 }
