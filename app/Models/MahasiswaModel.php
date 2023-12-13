@@ -8,33 +8,8 @@ class MahasiswaModel extends Model
 {
     protected $table            = 'tb_mhs';
     protected $primaryKey       = 'id_mhs';
-//    protected $useAutoIncrement = true;
     protected $returnType       = 'object';
-//    protected $useSoftDeletes   = false;
-//    protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['nim_mhs', 'nama_mhs', 'email_mhs', 'alamat_mhs', 'nohp_mhs'];
 
-    // Dates
-//    protected $useTimestamps = false;
-//    protected $dateFormat    = 'datetime';
-//    protected $createdField  = 'created_at';
-//    protected $updatedField  = 'updated_at';
-//    protected $deletedField  = 'deleted_at';
-//
-//    // Validation
-//    protected $validationRules      = [];
-//    protected $validationMessages   = [];
-//    protected $skipValidation       = false;
-//    protected $cleanValidationRules = true;
-//
-//    // Callbacks
-//    protected $allowCallbacks = true;
-//    protected $beforeInsert   = [];
-//    protected $afterInsert    = [];
-//    protected $beforeUpdate   = [];
-//    protected $afterUpdate    = [];
-//    protected $beforeFind     = [];
-//    protected $afterFind      = [];
-//    protected $beforeDelete   = [];
-//    protected $afterDelete    = [];
+
 }

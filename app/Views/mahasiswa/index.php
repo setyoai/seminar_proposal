@@ -1,7 +1,7 @@
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('content') ?>
-    <title>Main Menu</title>
+    <title>Mahasiswa</title>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -9,28 +9,28 @@
         <div class="section-header">
             <h1>Data Mahasiswa</h1>
             <div class="section-header-button">
-                <a href="<?=site_url("main_menu/add")?>" class ="btn btn-primary">Add New</a>
+                <a href="<?=site_url("mahasiswa/new")?>" class ="btn btn-primary">Add New</a>
             </div>
         </div>
 
-        <?php if(session()->getFlashdata('success')) : ?>
-            <div class="alert alert-success alert-dismissable show fade">
-                <div class="alert-body">
-                    <button class="close" data-dismiss="alert">x</button>
-                    <b>Success !</b>
-                    <?= session()->getFlashdata('success')?>
-                </div>
+    <?php if(session()->getFlashdata('success')) : ?>
+        <div class="alert alert-success alert-dismissable show fade">
+            <div class="alert-body">
+                <button class="close" data-dismiss="alert">x</button>
+                <b>Success !</b>
+                <?= session()->getFlashdata('success')?>
             </div>
-        <?php endif; ?>
-        <?php if(session()->getFlashdata('error')) : ?>
-            <div class="alert alert-danger alert-dismissable show fade">
-                <div class="alert-body">
-                    <button class="close" data-dismiss="alert">x</button>
-                    <b>Error !</b>
-                    <?= session()->getFlashdata('error')?>
-                </div>
+        </div>
+    <?php endif; ?>
+    <?php if(session()->getFlashdata('error')) : ?>
+        <div class="alert alert-danger alert-dismissable show fade">
+            <div class="alert-body">
+                <button class="close" data-dismiss="alert">x</button>
+                <b>Error !</b>
+                <?= session()->getFlashdata('error')?>
             </div>
-        <?php endif; ?>
+        </div>
+    <?php endif; ?>
 
         <div class="section-body">
 

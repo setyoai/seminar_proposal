@@ -23,11 +23,11 @@
                 <form action="<?= site_url("main_menu")?>" method="post" autocomplete="off">
                     <?= csrf_field() ?>
                     <div class="form-group">
-                        <label>Nidn Dosen</label>
+                        <label>Nidn</label>
                         <input type="text" name="nidn_dosen" class="form-control" required autofocus>
                     </div>
                     <div class="form-group">
-                        <label>Nama Dosen</label>
+                        <label>Nama</label>
                         <input type="text" name="nama_dosen" class="form-control" required autofocus>
                     </div>
                     <div class="form-group">
@@ -39,7 +39,7 @@
                         <input type="text" name="nohp_dosen" class="form-control" required autofocus>
                     </div>
                     <div class="form-group">
-                        <label>Email Dosen</label>
+                        <label>Email</label>
                         <input type="text" name="email_dosen" class="form-control" required autofocus>
                     </div>
                     <div>

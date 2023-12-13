@@ -2,15 +2,16 @@
 
 namespace App\Controllers;
 
-use App\Models\MahasiswaModel;
+//use App\Models\MahasiswaModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
 class Mahasiswa extends ResourcePresenter
 {
-    function __construct()
-    {
-        $this->mahasiswa = new MahasiswaModel();
-    }
+//    function __construct()
+//    {
+//        $this->mahasiswa = new MahasiswaModel();
+//    }
+    protected $modelName = 'App\Models\MahasiswaModel';
     /**
      * Present a view of resource objects
      *
@@ -18,7 +19,8 @@ class Mahasiswa extends ResourcePresenter
      */
     public function index()
     {
-        $data['tb_mhs'] = $this->mahasiswa->findAll();
+//        $data['tb_mhs'] = $this->mahasiswa->findAll();
+        $data['tb_mhs'] = $this->model->findAll();
         return view('mahasiswa/index' ,$data);
     }
 
@@ -41,7 +43,7 @@ class Mahasiswa extends ResourcePresenter
      */
     public function new()
     {
-        //
+        return view('mahasiswa/new');
     }
 
     /**
@@ -52,7 +54,9 @@ class Mahasiswa extends ResourcePresenter
      */
     public function create()
     {
-        //
+        $data = $this->request->getPost();
+        $this->model->insert($data);
+        return redirect()->to(site_url('mahasiswa'))->with('success', 'Data Berhasil Disimpan');
     }
 
     /**
