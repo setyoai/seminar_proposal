@@ -33,8 +33,7 @@ class CreateUser extends Migration
         $this->forge->createTable('tb_user');
     }
 
-    public function down()
-    {
+    public function down() {
         $this->forge->dropTable('tb_user');
     }
 }

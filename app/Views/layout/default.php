@@ -233,7 +233,7 @@
                 <i class="fas fa-cog"></i> Settings
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item has-icon text-danger">
+              <a href="<?= site_url('auth/logout')?>" class="dropdown-item has-icon text-danger">
                 <i class="fas fa-sign-out-alt"></i> Logout
               </a>
             </div>
@@ -267,9 +267,6 @@
       <footer class="main-footer">
         <div class="footer-left">
           Copyright &copy; 2023 <div class="bullet">Developed By </div><a href="https://nauv.al/">Setyo Adi Sasono</a>
-        </div>
-        <div class="footer-right">
-          2.3.0
         </div>
       </footer>
     </div>

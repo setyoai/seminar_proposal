@@ -6,19 +6,26 @@ class Auth extends BaseController
 {
     public function index()
     {
-        echo view('home');
+       return redirect()->to(site_url('login'));
     }
 
-    public function login() {
+    public function login()
+    {
+        if (session('id_user')) {
+            return redirect()->to(site_url('home'));
+        }
         return view('auth/login');
     }
 
-    public function loginProcess() {
+    public function loginProcess()
+    {
         $post = $this->request->getPost();
         $query = $this->db->table('tb_user')->getWhere(['username_user' => $post['email']]);
         $user = $query->getRow();
-        if ($user) {
-            if (password_verify($post['password'], $user->password_user)) {
+        if ($user)
+        {
+            if (password_verify($post['password'], $user->password_user))
+            {
                 $params = ['id_user' => $user->id_user];
                 session()->set($params);
 
@@ -28,7 +35,12 @@ class Auth extends BaseController
             }
         }
         return redirect()->back()->with('error', 'Email tidak ditemukan');
+    }
 
+    public function logout()
+    {
+        session()->remove('id_user');
+        return redirect()->to(site_url('login'));
     }
 
 }
