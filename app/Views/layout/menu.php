@@ -7,11 +7,11 @@
     <ul class="dropdown-menu">
         <li><a class="nav-link" href="layout-default.html">Dosen</a></li>
         <li><a class="nav-link" href="layout-transparent.html">Operator</a></li>
-        <li><a class="nav-link" href="layout-top-navigation.html">Mahasiswa</a></li>
+        <li><a class="nav-link" href="<?=site_url('mahasiswa')?>">Mahasiswa</a></li>
     </ul>
     </li>
     <li class="nav-item dropdown">
-    <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Cek Berkas</span></a>
+    <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i><span>Cek Berkas</span></a>
     <ul class="dropdown-menu">
         <li><a class="nav-link" href="bootstrap-alert.html">Alert</a></li>
         <li><a class="nav-link" href="bootstrap-badge.html">Badge</a></li>
