@@ -12,6 +12,7 @@ class Mahasiswa extends ResourcePresenter
 //        $this->mahasiswa = new MahasiswaModel();
 //    }
     protected $modelName = 'App\Models\MahasiswaModel';
+    protected $helpers = ['custom'];
     /**
      * Present a view of resource objects
      *
