@@ -63,16 +63,15 @@
                                     <td><?=$value->status_mhs?></td>
                                     <td>
                                         <a href="<?=site_url('mahasiswa/edit/'.$value->id_mhs)?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                        <form action="<?=site_url('mahasiswa/'.$value->id_mhs)?>" method="post" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
+                                        <form action="<?=site_url('mahasiswa/delete/'.$value->id_mhs)?>" method="post" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
                                             <?= csrf_field() ?>
-                                            <input type="hidden" name="_method" value="DELETE">
                                             <button class="btn btn-danger btn-sm">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
                                     </td>
                                 </tr>
-                            <?php endforeach; ?>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

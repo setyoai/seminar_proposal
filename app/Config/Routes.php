@@ -20,7 +20,7 @@ $routes->get('main_menu/edit/(:num)', 'MainMenu::edit/$1');
 $routes->put('main_menu/(:any)', 'MainMenu::update/$1');
 $routes->delete('main_menu/(:segment)', 'MainMenu::destroy/$1');
 
-$routes->presenter('mahasiswa');
+$routes->presenter('mahasiswa', ['filter' => 'isLoggedIn']);
 
 
 //make database

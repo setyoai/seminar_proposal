@@ -113,6 +113,9 @@ class Mahasiswa extends ResourcePresenter
      */
     public function delete($id = null)
     {
-        //
+
+//        $this->model->where('id_mhs', $id)->delete();
+        $this->model->delete($id);
+        return redirect()->to(site_url('mahasiswa'))->with('success', 'Data Berhasil Dihapus');
     }
 }
