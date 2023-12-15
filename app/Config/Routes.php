@@ -22,6 +22,8 @@ $routes->delete('main_menu/(:segment)', 'MainMenu::destroy/$1');
 
 $routes->presenter('mahasiswa', ['filter' => 'isLoggedIn']);
 
+$routes->resource('ruangan',['filter' => 'isLoggedIn']);
+
 
 //make database
 $routes->get('create-db', function() {

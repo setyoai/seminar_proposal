@@ -69,13 +69,14 @@ class Mahasiswa extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        $tb_mhs = $this->model->where('id_mhs', $id)->first();
-        if (is_object($tb_mhs)) {
-            $data['tb_mhs'] = $tb_mhs;
-            return view('mahasiswa/edit', $data);
-        } else {
-            throw \CodeIgniter\Exceptions\PageNotFoundException:: forPageNotFound();
-        }
+//        $tb_mhs = $this->model->where('id_mhs', $id)->first();
+//        if (is_object($tb_mhs)) {
+//            $data['tb_mhs'] = $tb_mhs;
+//            return view('mahasiswa/edit', $data);
+//        } else {
+//            throw \CodeIgniter\Exceptions\PageNotFoundException:: forPageNotFound();
+//        }
+        return view('mahasiswa/edit');
     }
 
     /**
