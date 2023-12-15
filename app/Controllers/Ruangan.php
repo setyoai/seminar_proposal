@@ -2,25 +2,28 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\RESTful\ResourceController;
+use CodeIgniter\RESTful\ResourcePresenter;
 
-class Ruangan extends ResourceController
+class Ruangan extends ResourcePresenter
 {
     protected $modelName = 'App\Models\RuanganModel';
     protected $helpers = ['custom'];
     /**
-     * Return an array of resource objects, themselves in array format
+     * Present a view of resource objects
      *
      * @return mixed
      */
     public function index()
     {
+        //        $data['tb_mhs'] = $this->mahasiswa->findAll();
         $data['tb_ruangan'] = $this->model->findAll();
         return view('ruangan/index' ,$data);
     }
 
     /**
-     * Return the properties of a resource object
+     * Present a view to present a specific resource object
+     *
+     * @param mixed $id
      *
      * @return mixed
      */
@@ -30,7 +33,7 @@ class Ruangan extends ResourceController
     }
 
     /**
-     * Return a new resource object, with default properties
+     * Present a view to present a new single resource object
      *
      * @return mixed
      */
@@ -40,7 +43,8 @@ class Ruangan extends ResourceController
     }
 
     /**
-     * Create a new resource object, from "posted" parameters
+     * Process the creation/insertion of a new resource object.
+     * This should be a POST.
      *
      * @return mixed
      */
@@ -52,24 +56,28 @@ class Ruangan extends ResourceController
     }
 
     /**
-     * Return the editable properties of a resource object
+     * Present a view to edit the properties of a specific resource object
+     *
+     * @param mixed $id
      *
      * @return mixed
      */
     public function edit($id = null)
     {
-//        $tb_ruangan = $this->model->where('id_ruangan', $id)->first();
-//        if (is_object($tb_ruangan)) {
-//            $data['tb_ruangan'] = $tb_ruangan;
-//            return view('ruangan/edit', $data);
-//        } else {
-//            throw \CodeIgniter\Exceptions\PageNotFoundException:: forPageNotFound();
-//        }
-        return view('ruangan/edit');
+        $tb_ruangan = $this->model->where('id_ruangan', $id)->first();
+        if (is_object($tb_ruangan)) {
+            $data['tb_ruangan'] = $tb_ruangan;
+            return view('ruangan/edit', $data);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException:: forPageNotFound();
+        }
     }
 
     /**
-     * Add or update a model resource, from "posted" properties
+     * Process the updating, full or partial, of a specific resource object.
+     * This should be a POST.
+     *
+     * @param mixed $id
      *
      * @return mixed
      */
@@ -81,13 +89,27 @@ class Ruangan extends ResourceController
     }
 
     /**
-     * Delete the designated resource object from the model
+     * Present a view to confirm the deletion of a specific resource object
+     *
+     * @param mixed $id
+     *
+     * @return mixed
+     */
+    public function remove($id = null)
+    {
+        //
+    }
+
+    /**
+     * Process the deletion of a specific resource object
+     *
+     * @param mixed $id
      *
      * @return mixed
      */
     public function delete($id = null)
     {
-        //        $this->model->where('id_mhs', $id)->delete();
+        //        $this->model->where('id_ruangan', $id)->delete();
         $this->model->delete($id);
         return redirect()->to(site_url('ruangan'))->with('success', 'Data Berhasil Dihapus');
     }
