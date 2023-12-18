@@ -14,7 +14,7 @@
 <li class="nav-item dropdown">
     <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Penjadwalan</span></a>
     <ul class="dropdown-menu">
-        <li><a class="nav-link" href="<?=site_url()?>">Seminar</a></li>
+        <li><a class="nav-link" href="<?=site_url('sempro')?>">Seminar</a></li>
         <li><a class="nav-link" href="<?=site_url('ruangan')?>">Ruangan</a></li>
     </ul>
 </li>

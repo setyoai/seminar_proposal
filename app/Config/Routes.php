@@ -23,7 +23,7 @@ $routes->delete('main_menu/(:segment)', 'MainMenu::destroy/$1');
 $routes->presenter('mahasiswa', ['filter' => 'isLoggedIn']);
 
 $routes->presenter('ruangan',['filter' => 'isLoggedIn']);
-$routes->resource('ruangan',['filter' => 'isLoggedIn']);
+$routes->resource('sempro',['filter' => 'isLoggedIn']);
 
 
 //make database
