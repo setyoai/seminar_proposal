@@ -52,7 +52,6 @@
                             <th>Ketua Penguji</th>
                             <th>Penguji 1</th>
                             <th>Penguji 2</th>
-                            <th>Hasil</th>
                             <th>Action</th>
                         </tr>
                         <?php foreach ($tb_sempro as $key => $value) : ?>
@@ -66,9 +65,8 @@
                                 <td><?=$value->penguji1_sempro?></td>
                                 <td><?=$value->penguji2_sempro?></td>
                                 <td><?=$value->penguji3_sempro?></td>
-                                <td><?=$value->hasil_sempro?></td>
                                 <td>
-                                    <a href="<?=site_url('sempro/new/'.$value->id_sempro)?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="<?=site_url('sempro/' . $value->id_sempro . '/edit')?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

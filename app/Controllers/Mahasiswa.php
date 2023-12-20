@@ -76,7 +76,6 @@ class Mahasiswa extends ResourcePresenter
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException:: forPageNotFound();
         }
-
     }
 
     /**

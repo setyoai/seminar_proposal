@@ -49,7 +49,9 @@ class Sempro extends ResourceController
      */
     public function new()
     {
-        return view('sempro/new');
+        $data['tb_mhs'] = $this->tb_mhs->findAll();
+        $data['tb_ruangan'] = $this->tb_ruangan->findAll();
+        return view('sempro/new' ,$data);
     }
 
     /**
@@ -59,7 +61,9 @@ class Sempro extends ResourceController
      */
     public function create()
     {
-        //
+        $data = $this->request->getPost();
+        $this->tb_sempro->insert($data);
+        return redirect()->to(site_url('sempro'))->with('success', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -69,7 +73,15 @@ class Sempro extends ResourceController
      */
     public function edit($id = null)
     {
-        return view('sempro/edit');
+        $tb_sempro = $this->tb_sempro->find($id);
+        if (is_object($tb_sempro)) {
+            $data['tb_sempro'] = $tb_sempro;
+            $data['tb_mhs'] = $this->tb_mhs->findAll();
+            $data['tb_ruangan'] = $this->tb_ruangan->findAll();
+            return view('sempro/edit', $data);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException:: forPageNotFound();
+        }
     }
 
     /**
@@ -79,7 +91,9 @@ class Sempro extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $data = $this->request->getPost();
+        $this->tb_sempro->update($id, $data);
+        return redirect()->to(site_url('sempro'))->with('success', 'Data Berhasil Diupdate');
     }
 
     /**

@@ -23,12 +23,12 @@ class CreateSempro extends Migration
                 'constraint'     => 11,
             ],
             'jam_sempro' => [
-                'type' => 'VARCHAR',
-                'constraint' => '100',
+                'type' => 'TIME',
+                'null' => true,
             ],
             'tanggal_sempro' => [
-                'type' => 'VARCHAR',
-                'constraint' => '100',
+                'type' => 'DATE',
+                'null' => true,
             ],
             'penguji1_sempro' => [
                 'type' => 'TEXT',
