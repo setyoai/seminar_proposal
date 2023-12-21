@@ -38,19 +38,21 @@
       <div class="card-header">
         <h4>Data Dosen</h4>
       </div>
-    <div class="card-body p-0">
+    <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-striped table-md">
-            <tbody>
+          <table class="table table-striped table-md" id="table1">
+              <thead>
               <tr>
-                <th>#</th>
-                <th>NIDN</th>
-                <th>Nama</th>
-                <th>Alamat</th>
-                <th>No Handphone</th>
-                <th>Email</th>
-                <th>Action</th>
+                  <th>#</th>
+                  <th>NIDN</th>
+                  <th>Nama</th>
+                  <th>Alamat</th>
+                  <th>No Handphone</th>
+                  <th>Email</th>
+                  <th>Action</th>
               </tr>
+              </thead>
+            <tbody>
               <?php foreach ($tb_dosen as $key => $value) : ?> 
               <tr>
                 <td><?=$key + 1?></td>
@@ -61,10 +63,10 @@
                 <td><?=$value->email_dosen?></td>
                 <td>
                   <a href="<?=site_url('main_menu/edit/'.$value->id_dosen)?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                    <form action="<?=site_url('main_menu/'.$value->id_dosen)?>" method="post" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
+                    <form action="<?=site_url('main_menu/'.$value->id_dosen)?>" method="post" class="d-inline" id="del-<?=$value->id_dosen?>">
                         <?= csrf_field() ?>
                         <input type="hidden" name="_method" value="DELETE">
-                        <button class="btn btn-danger btn-sm">
+                        <button class="btn btn-danger btn-sm" data-confirm="Hapus Data?|Apakah Anda yakin?" data-confirm-yes="submitDel(<?=$value->id_dosen?>)">
                             <i class="fas fa-trash"></i>
                         </button>
                     </form>

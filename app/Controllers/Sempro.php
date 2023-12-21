@@ -103,6 +103,7 @@ class Sempro extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $this->tb_sempro->delete($id);
+        return redirect()->to(site_url('sempro'))->with('success', 'Data Berhasil Dihapus');
     }
 }
