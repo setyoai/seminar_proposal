@@ -114,8 +114,45 @@ class DafSempro extends ResourcePresenter
      */
     public function update($id = null)
     {
-        $data = $this->request->getPost();
+        $transkripFile = $this->request->getFile('transkrip_dafsempro');
+        $pengesahanFile = $this->request->getFile('pengesahan_dafsempro');
+        $bimbinganFile = $this->request->getFile('bukubimbingan_dafsempro');
+        $kwkomputerFile = $this->request->getFile('kwkomputer_dafsempro');
+        $statusDafsempro = $this->request->getPost('status_dafsempro');
+        $ketSempro = $this->request->getPost('ket_sempro');
+
+        // ... (same code as before)
+
+        // Prepare data for update
+        $data = [
+            'status_dafsempro' => $statusDafsempro,
+            'ket_sempro' => $ketSempro,
+        ];
+
+        // Include file names in the update only if new files are uploaded
+        if ($transkripFile && $transkripFile->isValid()) {
+            $data['transkrip_dafsempro'] = $transkripFile->getName();
+        }
+        if ($pengesahanFile && $pengesahanFile->isValid()) {
+            $data['pengesahan_dafsempro'] = $pengesahanFile->getName();
+        }
+        if ($bimbinganFile && $bimbinganFile->isValid()) {
+            $data['bukubimbingan_dafsempro'] = $bimbinganFile->getName();
+        }
+        if ($kwkomputerFile && $kwkomputerFile->isValid()) {
+            $data['kwkomputer_dafsempro'] = $kwkomputerFile->getName();
+        }
+
+        // Check if there is data to update
+        if (empty($data)) {
+            // Handle this situation as needed
+            // You might want to redirect back with an error message
+            return redirect()->back()->with('error', 'No data to update');
+        }
+
+        // Update the database
         $this->model->update($id, $data);
+
         return redirect()->to(site_url('dafsempro'))->with('success', 'Data Berhasil Diupdate');
     }
 

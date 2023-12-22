@@ -46,10 +46,10 @@
                             <div class="section-title">Select</div>
                             <div class="form-group">
                                 <label>Choose One</label>
-                                <select name="status_dafsempro" class="custom-select">
+                                <select class="custom-select" name="status_dafsempro">
                                     <option selected>Select status</option>
-                                    <option value="1">Diterima</option>
-                                    <option value="2">Ditolak</option>
+                                    <option <?php echo $tb_dafsempro->status_dafsempro == '1' ? 'selected' : ''; ?> value="1">Diterima</option>
+                                    <option <?php echo $tb_dafsempro->status_dafsempro == '2' ? 'selected' : ''; ?> value="2">Ditolak</option>
                                 </select>
                             </div>
                             <div class="form-group">

@@ -21,9 +21,9 @@ class DafSemproModel extends Model
         'kwkewirausahaan_dafsempro',
         'slippembayaran_dafsempro',
         'plagiasi_dafsempro',
-        'tanggal_daftarsem',
-        'ket_daftarsem',
-        'status_daftarsem',
+        'tanggal_dafsempro',
+        'status_dafsempro',
+        'ket_dafsempro',
     ];
 
 }

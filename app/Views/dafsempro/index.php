@@ -71,7 +71,14 @@
                                 <td><a href="<?= base_url('upload/' . $value->slippembayaran_dafsempro) ?>" target="_blank"><?= $value->slippembayaran_dafsempro ?></a></td>
                                 <td><a href="<?= base_url('upload/' . $value->plagiasi_dafsempro) ?>" target="_blank"><?= $value->plagiasi_dafsempro ?></a></td>
                                 <td><a href="<?= base_url('upload/' . $value->tanggal_dafsempro) ?>" target="_blank"><?= $value->tanggal_dafsempro ?></a></td>
-                                <td id="statusCell"><?= $value->status_dafsempro ?></td>
+                                <td>
+                                    <?php
+                                    $status = $value->status_dafsempro;
+                                    $badge_class = ($status == 1) ? 'badge-success' : 'badge-danger';
+                                    $badge_text = ($status == 1) ? 'Diterima' : 'Ditolak';
+                                    ?>
+                                    <span class="badge <?= $badge_class ?>"><?= $badge_text ?></span>
+                                </td>
                                 <td><?= $value->ket_dafsempro ?></td>
 
                                 <td>
