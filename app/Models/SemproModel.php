@@ -11,15 +11,15 @@ class SemproModel extends Model
 
     protected $returnType       = 'object';
     protected $allowedFields    = [
-                'id_mhs' ,
-                'id_ruangan',
-                'jam_sempro',
-                'tanggal_sempro',
-                'penguji1_sempro',
-                'penguji2_sempro' ,
-                'penguji3_sempro' ,
-                'status_sempro',
-                'hasil_sempro'
+        'id_mhs' ,
+        'id_ruangan',
+        'jam_sempro',
+        'tanggal_sempro',
+        'penguji1_sempro',
+        'penguji2_sempro' ,
+        'penguji3_sempro' ,
+        'status_sempro',
+        'hasil_sempro'
     ];
 
     function getAll()

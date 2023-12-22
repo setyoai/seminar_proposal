@@ -21,8 +21,9 @@ $routes->put('main_menu/(:any)', 'MainMenu::update/$1');
 $routes->delete('main_menu/(:segment)', 'MainMenu::destroy/$1');
 
 $routes->presenter('mahasiswa', ['filter' => 'isLoggedIn']);
-
 $routes->presenter('ruangan',['filter' => 'isLoggedIn']);
+$routes->presenter('dafsempro',['filter' => 'isLoggedIn']);
+
 $routes->resource('sempro',['filter' => 'isLoggedIn']);
 
 

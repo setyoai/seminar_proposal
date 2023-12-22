@@ -22,7 +22,7 @@ class CreateUser extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'status_user' => [
+            'user_level' => [
                 'type' => 'VARCHAR',
                 'constraint' => '100',
                 null => true,

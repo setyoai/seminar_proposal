@@ -9,25 +9,25 @@
         <div class="section-header">
             <h1>Halaman Ruangan</h1>
             <div class="section-header-button">
-                <a href="<?=site_url('ruangan/new')?>" class ="btn btn-primary">Add New</a>
+                <a href="<?= site_url('ruangan/new') ?>" class="btn btn-primary">Add New</a>
             </div>
         </div>
 
-        <?php if(session()->getFlashdata('success')) : ?>
+        <?php if (session()->getFlashdata('success')) : ?>
             <div class="alert alert-success alert-dismissable show fade">
                 <div class="alert-body">
                     <button class="close" data-dismiss="alert">x</button>
                     <b>Success !</b>
-                    <?= session()->getFlashdata('success')?>
+                    <?= session()->getFlashdata('success') ?>
                 </div>
             </div>
         <?php endif; ?>
-        <?php if(session()->getFlashdata('error')) : ?>
+        <?php if (session()->getFlashdata('error')) : ?>
             <div class="alert alert-danger alert-dismissable show fade">
                 <div class="alert-body">
                     <button class="close" data-dismiss="alert">x</button>
                     <b>Error !</b>
-                    <?= session()->getFlashdata('error')?>
+                    <?= session()->getFlashdata('error') ?>
                 </div>
             </div>
         <?php endif; ?>
@@ -49,11 +49,14 @@
                             </tr>
                             <?php foreach ($tb_ruangan as $key => $value) : ?>
                                 <tr class="text-center">
-                                    <td><?=$key + 1?></td>
-                                    <td><?=$value->nama_ruangan?></td>
+                                    <td><?= $key + 1 ?></td>
+                                    <td><?= $value->nama_ruangan ?></td>
                                     <td class="text-center" style="width:15%">
-                                        <a href="<?=site_url('ruangan/edit/'.$value->id_ruangan)?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                        <form action="<?=site_url('ruangan/delete/'.$value->id_ruangan)?>" method="post" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
+                                        <a href="<?= site_url('ruangan/edit/' . $value->id_ruangan) ?>"
+                                           class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                        <form action="<?= site_url('ruangan/delete/' . $value->id_ruangan) ?>"
+                                              method="post" class="d-inline"
+                                              onsubmit="return confirm('Yakin hapus data?')">
                                             <?= csrf_field() ?>
                                             <button class="btn btn-danger btn-sm">
                                                 <i class="fas fa-trash"></i>

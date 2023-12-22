@@ -8,7 +8,7 @@
 <section class="section">
     <div class="section-header">
         <div class="section-header-back">
-            <a href="<?=site_url("sempro")?>" class="btn"><i class ="fas fa-arrow-left"></i></a>
+            <a href="<?= site_url("sempro") ?>" class="btn"><i class="fas fa-arrow-left"></i></a>
         </div>
         <h1>Data Seminar Proposal</h1>
     </div>
@@ -20,23 +20,14 @@
                 <h4>Tambah Jadwal Seminar</h4>
             </div>
             <div class="card-body col-md-6">
-                <form action="<?= site_url('sempro')?>" method="post" autocomplete="off">
+                <form action="<?= site_url('sempro') ?>" method="post" autocomplete="off">
                     <?= csrf_field() ?>
-<!--                    <div class="form-group">-->
-<!--                        <label>NIM *</label>-->
-<!--                        <select name="id_mhs" class="form-control" required>-->
-<!--                            <option value="" hidden></option>-->
-<!--                            --><?php //foreach ($tb_mhs as $key => $value) : ?>
-<!--                                <option value="--><?php //=$value->id_mhs?><!--">--><?php //=$value->nim_mhs?><!--</option>-->
-<!--                            --><?php //endforeach; ?>
-<!--                        </select>-->
-<!--                    </div>-->
                     <div class="form-group">
                         <label>Nama *</label>
                         <select name="id_mhs" class="form-control" required>
                             <option value="" hidden></option>
                             <?php foreach ($tb_mhs as $key => $value) : ?>
-                                <option value="<?=$value->id_mhs?>"><?=$value->nama_mhs?></option>
+                                <option value="<?= $value->id_mhs ?>"><?= $value->nama_mhs ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -57,7 +48,7 @@
                         <select name="id_ruangan" class="form-control" required>
                             <option value="" hidden></option>
                             <?php foreach ($tb_ruangan as $key => $value) : ?>
-                                <option value="<?=$value->id_ruangan?>"><?=$value->nama_ruangan?></option>
+                                <option value="<?= $value->id_ruangan ?>"><?= $value->nama_ruangan ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

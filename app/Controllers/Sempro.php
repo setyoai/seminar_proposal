@@ -7,8 +7,6 @@ use App\Models\SemproModel;
 use App\Models\MahasiswaModel;
 use App\Models\RuanganModel;
 
-
-
 class Sempro extends ResourceController
 {
     protected $helpers = ['custom'];

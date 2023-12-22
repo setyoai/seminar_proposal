@@ -8,7 +8,7 @@
     <section class="section">
         <div class="section-header">
             <div class="section-header-back">
-                <a href="<?=site_url("mahasiswa")?>" class="btn"><i class ="fas fa-arrow-left"></i></a>
+                <a href="<?= site_url("mahasiswa") ?>" class="btn"><i class="fas fa-arrow-left"></i></a>
             </div>
             <h1>Data Mahasiswa</h1>
         </div>
@@ -20,7 +20,7 @@
                     <h4>Tambah Data Mahasiswa</h4>
                 </div>
                 <div class="card-body col-md-6">
-                    <form action="<?= site_url("mahasiswa")?>" method="post" autocomplete="off">
+                    <form action="<?= site_url("mahasiswa") ?>" method="post" autocomplete="off">
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <label>NIM</label>
@@ -40,11 +40,19 @@
                         </div>
                         <div class="form-group">
                             <label>No Handphone</label>
-                            <input type="text" name="nohp_mhs" class="form-control" required autofocus>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                </div>
+                                <input type="text" name="nohp_mhs" class="form-control phone-number" required autofocus>
+                            </div>
                         </div>
 
                         <div>
-                            <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane">Submit</i></button>
+                            <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane">Submit</i>
+                            </button>
                             <button type="reset" class="btn btn-secondary">Reset</button>
                         </div>
                     </form>

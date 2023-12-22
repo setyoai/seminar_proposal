@@ -9,28 +9,28 @@
         <div class="section-header">
             <h1>Data Mahasiswa</h1>
             <div class="section-header-button">
-                <a href="<?=site_url("mahasiswa/new")?>" class ="btn btn-primary">Add New</a>
+                <a href="<?= site_url("mahasiswa/new") ?>" class="btn btn-primary">Add New</a>
             </div>
         </div>
 
-    <?php if(session()->getFlashdata('success')) : ?>
-        <div class="alert alert-success alert-dismissable show fade">
-            <div class="alert-body">
-                <button class="close" data-dismiss="alert">x</button>
-                <b>Success !</b>
-                <?= session()->getFlashdata('success')?>
+        <?php if (session()->getFlashdata('success')) : ?>
+            <div class="alert alert-success alert-dismissable show fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">x</button>
+                    <b>Success !</b>
+                    <?= session()->getFlashdata('success') ?>
+                </div>
             </div>
-        </div>
-    <?php endif; ?>
-    <?php if(session()->getFlashdata('error')) : ?>
-        <div class="alert alert-danger alert-dismissable show fade">
-            <div class="alert-body">
-                <button class="close" data-dismiss="alert">x</button>
-                <b>Error !</b>
-                <?= session()->getFlashdata('error')?>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('error')) : ?>
+            <div class="alert alert-danger alert-dismissable show fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">x</button>
+                    <b>Error !</b>
+                    <?= session()->getFlashdata('error') ?>
+                </div>
             </div>
-        </div>
-    <?php endif; ?>
+        <?php endif; ?>
 
         <div class="section-body">
 
@@ -56,24 +56,28 @@
                             <tbody>
                             <?php foreach ($tb_mhs as $key => $value) : ?>
                                 <tr>
-                                    <td><?=$key + 1?></td>
-                                    <td><?=$value->nim_mhs?></td>
-                                    <td><?=$value->nama_mhs?></td>
-                                    <td><?=$value->email_mhs?></td>
-                                    <td><?=$value->alamat_mhs?></td>
-                                    <td><?=$value->nohp_mhs?></td>
-                                    <td><?=$value->status_mhs?></td>
+                                    <td><?= $key + 1 ?></td>
+                                    <td><?= $value->nim_mhs ?></td>
+                                    <td><?= $value->nama_mhs ?></td>
+                                    <td><?= $value->email_mhs ?></td>
+                                    <td><?= $value->alamat_mhs ?></td>
+                                    <td><?= $value->nohp_mhs ?></td>
+                                    <td><?= $value->status_mhs ?></td>
                                     <td>
-                                        <a href="<?=site_url('mahasiswa/edit/'.$value->id_mhs)?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                        <form action="<?=site_url('mahasiswa/delete/'.$value->id_mhs)?>" method="post" class="d-inline" id="del-<?=$value->id_mhs?>">
+                                        <a href="<?= site_url('mahasiswa/edit/' . $value->id_mhs) ?>"
+                                           class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                        <form action="<?= site_url('mahasiswa/delete/' . $value->id_mhs) ?>"
+                                              method="post" class="d-inline" id="del-<?= $value->id_mhs ?>">
                                             <?= csrf_field() ?>
-                                            <button class="btn btn-danger btn-sm" data-confirm="Hapus Data?|Apakah Anda yakin?" data-confirm-yes="submitDel(<?=$value->id_mhs?>)">
+                                            <button class="btn btn-danger btn-sm"
+                                                    data-confirm="Hapus Data?|Apakah Anda yakin?"
+                                                    data-confirm-yes="submitDel(<?= $value->id_mhs ?>)">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
                                     </td>
                                 </tr>
-                                <?php endforeach; ?>
+                            <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

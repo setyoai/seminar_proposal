@@ -8,7 +8,7 @@
 <section class="section">
     <div class="section-header">
         <div class="section-header-back">
-            <a href="<?=site_url("ruangan")?>" class="btn"><i class ="fas fa-arrow-left"></i></a>
+            <a href="<?= site_url("ruangan") ?>" class="btn"><i class="fas fa-arrow-left"></i></a>
         </div>
         <h1>Edit Data Ruangan</h1>
     </div>
@@ -20,11 +20,13 @@
                 <h4>Edit Data Ruangan</h4>
             </div>
             <div class="card-body col-md-6">
-                <form action="<?= site_url('ruangan/update/'.$tb_ruangan->id_ruangan)?>" method="post" autocomplete="off">
+                <form action="<?= site_url('ruangan/update/' . $tb_ruangan->id_ruangan) ?>" method="post"
+                      autocomplete="off">
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label>Nim</label>
-                        <input type="text" name="nama_ruangan" value="<?=$tb_ruangan->nama_ruangan?>" class="form-control" required autofocus>
+                        <input type="text" name="nama_ruangan" value="<?= $tb_ruangan->nama_ruangan ?>"
+                               class="form-control" required autofocus>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane">Submit</i></button>
