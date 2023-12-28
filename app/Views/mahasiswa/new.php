@@ -19,7 +19,7 @@
                 <div class="card-header">
                     <h4>Tambah Data Mahasiswa</h4>
                 </div>
-                <div class="card-body col-md-6">
+                <div class="card-body">
                     <form action="<?= site_url("mahasiswa") ?>" method="post" autocomplete="off">
                         <?= csrf_field() ?>
                         <div class="form-group">

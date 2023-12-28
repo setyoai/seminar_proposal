@@ -11,7 +11,6 @@ class CreateUser extends Migration
         $this->forge->addField([
             'id_user' => [
                 'type'           => 'INT',
-                'constraint'     => 20,
                 'auto_increment' => true,
             ],
             'username_user' => [
@@ -30,10 +29,13 @@ class CreateUser extends Migration
 
         ]);
         $this->forge->addKey('id_user', true);
+//        $this->forge->addForeignKey('id_user',  'tb_dosen', 'id_dosen');
+//        $this->forge->addForeignKey('id_user', 'tb_auth', 'id_auth');
         $this->forge->createTable('tb_user');
     }
 
-    public function down() {
+    public function down()
+    {
         $this->forge->dropTable('tb_user');
     }
 }

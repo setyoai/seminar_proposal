@@ -8,18 +8,13 @@ use CodeIgniter\Router\RouteCollection;
 
 $routes->setAutoRoute(true);
 
-$routes->get('login', 'Auth::login');
+//$routes->get('login', 'Login::login');
+$routes->get('/', 'Login::index');
 
 //$routes->get('/', 'Home::index');
-$routes->addRedirect('/', 'home');
+//$routes->addRedirect('/', 'home');
 
-$routes->get('main_menu', 'MainMenu::index');
-$routes->get('main_menu/add', 'MainMenu::create');
-$routes->post('main_menu', 'MainMenu::store');
-$routes->get('main_menu/edit/(:num)', 'MainMenu::edit/$1');
-$routes->put('main_menu/(:any)', 'MainMenu::update/$1');
-$routes->delete('main_menu/(:segment)', 'MainMenu::destroy/$1');
-
+$routes->presenter('dosen',['filter' => 'isLoggedIn']);
 $routes->presenter('mahasiswa', ['filter' => 'isLoggedIn']);
 $routes->presenter('ruangan',['filter' => 'isLoggedIn']);
 $routes->presenter('dafsempro',['filter' => 'isLoggedIn']);

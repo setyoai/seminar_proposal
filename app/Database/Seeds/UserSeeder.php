@@ -8,25 +8,28 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-//        // single user
+        // single user
 //        $data = [
+//        'id_user' => 1,
 //        'username_user' => 'budi@gmail.com',
 //        'password_user' => password_hash('12345', PASSWORD_BCRYPT),
-//        'status_user' => 'koordinator'
+//        'level_userid' => 1
 //        ];
 //        $this->db->table('tb_user')->insert($data);
 
-//        //multi user
+        //multi user
         $data = [
             [
-                'username_user' => 'roni@gmail.com',
-                'password_user' => password_hash('12345', PASSWORD_BCRYPT),
-                'status_user' => 'operator'
+                'id_user' => 1,
+                'username_user' => 'budi@gmail.com',
+                'password_user' => password_hash('1234', PASSWORD_BCRYPT),
+                'level_userid' => 1
             ],
             [
-                'username_user' => 'rodi@gmail.com',
-                'password_user' => password_hash('12345', PASSWORD_BCRYPT),
-                'status_user' => 'dosen'
+                'id_user' => 2,
+                'username_user' => 'roni@gmail.com',
+                'password_user' => password_hash('1234', PASSWORD_BCRYPT),
+                'level_userid' => 2
             ],
 
         ];

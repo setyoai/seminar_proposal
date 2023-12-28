@@ -11,7 +11,6 @@ class Seminar extends Migration
         $this->forge->addField([
             'id_dosen' => [
                 'type'           => 'INT',
-                'constraint'     => 20,
                 'auto_increment' => true,
             ],
             'nidn_dosen' => [

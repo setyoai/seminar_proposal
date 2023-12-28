@@ -21,40 +21,53 @@
                         <h4>Edit Data Pendaftaran</h4>
                     </div>
                     <div class="card-body">
-                        <form action="<?= site_url('dafsempro/update/' . $tb_dafsempro->id_dafsempro) ?>" method="post" autocomplete="off">
+                        <form action="<?= site_url('dafsempro/update/' . $tb_dafsempro->id_dafsempro) ?>" method="post"
+                              autocomplete="off">
                             <?= csrf_field() ?>
                             <div class="section-title">File Transkrip</div>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="transkrip_dafsempro" id="customFile">
-                                <label class="custom-file-label" for="customFile"><?= $tb_dafsempro->transkrip_dafsempro ?></label>
+                                <label class="custom-file-label"
+                                       for="customFile"><?= $tb_dafsempro->transkrip_dafsempro ?></label>
                             </div>
                             <div class="section-title">File Transkrip</div>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="pengesahan_dafsempro" id="customFile">
-                                <label class="custom-file-label" for="customFile"><?= $tb_dafsempro->pengesahan_dafsempro ?></label>
+                                <input type="file" class="custom-file-input" name="pengesahan_dafsempro"
+                                       id="customFile">
+                                <label class="custom-file-label"
+                                       for="customFile"><?= $tb_dafsempro->pengesahan_dafsempro ?></label>
                             </div>
                             <div class="section-title">File Transkrip</div>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="bukubimbingan_dafsempro" id="customFile">
-                                <label class="custom-file-label" for="customFile"><?= $tb_dafsempro->bukubimbingan_dafsempro ?></label>
+                                <input type="file" class="custom-file-input" name="bukubimbingan_dafsempro"
+                                       id="customFile">
+                                <label class="custom-file-label"
+                                       for="customFile"><?= $tb_dafsempro->bukubimbingan_dafsempro ?></label>
                             </div>
                             <div class="section-title">File Transkrip</div>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="kwkomputer_dafsempro" id="customFile">
-                                <label class="custom-file-label" for="customFile"><?= $tb_dafsempro->kwkomputer_dafsempro ?></label>
+                                <input type="file" class="custom-file-input" name="kwkomputer_dafsempro"
+                                       id="customFile">
+                                <label class="custom-file-label"
+                                       for="customFile"><?= $tb_dafsempro->kwkomputer_dafsempro ?></label>
                             </div>
                             <div class="section-title">Select</div>
                             <div class="form-group">
                                 <label>Choose One</label>
                                 <select class="custom-select" name="status_dafsempro">
                                     <option selected>Select status</option>
-                                    <option <?php echo $tb_dafsempro->status_dafsempro == '1' ? 'selected' : ''; ?> value="1">Diterima</option>
-                                    <option <?php echo $tb_dafsempro->status_dafsempro == '2' ? 'selected' : ''; ?> value="2">Ditolak</option>
+                                    <option <?php echo $tb_dafsempro->status_dafsempro == '1' ? 'selected' : ''; ?>
+                                            value="1">Diterima
+                                    </option>
+                                    <option <?php echo $tb_dafsempro->status_dafsempro == '2' ? 'selected' : ''; ?>
+                                            value="2">Ditolak
+                                    </option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <div class="section-title">Keterangan</div>
-                                <textarea class="form-control" name="ket_dafsempro"><?= $tb_dafsempro->ket_dafsempro ?></textarea>
+                                <textarea class="form-control"
+                                          name="ket_dafsempro"><?= $tb_dafsempro->ket_dafsempro ?></textarea>
                             </div
                         </form>
                     </div>

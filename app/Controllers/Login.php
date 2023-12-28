@@ -1,0 +1,127 @@
+<?php
+
+namespace App\Controllers;
+
+//use App\Controllers\BaseController;
+
+use App\Models\LoginModel;
+
+class Login extends BaseController
+{
+
+    protected $helpers = ['custom'];
+    public function index()
+    {
+        helper('form');
+//       return redirect()->to(site_url('login'));
+        return view('login/index');
+    }
+
+    public function cekUser()
+    {
+        $id_user = $this->request->getPost('id_user');
+        $password_user = $this->request->getPost('password_user');
+
+        $validation = \Config\Services::validation();
+
+        $valid = $this->validate([
+           'id_user' => [
+               'label' => 'ID User',
+               'rules' => 'required',
+               'errors' => [
+                   'required' => '{field} tidak boleh kosong'
+               ]
+           ],
+            'password_user' => [
+                'label' => 'Password',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong'
+                ]
+            ]
+        ]);
+
+        if (!$valid) {
+            $sessError = [
+                'errIdUser' => $validation->getError('id_user'),
+                'errPassword' => $validation->getError('password_user')
+
+            ];
+
+            session()->setFlashdata($sessError);
+            return redirect()->to(site_url('login/index'));
+        } else {
+            $loginModel = new LoginModel();
+
+            $cekUserLogin = $loginModel->find($id_user);
+            if ($cekUserLogin == null ) {
+                $sessError = [
+                    'errIdUser' => 'Maaf User Tidak Terdaftar',
+                ];
+
+                session()->setFlashdata($sessError);
+                return redirect()->to(site_url('login/index'));
+            } else {
+                $passwordUser = $cekUserLogin['password_user'];
+
+                if (password_verify($password_user, $passwordUser)){
+                    // Lanjutkan
+                    $lavel_iduser = $cekUserLogin['level_userid'];
+
+                    $save_session = [
+                        'id_user' => $id_user,
+                        'username_user' => $cekUserLogin['username_user'],
+                        'level_iduser' => $lavel_iduser
+                    ];
+
+                    session()->set($save_session);
+
+                    return redirect()->to('home/index');
+                } else {
+                    $sessError = [
+                        'errPassword' => 'Password Anda Salah',
+                    ];
+
+                    session()->setFlashdata($sessError);
+                    return redirect()->to(site_url('login/index'));
+                }
+
+            }
+        }
+    }
+
+//    public function login()
+//    {
+//        if (session('id_user')) {
+//            return redirect()->to(site_url('home'));
+//        }
+//        return view('login/login');
+//    }
+//
+//    public function loginProcess()
+//    {
+//        $post = $this->request->getPost();
+//        $query = $this->db->table('tb_user')->getWhere(['username_user' => $post['email']]);
+//        $user = $query->getRow();
+//        if ($user)
+//        {
+//            if (password_verify($post['password'], $user->password_user))
+//            {
+//                $params = ['id_user' => $user->id_user];
+//                session()->set($params);
+//
+//                return redirect()->to(site_url('home'));
+//            } else {
+//                return redirect()->back()->with('error', 'Password tidak sesuai');
+//            }
+//        }
+//        return redirect()->back()->with('error', 'Email tidak ditemukan');
+//    }
+
+    public function logout()
+    {
+        session()->remove('id_user');
+        return redirect()->to(site_url('login'));
+    }
+
+}

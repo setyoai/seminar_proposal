@@ -52,7 +52,6 @@
                             <th>KW Kewirausahaan</th>
                             <th>Slip</th>
                             <th>Plagiasi</th>
-                            <th>Tanggal</th>
                             <th>Status</th>
                             <th>Keterangan</th>
                             <th>Action</th>
@@ -62,15 +61,14 @@
                         <?php foreach ($tb_dafsempro as $key => $value) : ?>
                             <tr>
                                 <td><?= $key + 1 ?></td>
-                                <td><a href="<?= base_url('upload/' . $value->transkrip_dafsempro) ?>" target="_blank"><?= $value->transkrip_dafsempro ?></a></td>
-                                <td><a href="<?= base_url('upload/' . $value->pengesahan_dafsempro) ?>" target="_blank"><?= $value->pengesahan_dafsempro ?></a></td>
-                                <td><a href="<?= base_url('upload/' . $value->bukubimbingan_dafsempro) ?>" target="_blank"><?= $value->bukubimbingan_dafsempro ?></a></td>
-                                <td><a href="<?= base_url('upload/' . $value->kwkomputer_dafsempro) ?>" target="_blank"><?= $value->kwkomputer_dafsempro ?></a></td>
-                                <td><a href="<?= base_url('upload/' . $value->kwinggris_dafsempro) ?>" target="_blank"><?= $value->kwinggris_dafsempro ?></a></td>
-                                <td><a href="<?= base_url('upload/' . $value->kwkewirausahaan_dafsempro) ?>" target="_blank"><?= $value->kwkewirausahaan_dafsempro ?></a></td>
-                                <td><a href="<?= base_url('upload/' . $value->slippembayaran_dafsempro) ?>" target="_blank"><?= $value->slippembayaran_dafsempro ?></a></td>
-                                <td><a href="<?= base_url('upload/' . $value->plagiasi_dafsempro) ?>" target="_blank"><?= $value->plagiasi_dafsempro ?></a></td>
-                                <td><a href="<?= base_url('upload/' . $value->tanggal_dafsempro) ?>" target="_blank"><?= $value->tanggal_dafsempro ?></a></td>
+                                <td><a href="<?= base_url('upload/' . $value->transkrip_dafsempro) ?>" target="_blank">Transkrip Nilai</a></td>
+                                <td><a href="<?= base_url('upload/' . $value->pengesahan_dafsempro) ?>" target="_blank">Pengesahan</a></td>
+                                <td><a href="<?= base_url('upload/' . $value->bukubimbingan_dafsempro) ?>" target="_blank">Buku Bimbingan</a></td>
+                                <td><a href="<?= base_url('upload/' . $value->kwkomputer_dafsempro) ?>" target="_blank">KW Komputer</a></td>
+                                <td><a href="<?= base_url('upload/' . $value->kwinggris_dafsempro) ?>" target="_blank">KW B.Inggris</a></td>
+                                <td><a href="<?= base_url('upload/' . $value->kwkewirausahaan_dafsempro) ?>" target="_blank">KW Kewirausahaan</a></td>
+                                <td><a href="<?= base_url('upload/' . $value->slippembayaran_dafsempro) ?>" target="_blank">Slip</a></td>
+                                <td><a href="<?= base_url('upload/' . $value->plagiasi_dafsempro) ?>" target="_blank">Plagiasi</a></td>
                                 <td>
                                     <?php
                                     $status = $value->status_dafsempro;
