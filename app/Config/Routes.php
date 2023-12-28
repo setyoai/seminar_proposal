@@ -14,6 +14,7 @@ $routes->get('/', 'Login::index');
 //$routes->get('/', 'Home::index');
 //$routes->addRedirect('/', 'home');
 
+$routes->presenter('operator',['filter' => 'isLoggedIn']);
 $routes->presenter('dosen',['filter' => 'isLoggedIn']);
 $routes->presenter('mahasiswa', ['filter' => 'isLoggedIn']);
 $routes->presenter('ruangan',['filter' => 'isLoggedIn']);
