@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Email Dosen</label>
-                                        <input type="text" name="email_dosen" value="<?= $tb_dosen->email_dosen ?>"
+                                        <input type="email" name="email_dosen" value="<?= $tb_dosen->email_dosen ?>"
                                                class="form-control" required autofocus>
                                     </div>
                             </div>

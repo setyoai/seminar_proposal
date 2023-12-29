@@ -21,9 +21,9 @@
         </ul>
     </li>
     <li class="nav-item dropdown">
-        <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i> <span>Kelola User</span></a>
+        <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i> <span>Kelola User</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="<?= site_url('sempro') ?>">User</a></li>
+            <li><a class="nav-link" href="<?= site_url('user') ?>">User</a></li>
             <li><a class="nav-link" href="<?= site_url('ruangan') ?>">Level User</a></li>
         </ul>
     </li>

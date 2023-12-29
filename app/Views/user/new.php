@@ -8,74 +8,73 @@
     <section class="section">
         <div class="section-header">
             <div class="section-header-back">
-                <a href="<?= site_url("dosen") ?>" class="btn"><i class="fas fa-arrow-left"></i></a>
+                <a href="<?= site_url("user") ?>" class="btn"><i class="fas fa-arrow-left"></i></a>
             </div>
-            <h1>Dosen</h1>
+            <h1>User</h1>
         </div>
 
         <div class="section-body">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-6">
                     <div class="card">
-                        <form action="<?= site_url("dosen") ?>" method="post" autocomplete="off">
+                        <form action="<?= site_url("user") ?>" method="post" autocomplete="off">
                             <div class="card-header">
-                                <h4>Tambah Data Dosen</h4>
+                                <h4>Tambah Data User</h4>
                             </div>
                             <div class="card-body">
                                     <?= csrf_field() ?>
                                     <div class="form-group">
-                                        <label>Nidn</label>
+                                        <label>ID</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <i class="fas fa-id-badge"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="nidn_dosen" class="form-control" required autofocus>
+                                            <select name="id_user" class="form-control" required>
+                                                <option value="" hidden></option>
+                                                <?php foreach ($tb_dosen as $key => $value) : ?>
+                                                    <option value="<?= $value->id_dosen ?>"><?= $value->nidn_dosen ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Nama</label>
+                                        <label>Username</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <i class="fas fa-user"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="nama_dosen" class="form-control" required autofocus>
+                                            <input type="email" name="username_user" class="form-control" required autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Alamat</label>
+                                        <label>Password</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <i class="fas fa-map-marker-alt"></i>
+                                                    <i class="fas fa-lock"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="alamat_dosen" class="form-control" required autofocus>
+                                            <input type="password" name="password_user" class="form-control" required autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>No Handphone</label>
+                                        <label>Level User</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <i class="fas fa-phone"></i>
+                                                    <i class="fas fa-user-cog"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="nohp_dosen" class="form-control" required autofocus>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text">
-                                                    <i class="fas fa-envelope"></i>
-                                                </div>
-                                            </div>
-                                            <input type="email" name="email_dosen" class="form-control" required autofocus>
+                                            <select name="level_userid" class="form-control" required>
+                                                <option value="" hidden></option>
+                                                <?php foreach ($tb_auth as $key => $value) : ?>
+                                                    <option value="<?= $value->id_auth ?>"><?= $value->level_nama ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
                                     </div>
                             </div>

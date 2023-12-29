@@ -16,6 +16,7 @@ $routes->get('/', 'Login::index');
 
 $routes->presenter('operator',['filter' => 'isLoggedIn']);
 $routes->presenter('dosen',['filter' => 'isLoggedIn']);
+$routes->presenter('user',['filter' => 'isLoggedIn']);
 $routes->presenter('mahasiswa', ['filter' => 'isLoggedIn']);
 $routes->presenter('ruangan',['filter' => 'isLoggedIn']);
 $routes->presenter('dafsempro',['filter' => 'isLoggedIn']);
