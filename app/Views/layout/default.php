@@ -40,8 +40,11 @@
                         <div class="d-sm-none d-lg-inline-block">Hi, <?= session()->get('username_user'); ?></div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a href="features-profile.html" class="dropdown-item has-icon">
-                            <i class="far fa-user"></i> Profile
+                        <a href="<?= site_url('profile') ?>" class="dropdown-item has-icon">
+                            <i class="fas fa-user-cog"></i> Profile
+                        </a>
+                        <a href="<?= site_url('profile') ?>" class="dropdown-item has-icon">
+                            <i class="fas fa-lock"></i> Password
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="<?= site_url('login/logout') ?>" class="dropdown-item has-icon text-danger" id="logout"

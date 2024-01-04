@@ -9,6 +9,7 @@ use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
 use App\Filters\LoginFilter;
+use App\Filters\Auth;
 
 class Filters extends BaseConfig
 {
@@ -27,6 +28,7 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'isLoggedIn'    => LoginFilter::class,
+        'auth'          => Auth::class,
     ];
 
     /**
@@ -39,7 +41,7 @@ class Filters extends BaseConfig
     public array $globals = [
         'before' => [
             // 'honeypot',
-             'csrf',
+            'csrf' => ['except' => ['registermahasiswa']],
             // 'invalidchars',
         ],
         'after' => [

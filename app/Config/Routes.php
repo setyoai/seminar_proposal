@@ -14,14 +14,21 @@ $routes->get('/', 'Login::index');
 //$routes->get('/', 'Home::index');
 //$routes->addRedirect('/', 'home');
 
+$routes->presenter('password',['filter' => 'isLoggedIn']);
+$routes->presenter('profile',['filter' => 'isLoggedIn']);
 $routes->presenter('operator',['filter' => 'isLoggedIn']);
 $routes->presenter('dosen',['filter' => 'isLoggedIn']);
 $routes->presenter('user',['filter' => 'isLoggedIn']);
+
 $routes->presenter('mahasiswa', ['filter' => 'isLoggedIn']);
+
 $routes->presenter('ruangan',['filter' => 'isLoggedIn']);
 $routes->presenter('dafsempro',['filter' => 'isLoggedIn']);
 
 $routes->resource('sempro',['filter' => 'isLoggedIn']);
+$routes->resource('loginmahasiswa');
+$routes->resource('registermahasiswa');
+$routes->resource('mahasiswaapi',['filter' => 'auth']);
 
 
 //make database
