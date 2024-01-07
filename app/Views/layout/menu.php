@@ -7,7 +7,7 @@
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-database"></i> <span>Master</span></a>
         <ul class="dropdown-menu">
             <li><a class="nav-link" href="<?= site_url('dosen') ?>">Dosen</a></li>
-            <li><a class="nav-link" href="<?= site_url('operator') ?>">Operator</a></li>
+            <li><a class="nav-link" href="<?= site_url('mahasiswaapi') ?>">Operator</a></li>
             <li><a class="nav-link" href="<?= site_url('mahasiswa') ?>">Mahasiswa</a></li>
         </ul>
     </li>

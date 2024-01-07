@@ -30,6 +30,7 @@ class Auth implements FilterInterface
     {
         $key = getenv('TOKEN_KEY');
         $header = $request->getServer('HTTP_AUTHORIZATION');
+
         if (!$header) {
             return Services::response()
                 ->setJSON([
@@ -42,6 +43,9 @@ class Auth implements FilterInterface
 
         $token = explode(' ', $header)[1];
 
+//        echo 'Encoded Token: ' . $token . PHP_EOL;
+
+
         try {
             JWT::decode($token, new Key($key, 'HS256'));
         } catch (\Throwable$th) {
@@ -53,6 +57,7 @@ class Auth implements FilterInterface
                 ])
                 ->setStatusCode(ResponseInterface::HTTP_UNAUTHORIZED);
         }
+
     }
 
     /**
