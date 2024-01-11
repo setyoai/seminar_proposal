@@ -6,6 +6,7 @@ use CodeIgniter\RESTful\ResourceController;
 use App\Models\SemproModel;
 use App\Models\MahasiswaModel;
 use App\Models\RuanganModel;
+use App\Models\DosenModel;
 
 class Sempro extends ResourceController
 {
@@ -14,6 +15,7 @@ class Sempro extends ResourceController
     function __construct()
     {
         $this->tb_mhs = new MahasiswaModel();
+        $this->tb_dosen = new DosenModel();
         $this->tb_ruangan = new RuanganModel() ;
         $this->tb_sempro = new SemproModel();
     }
@@ -48,7 +50,9 @@ class Sempro extends ResourceController
     public function new()
     {
         $data['tb_mhs'] = $this->tb_mhs->findAll();
+        $data['tb_dosen'] = $this->tb_dosen->findAll();
         $data['tb_ruangan'] = $this->tb_ruangan->findAll();
+        $data['tb_sempro'] = $this->tb_sempro->findAll();
         return view('sempro/new' ,$data);
     }
 
@@ -75,6 +79,7 @@ class Sempro extends ResourceController
         if (is_object($tb_sempro)) {
             $data['tb_sempro'] = $tb_sempro;
             $data['tb_mhs'] = $this->tb_mhs->findAll();
+            $data['tb_dosen'] = $this->tb_dosen->findAll();
             $data['tb_ruangan'] = $this->tb_ruangan->findAll();
             return view('sempro/edit', $data);
         } else {

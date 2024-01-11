@@ -24,6 +24,7 @@ class DafSemproModel extends Model
         'tanggal_dafsempro',
         'status_dafsempro',
         'ket_dafsempro',
+        'judul',
     ];
 
 }

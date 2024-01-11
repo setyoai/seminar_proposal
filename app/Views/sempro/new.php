@@ -17,14 +17,14 @@
         <div class="row">
             <div class="col-12 col-md-6 col-lg-6">
                 <div class="card">
-                    <div class="card-header">
-                        <h4>Tambah Jadwal Seminar</h4>
-                    </div>
-                    <div class="card-body">
-                        <form action="<?= site_url('sempro') ?>" method="post" autocomplete="off">
+                    <form action="<?= site_url('sempro') ?>" method="post" autocomplete="off">
+                        <div class="card-header">
+                            <h4>Tambah Jadwal Seminar</h4>
+                        </div>
+                        <div class="card-body">
                             <?= csrf_field() ?>
                             <div class="form-group">
-                                <label>Nama *</label>
+                                <label>Nama</label>
                                 <select name="id_mhs" class="form-control" required>
                                     <option value="" hidden></option>
                                     <?php foreach ($tb_mhs as $key => $value) : ?>
@@ -34,15 +34,30 @@
                             </div>
                             <div class="form-group">
                                 <label>Ketua Penguji</label>
-                                <input type="text" name="penguji1_sempro" class="form-control" required autofocus>
+                                <select name="penguji1_sempro" class="form-control" required>
+                                    <option value="" hidden></option>
+                                    <?php foreach ($tb_dosen as $key => $value) : ?>
+                                        <option value="<?= $value->id_dosen ?>"><?= $value->nama_dosen ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Dosen Pembimbing 1</label>
-                                <input type="text" name="penguji2_sempro" class="form-control" required autofocus>
+                                <select name="penguji2_sempro" class="form-control" required>
+                                    <option value="" hidden></option>
+                                    <?php foreach ($tb_dosen as $key => $value) : ?>
+                                        <option value="<?= $value->id_dosen ?>"><?= $value->nama_dosen ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Dosen Pembimbing 2</label>
-                                <input type="text" name="penguji3_sempro" class="form-control" required autofocus>
+                                <select name="penguji3_sempro" class="form-control" required>
+                                    <option value="" hidden></option>
+                                    <?php foreach ($tb_dosen as $key => $value) : ?>
+                                        <option value="<?= $value->id_dosen ?>"><?= $value->nama_dosen ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Ruangan *</label>
@@ -61,12 +76,11 @@
                                 <label>Jam</label>
                                 <input type="time" name="jam_sempro" class="form-control" required autofocus>
                             </div>
-                        </form>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary mr-1" type="submit">Submit</i></button>
-                        <button class="btn btn-secondary" type="reset">Reset</button>
-                    </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary mr-1" type="submit">Save</i></button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

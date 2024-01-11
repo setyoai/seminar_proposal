@@ -26,10 +26,14 @@ $routes->presenter('ruangan',['filter' => 'isLoggedIn']);
 $routes->presenter('dafsempro',['filter' => 'isLoggedIn']);
 
 $routes->resource('sempro',['filter' => 'isLoggedIn']);
-//$routes->resource('mahasiswarest');
-$routes->put('mahasiswarest/(:num)', 'MahasiswaRest::update/$1');
-//$routes->get('mahasiswarest', 'MahasiswaRest::index');
+
+$routes->get('mahasiswarest', 'MahasiswaRest::index');
 $routes->get('mahasiswarest/(:num)', 'MahasiswaRest::show/$1');
+$routes->post('mahasiswarest', 'MahasiswaRest::create');
+$routes->put('mahasiswarest/(:num)', 'MahasiswaRest::update/$1');
+
+$routes->resource('dafsemprorest');
+
 
 
 //make database
