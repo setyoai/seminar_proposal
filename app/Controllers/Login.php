@@ -9,7 +9,7 @@ use App\Models\LoginModel;
 class Login extends BaseController
 {
 
-    protected $helpers = ['custom'];
+//    protected $helpers = ['custom'];
     public function index()
     {
         helper('form');
@@ -19,13 +19,13 @@ class Login extends BaseController
 
     public function cekUser()
     {
-        $id_user = $this->request->getPost('id_user');
+        $username_user = $this->request->getPost('username_user');
         $password_user = $this->request->getPost('password_user');
 
         $validation = \Config\Services::validation();
 
         $valid = $this->validate([
-           'id_user' => [
+           'username_user' => [
                'label' => 'ID User',
                'rules' => 'required',
                'errors' => [
@@ -43,7 +43,7 @@ class Login extends BaseController
 
         if (!$valid) {
             $sessError = [
-                'errIdUser' => $validation->getError('id_user'),
+                'errIdUser' => $validation->getError('username_user'),
                 'errPassword' => $validation->getError('password_user')
 
             ];
@@ -52,8 +52,8 @@ class Login extends BaseController
             return redirect()->to(site_url('login/index'));
         } else {
             $loginModel = new LoginModel();
+            $cekUserLogin = $loginModel->where('username_user', $username_user)->first();
 
-            $cekUserLogin = $loginModel->find($id_user);
             if ($cekUserLogin == null ) {
                 $sessError = [
                     'errIdUser' => 'Maaf User Tidak Terdaftar',
@@ -69,7 +69,7 @@ class Login extends BaseController
                     $lavel_iduser = $cekUserLogin['level_userid'];
 
                     $save_session = [
-                        'id_user' => $id_user,
+                        'id_user' =>  $cekUserLogin['id_user'],
                         'username_user' => $cekUserLogin['username_user'],
                         'level_iduser' => $lavel_iduser
                     ];

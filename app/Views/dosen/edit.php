@@ -50,8 +50,7 @@
                                     </div>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-primary mr-1" type="submit">Submit</i></button>
-                                <button class="btn btn-secondary" type="reset">Reset</button>
+                                <button class="btn btn-primary mr-1" type="submit">Simpan</i></button>
                             </div>
                         </form>
                     </div>

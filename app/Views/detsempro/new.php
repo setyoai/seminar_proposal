@@ -78,7 +78,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary mr-1" type="submit">Simpan</i></button>
+                            <button class="btn btn-primary mr-1" type="submit">Save</i></button>
                         </div>
                     </form>
                 </div>

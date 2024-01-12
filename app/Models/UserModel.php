@@ -14,7 +14,7 @@ class UserModel extends Model
     function getAll()
     {
         $builder = $this->db->table('tb_user');
-        $builder->select('tb_user.*, tb_dosen.nama_dosen, tb_auth.level_nama');
+        $builder->select('tb_user.*, tb_dosen.nama_dosen, tb_dosen.nidn_dosen, tb_auth.level_nama');
         $builder->join('tb_dosen', 'tb_dosen.id_dosen = tb_user.id_user', 'left');
         $builder->join('tb_auth', 'tb_auth.id_auth = tb_user.level_userid', 'left');
         $query = $builder->get();

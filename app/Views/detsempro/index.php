@@ -1,16 +1,16 @@
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('content') ?>
-<title>Seminar</title>
+<title>Hasil Seminar</title>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 <section class="section">
     <div class="section-header">
-        <h1>Penjadwalan Seminar Proposal</h1>
-        <div class="section-header-button">
-            <a href="<?= site_url("sempro/new") ?>" class="btn btn-primary">Tambah Data</a>
-        </div>
+        <h1>Hasil Seminar Proposal</h1>
+<!--        <div class="section-header-button">-->
+<!--            <a href="--><?php //= site_url("detsempro/new") ?><!--" class="btn btn-primary">Tambah </a>-->
+<!--        </div>-->
     </div>
 
     <?php if (session()->getFlashdata('success')) : ?>
@@ -36,7 +36,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h4>Data Peserta Seminar Proposal</h4>
+                <h4>Data Peserta Hasil Seminar Proposal</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -49,9 +49,7 @@
                             <th>Ruangan</th>
                             <th>Jam</th>
                             <th>Tanggal</th>
-                            <th>Ketua Penguji</th>
-                            <th>Dosen Pembimbing 1</th>
-                            <th>Dosen Pembimbing 2</th>
+                            <th>Hasil</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -59,14 +57,12 @@
                         <?php foreach ($tb_sempro as $key => $value) : ?>
                             <tr>
                                 <td><?= $key + 1 ?></td>
-                                <td><?= $value->nama_mhs ?></td>
                                 <td><?= $value->nim_mhs ?></td>
-                                <td><?= $value->nama_ruangan ?></td>
+                                <td><?= $value->nama_mhs?></td>
+                                <td><?= $value->nama_ruangan?></td>
                                 <td><?= $value->jam_sempro ?></td>
                                 <td><?= $value->tanggal_sempro ?></td>
-                                <td><?= $value->penguji1_nama ?></td>
-                                <td><?= $value->penguji2_nama ?></td>
-                                <td><?= $value->penguji3_nama ?></td>
+                                <td><?= $value->hasil_sempro?></td>
                                 <td>
                                     <a href="<?= site_url('sempro/' . $value->id_sempro . '/edit') ?>"
                                        class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>

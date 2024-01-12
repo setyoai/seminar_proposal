@@ -27,9 +27,7 @@
                             <input type="text" name="nama_ruangan" class="form-control" required autofocus>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane">Submit</i>
-                            </button>
-                            <button type="reset" class="btn btn-secondary">Reset</button>
+                            <button type="submit" class="btn btn-primary mr-1">Simpan</button>
                         </div>
                     </form>
                 </div>

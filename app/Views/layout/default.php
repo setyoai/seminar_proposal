@@ -40,12 +40,12 @@
                         <div class="d-sm-none d-lg-inline-block">Hi, <?= session()->get('username_user'); ?></div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a href="<?= site_url('profile') ?>" class="dropdown-item has-icon">
-                            <i class="fas fa-user-cog"></i> Profile
-                        </a>
-                        <a href="<?= site_url('profile') ?>" class="dropdown-item has-icon">
-                            <i class="fas fa-lock"></i> Password
-                        </a>
+<!--                        <a href="--><?php //= site_url('profile') ?><!--" class="dropdown-item has-icon">-->
+<!--                            <i class="fas fa-user-cog"></i> Profile-->
+<!--                        </a>-->
+<!--                        <a href="--><?php //= site_url('profile') ?><!--" class="dropdown-item has-icon">-->
+<!--                            <i class="fas fa-lock"></i> Password-->
+<!--                        </a>-->
                         <div class="dropdown-divider"></div>
                         <a href="<?= site_url('login/logout') ?>" class="dropdown-item has-icon text-danger" id="logout"
                            data-confirm="Logout?|Yakin keluar aplikasi?" data-confirm-yes="returnLogout()">
@@ -61,7 +61,7 @@
                     <a href="<?= site_url('home/index') ?>">Seminar Proposal</a>
                 </div>
                 <div class="sidebar-brand sidebar-brand-sm">
-                    <a href="<?= site_url() ?>">SP</a>
+                    <a href="<?= site_url('home/index') ?>"><img src="<?= base_url() ?>/assets/assets/img/avatar/logo.svg" alt="logo" width=25></a>
                 </div>
                 <ul class="sidebar-menu">
                     <?= $this->include("layout/menu") ?>

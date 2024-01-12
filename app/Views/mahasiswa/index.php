@@ -9,7 +9,7 @@
         <div class="section-header">
             <h1>Data Mahasiswa</h1>
             <div class="section-header-button">
-                <a href="<?= site_url("mahasiswa/new") ?>" class="btn btn-primary">Add New</a>
+                <a href="<?= site_url("mahasiswa/new") ?>" class="btn btn-primary">Tambah Data</a>
             </div>
         </div>
 
@@ -49,7 +49,6 @@
                                 <th>Email</th>
                                 <th>Alamat</th>
                                 <th>No Handphone</th>
-                                <th>status</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -62,7 +61,6 @@
                                     <td><?= $value->email_mhs ?></td>
                                     <td><?= $value->alamat_mhs ?></td>
                                     <td><?= $value->nohp_mhs ?></td>
-                                    <td><?= $value->status_mhs ?></td>
                                     <td>
                                         <a href="<?= site_url('mahasiswa/edit/' . $value->id_mhs) ?>"
                                            class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>

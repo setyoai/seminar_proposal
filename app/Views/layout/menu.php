@@ -7,7 +7,7 @@
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-database"></i> <span>Master</span></a>
         <ul class="dropdown-menu">
             <li><a class="nav-link" href="<?= site_url('dosen') ?>">Dosen</a></li>
-            <li><a class="nav-link" href="<?= site_url('mahasiswaapi') ?>">Operator</a></li>
+<!--            <li><a class="nav-link" href="--><?php //= site_url('mahasiswaapi') ?><!--">Operator</a></li>-->
             <li><a class="nav-link" href="<?= site_url('mahasiswa') ?>">Mahasiswa</a></li>
         </ul>
     </li>
@@ -18,6 +18,12 @@
         <ul class="dropdown-menu">
             <li><a class="nav-link" href="<?= site_url('sempro') ?>">Seminar</a></li>
             <li><a class="nav-link" href="<?= site_url('ruangan') ?>">Ruangan</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a href="#" class="nav-link has-dropdown"><i class="fas fa-table"></i> <span>Seminar</span></a>
+        <ul class="dropdown-menu">
+            <li><a class="nav-link" href="<?= site_url('detsempro') ?>">Hasil Seminar</a></li>
         </ul>
     </li>
     <li class="nav-item dropdown">

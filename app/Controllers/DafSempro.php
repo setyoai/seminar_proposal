@@ -16,7 +16,7 @@ class DafSempro extends ResourcePresenter
      */
     public function index()
     {
-        $data['tb_dafsempro'] = $this->model->findAll();
+        $data['tb_dafsempro'] = $this->model->getAll();
         return view('dafsempro/index' ,$data);
     }
 

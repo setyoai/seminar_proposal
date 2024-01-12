@@ -9,7 +9,7 @@
         <div class="section-header">
             <h1>User</h1>
             <div class="section-header-button">
-                <a href="<?= site_url("user/new") ?>" class="btn btn-primary">Add New</a>
+                <a href="<?= site_url("user/new") ?>" class="btn btn-primary">Tambah Data</a>
             </div>
         </div>
 
@@ -44,7 +44,8 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>ID</th>
+                                <th>NIDN</th>
+                                <th>Nama Dosen</th>
                                 <th>Username</th>
                                 <th>Level User</th>
                                 <th>Action</th>
@@ -54,7 +55,8 @@
                             <?php foreach ($tb_user as $key => $value) : ?>
                                 <tr>
                                     <td><?= $key + 1 ?></td>
-                                    <td><?= $value->id_user ?></td>
+                                    <td><?= $value->nidn_dosen ?></td>
+                                    <td><?= $value->nama_dosen?></td>
                                     <td><?= $value->username_user ?></td>
                                     <td><?= $value->level_nama?></td>
                                     <td>

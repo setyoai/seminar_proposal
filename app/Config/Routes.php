@@ -24,6 +24,7 @@ $routes->presenter('mahasiswa', ['filter' => 'isLoggedIn']);
 
 $routes->presenter('ruangan',['filter' => 'isLoggedIn']);
 $routes->presenter('dafsempro',['filter' => 'isLoggedIn']);
+$routes->presenter('detsempro',['filter' => 'isLoggedIn']);
 
 $routes->resource('sempro',['filter' => 'isLoggedIn']);
 

@@ -14,48 +14,77 @@
         </div>
 
         <div class="section-body">
-
-            <div class="card">
-                <div class="card-header">
-                    <h4>Tambah Data Mahasiswa</h4>
-                </div>
-                <div class="card-body">
-                    <form action="<?= site_url("mahasiswa") ?>" method="post" autocomplete="off">
-                        <?= csrf_field() ?>
-                        <div class="form-group">
-                            <label>NIM</label>
-                            <input type="text" name="nim_mhs" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Nama</label>
-                            <input type="text" name="nama_mhs" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" name="email_mhs" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Alamat</label>
-                            <input type="text" name="alamat_mhs" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>No Handphone</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fas fa-phone"></i>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <form action="<?= site_url("mahasiswa") ?>" method="post" autocomplete="off">
+                            <?= csrf_field() ?>
+                            <div class="card-header">
+                                <h4>Tambah Data Mahasiswa</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>NIM</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-id-badge"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" name="nim_mhs" class="form-control" required autofocus>
                                     </div>
                                 </div>
-                                <input type="text" name="nohp_mhs" class="form-control phone-number" required autofocus>
-                            </div>
-                        </div>
+                                <div class="form-group">
+                                    <label>Nama</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" name="nama_mhs" class="form-control" required autofocus>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-envelope"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" name="email_mhs" class="form-control" required autofocus>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Alamat</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" name="alamat_mhs" class="form-control" required autofocus>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>No Handphone</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" name="nohp_mhs" class="form-control phone-number" required autofocus>
+                                    </div>
+                                </div>
 
-                        <div>
-                            <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane">Submit</i>
-                            </button>
-                            <button type="reset" class="btn btn-secondary">Reset</button>
-                        </div>
-                    </form>
+                                <div>
+                                    <button type="submit" class="btn-primary mr-1">Simpan</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

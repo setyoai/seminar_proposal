@@ -27,4 +27,14 @@ class DafSemproModel extends Model
         'judul',
     ];
 
+    public function getAll()
+    {
+        $builder = $this->db->table('tb_dafsempro');
+        $builder->select('tb_dafsempro.*, tb_mhs.nim_mhs AS nim_dafsempro, tb_mhs.nama_mhs AS nama_dafsempro');
+        $builder->join('tb_mhs', 'tb_mhs.id_mhs = tb_dafsempro.id_mhs', 'left');
+
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
 }

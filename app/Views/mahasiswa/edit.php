@@ -14,44 +14,51 @@
     </div>
 
     <div class="section-body">
-
-        <div class="card">
-            <div class="card-header">
-                <h4>Edit Data Mahasiswa</h4>
-            </div>
-            <div class="card-body col-md-6">
-                <form action="<?= site_url('mahasiswa/update/' . $tb_mhs->id_mhs) ?>" method="post" autocomplete="off">
-                    <?= csrf_field() ?>
-                    <div class="form-group">
-                        <label>Nim</label>
-                        <input type="text" name="nidn_mhs" value="<?= $tb_mhs->nim_mhs ?>" class="form-control" required
-                               autofocus>
-                    </div>
-                    <div class="form-group">
-                        <label>Nama</label>
-                        <input type="text" name="nama_mhs" value="<?= $tb_mhs->nama_mhs ?>" class="form-control"
-                               required autofocus>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" name="email_mhs" value="<?= $tb_mhs->email_mhs ?>" class="form-control"
-                               required autofocus>
-                    </div>
-                    <div class="form-group">
-                        <label>Alamat</label>
-                        <input type="text" name="alamat_mhs" value="<?= $tb_mhs->alamat_mhs ?>" class="form-control"
-                               required autofocus>
-                    </div>
-                    <div class="form-group">
-                        <label>No Handphone</label>
-                        <input type="text" name="nohp_mhs" value="<?= $tb_mhs->nohp_mhs ?>" class="form-control"
-                               required autofocus>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane">Submit</i></button>
-                        <button type="reset" class="btn btn-secondary">Reset</button>
-                    </div>
-                </form>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                    <form action="<?= site_url('mahasiswa/update/' . $tb_mhs->id_mhs) ?>" method="post" autocomplete="off">
+                        <?= csrf_field() ?>
+                        <div class="card-header">
+                            <h4>Edit Data Mahasiswa</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Nim</label>
+                                <input type="text" name="nidn_mhs" value="<?= $tb_mhs->nim_mhs ?>" class="form-control" required
+                                       autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="text" name="nidn_mhs" value="<?= $tb_mhs->nim_mhs ?>" class="form-control" required
+                                       autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label>Nama</label>
+                                <input type="text" name="nama_mhs" value="<?= $tb_mhs->nama_mhs ?>" class="form-control"
+                                       required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" name="email_mhs" value="<?= $tb_mhs->email_mhs ?>" class="form-control"
+                                       required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label>Alamat</label>
+                                <input type="text" name="alamat_mhs" value="<?= $tb_mhs->alamat_mhs ?>" class="form-control"
+                                       required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label>No Handphone</label>
+                                <input type="text" name="nohp_mhs" value="<?= $tb_mhs->nohp_mhs ?>" class="form-control"
+                                       required autofocus>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary mr-1">Simpan</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
