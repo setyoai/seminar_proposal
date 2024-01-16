@@ -1,13 +1,13 @@
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('content') ?>
-<title>Daftar Seminar</title>
+<title>Daftar Skripsi</title>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 <section class="section">
     <div class="section-header">
-        <h1>Pendaftaran Seminar Proposal</h1>
+        <h1>Pendaftaran Skripsi</h1>
     </div>
 
     <?php if (session()->getFlashdata('success')) : ?>
@@ -33,7 +33,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h4>Data Berkas Seminar Proposal</h4>
+                <h4>Data Berkas Pendaftaran Skripsi</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -42,37 +42,28 @@
                         <tr>
                             <th>No</th>
                             <th>Nim</th>
-                            <th>Nama</th>
-                            <th>Transkrip</th>
-                            <th>Pengesahan</th>
-                            <th>Buku Bimbingan</th>
-                            <th>KW Komputer</th>
-                            <th>KW Inggris</th>
-                            <th>KW Kewirausahaan</th>
-                            <th>Slip</th>
-                            <th>Plagiasi</th>
+                            <th>Tanggal</th>
+                            <th>Kartu Hasil Studi</th>
+                            <th>Slip Pembayaran</th>
+                            <th>Transkrip Nilai</th>
                             <th>Status</th>
                             <th>Keterangan</th>
+                            <th>Status Akhir</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($tb_dafsempro as $key => $value) : ?>
+                        <?php foreach ($tb_dafskripsi as $key => $value) : ?>
                             <tr>
                                 <td><?= $key + 1 ?></td>
-                                <td><?= $value->nim_dafsempro ?></td>
-                                <td><?= $value->nama_dafsempro ?></td>
-                                <td><a href="<?= base_url('upload/' . $value->transkrip_dafsempro) ?>" target="_blank">Transkrip Nilai</a></td>
-                                <td><a href="<?= base_url('upload/' . $value->pengesahan_dafsempro) ?>" target="_blank">Pengesahan</a></td>
-                                <td><a href="<?= base_url('upload/' . $value->bukubimbingan_dafsempro) ?>" target="_blank">Buku Bimbingan</a></td>
-                                <td><a href="<?= base_url('upload/' . $value->kwkomputer_dafsempro) ?>" target="_blank">KW Komputer</a></td>
-                                <td><a href="<?= base_url('upload/' . $value->kwinggris_dafsempro) ?>" target="_blank">KW B.Inggris</a></td>
-                                <td><a href="<?= base_url('upload/' . $value->kwkwu_dafsempro) ?>" target="_blank">KW Kewirausahaan</a></td>
-                                <td><a href="<?= base_url('upload/' . $value->slippembayaran_dafsempro) ?>" target="_blank">Slip</a></td>
-                                <td><a href="<?= base_url('upload/' . $value->plagiasi_dafsempro) ?>" target="_blank">Plagiasi</a></td>
+                                <td><?= $value->nim_dafskripsi ?></td>
+                                <td><?= $value->tanggal_dafskripsi ?></td>
+                                <td><a href="<?= base_url('upload/' . $value->krs_dafskripsi) ?>" target="_blank">Kartu Hasil Studi</a></td>
+                                <td><a href="<?= base_url('upload/' . $value->slip_dafskripsi) ?>" target="_blank">Slip Pembayaran</a></td>
+                                <td><a href="<?= base_url('upload/' . $value->transkrip_dafskripsi) ?>" target="_blank">Transkrip Nilai</a></td>
                                 <td>
                                     <?php
-                                    $status = $value->status_dafsempro;
+                                    $status = $value->status_dafskripsi;
 
                                     // Determine the appropriate badge class and text based on the status
                                     if ($status == 1) {
@@ -91,10 +82,11 @@
                                     <span class="badge <?= $badge_class ?>"><?= $badge_text ?></span>
                                 </td>
 
-                                <td><?= $value->ket_dafsempro ?></td>
+                                <td><?= $value->keterangan_dafskripsi ?></td>
+                                <td><?= $value->statusakhir_dafskripsi ?></td>
 
                                 <td>
-                                    <a href="<?= site_url('dafsempro/edit/' . $value->id_dafsempro) ?>"
+                                    <a href="<?= site_url('dafsempro/edit/' . $value->id_dafskripsi) ?>"
                                        class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                 </td>
                             </tr>

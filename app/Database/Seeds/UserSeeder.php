@@ -20,13 +20,13 @@ class UserSeeder extends Seeder
         //multi user
         $data = [
             [
-                'id_user' => 13,
+                'id_dosen' => 13,
                 'username_user' => 'budi@gmail.com',
                 'password_user' => password_hash('1234', PASSWORD_BCRYPT),
                 'level_userid' => 1
             ],
             [
-                'id_user' => 2,
+                'id_dosen' => 2,
                 'username_user' => 'roni@gmail.com',
                 'password_user' => password_hash('1234', PASSWORD_BCRYPT),
                 'level_userid' => 2

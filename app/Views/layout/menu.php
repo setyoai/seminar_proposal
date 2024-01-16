@@ -11,7 +11,12 @@
             <li><a class="nav-link" href="<?= site_url('mahasiswa') ?>">Mahasiswa</a></li>
         </ul>
     </li>
-    <li><a class="nav-link" href="<?= site_url("dafsempro") ?>"><i class="fas fa-file-alt"></i> <span>Cek Berkas</span></a>
+    <li class="nav-item dropdown">
+        <a href="#" class="nav-link has-dropdown"><i class="fas fa-file-alt"></i> <span>Cek Berkas</span></a>
+        <ul class="dropdown-menu">
+            <li><a class="nav-link" href="<?= site_url('dafskripsi') ?>">Daftar Skripsi</a></li>
+            <li><a class="nav-link" href="<?= site_url('dafsempro') ?>">Daftar Seminar Proposal</a></li>
+        </ul>
     </li>
     <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-calendar-plus"></i> <span>Penjadwalan</span></a>
@@ -20,12 +25,12 @@
             <li><a class="nav-link" href="<?= site_url('ruangan') ?>">Ruangan</a></li>
         </ul>
     </li>
-    <li class="nav-item dropdown">
-        <a href="#" class="nav-link has-dropdown"><i class="fas fa-table"></i> <span>Seminar</span></a>
-        <ul class="dropdown-menu">
-            <li><a class="nav-link" href="<?= site_url('detsempro') ?>">Hasil Seminar</a></li>
-        </ul>
-    </li>
+<!--    <li class="nav-item dropdown">-->
+<!--        <a href="#" class="nav-link has-dropdown"><i class="fas fa-table"></i> <span>Seminar</span></a>-->
+<!--        <ul class="dropdown-menu">-->
+<!--            <li><a class="nav-link" href="--><?php //= site_url('detsempro') ?><!--">Hasil Seminar</a></li>-->
+<!--        </ul>-->
+<!--    </li>-->
     <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i> <span>Kelola User</span></a>
         <ul class="dropdown-menu">

@@ -25,6 +25,7 @@ $routes->presenter('mahasiswa', ['filter' => 'isLoggedIn']);
 $routes->presenter('ruangan',['filter' => 'isLoggedIn']);
 $routes->presenter('dafsempro',['filter' => 'isLoggedIn']);
 $routes->presenter('detsempro',['filter' => 'isLoggedIn']);
+$routes->presenter('dafskripsi',['filter' => 'isLoggedIn']);
 
 $routes->resource('sempro',['filter' => 'isLoggedIn']);
 
@@ -34,6 +35,8 @@ $routes->post('mahasiswarest', 'MahasiswaRest::create');
 $routes->put('mahasiswarest/(:num)', 'MahasiswaRest::update/$1');
 
 $routes->resource('dafsemprorest');
+$routes->resource('judulrest');
+$routes->resource('dafskripsirest');
 
 
 

@@ -2,12 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Models\DafSemproModel;
+use App\Models\DafSkripsiModel;
 use CodeIgniter\RESTful\ResourceController;
 
-class DafSemproRest extends ResourceController
+class DafSkripsiRest extends ResourceController
 {
-    protected $modelName = 'App\Models\DafsemproModel';
+    protected $modelName = 'App\Models\DafSkripsiModel';
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -18,7 +18,7 @@ class DafSemproRest extends ResourceController
         $data = [
             'message' => 'success',
             'error' => false,
-            'data_dafsempro' => $this->model->getAll()
+            'data_dafskripsi' => $this->model->findAll()
         ];
 
         return $this->respond($data, 200);
@@ -52,26 +52,16 @@ class DafSemproRest extends ResourceController
     public function create()
     {
         try {
-            $modelDafSem = new DafSemproModel();
+            $modelDafSem = new DafSkripsiModel();
             $uploadedFiles = [];
 
             // List of allowed file fields
             $allowedFields = [
-                'id_dafsempro',
-                'id_mhs',
-                'nama_dafsempro',
-                'transkrip_dafsempro',
-                'pengesahan_dafsempro',
-                'bukubimbingan_dafsempro',
-                'kwkomputer_dafsempro',
-                'kwinggris_dafsempro',
-                'kwkwu_dafsempro',
-                'slippembayaran_dafsempro',
-                'plagiasi_dafsempro',
-                'tanggal_dafsempro',
-                'status_dafsempro',
-                'ket_dafsempro',
-                'judul',
+                'id_dafskripsi',
+                'nim_dafskripsi',
+                'krs_dafskripsi',
+                'transkrip_dafskripsi',
+                'slip_dafskripsi',
             ];
 
             foreach ($allowedFields as $fieldName) {
@@ -82,7 +72,7 @@ class DafSemproRest extends ResourceController
             }
 
             // Save file names to the database
-            $data = array_merge(['id_mhs' => $this->request->getPost('id_mhs')], $uploadedFiles);
+            $data = array_merge(['nim_dafsempro' => $this->request->getPost('nim_dafsempro')], $uploadedFiles);
             $modelDafSem->insert($data);
 
             $response = [
@@ -124,7 +114,6 @@ class DafSemproRest extends ResourceController
 
         return $file;
     }
-
 
     /**
      * Return the editable properties of a resource object

@@ -59,8 +59,8 @@
                         <?php foreach ($tb_sempro as $key => $value) : ?>
                             <tr>
                                 <td><?= $key + 1 ?></td>
-                                <td><?= $value->nama_mhs ?></td>
-                                <td><?= $value->nim_mhs ?></td>
+                                <td><?= $value->nim_sempro ?></td>
+                                <td><?= $value->nama_sempro ?></td>
                                 <td><?= $value->nama_ruangan ?></td>
                                 <td><?= $value->jam_sempro ?></td>
                                 <td><?= $value->tanggal_sempro ?></td>

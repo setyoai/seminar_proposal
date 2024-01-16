@@ -25,10 +25,10 @@
                             <?= csrf_field() ?>
                             <div class="form-group">
                                 <label>Nama</label>
-                                <select name="id_mhs" class="form-control" required>
+                                <select name="id_dafsempro" class="form-control" required>
                                     <option value="" hidden></option>
-                                    <?php foreach ($tb_mhs as $key => $value) : ?>
-                                        <option value="<?= $value->id_mhs ?>"><?= $value->nama_mhs ?></option>
+                                    <?php foreach ($tb_dafsempro as $key => $value) : ?>
+                                        <option value="<?= $value->id_dafsempro ?>"><?= $value->nama_dafsempro ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>

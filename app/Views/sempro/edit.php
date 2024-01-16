@@ -27,36 +27,47 @@
                         <label>Nama *</label>
                         <select name="id_mhs" class="form-control" required disabled>
                             <option value="" hidden></option>
-                            <?php foreach ($tb_mhs as $key => $value) : ?>
-                                <option value="<?= $value->id_mhs ?>" <?= $tb_sempro->id_mhs == $value->id_mhs ?
-                                    'selected' : null ?>><?= $value->nama_mhs ?>
+                            <?php foreach ($tb_dafsempro as $key => $value) : ?>
+                                <option value="<?= $value->id_dafsempro ?>" <?= $tb_sempro->id_dafsempro == $value->id_mhs ?
+                                    'selected' : null ?>><?= $value->nama_dafsempro?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Ketua Penguji</label>
-                        <input type="text" name="penguji_sempro" value="<?= $tb_sempro->penguji1_sempro ?>"
-                               class="form-control" required autofocus>
+                        <select name="penguji1_sempro" class="form-control" required>
+                            <option value="" hidden></option>
+                            <?php foreach ($tb_dosen as $key => $value) : ?>
+                                <option value="<?= $value->id_dosen ?>"><?= $value->nama_dosen ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
+
                     <div class="form-group">
                         <label>Dosen Pembimbing 1</label>
-                        <input type="text" name="penguji2_sempro" value="<?= $tb_sempro->penguji2_sempro ?>"
-                               class="form-control" required autofocus>
+                        <select name="penguji2_sempro" class="form-control" required>
+                            <option value="" hidden></option>
+                            <?php foreach ($tb_dosen as $key => $value) : ?>
+                                <option value="<?= $value->id_dosen ?>"><?= $value->nama_dosen ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Dosen Pembimbing 2</label>
-                        <input type="text" name="penguji3_sempro" value="<?= $tb_sempro->penguji3_sempro ?>"
-                               class="form-control" required autofocus>
+                        <select name="penguji3_sempro" class="form-control" required>
+                            <option value="" hidden></option>
+                            <?php foreach ($tb_dosen as $key => $value) : ?>
+                                <option value="<?= $value->id_dosen ?>"><?= $value->nama_dosen ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label>Nama *</label>
-                        <select name="id_ruangan" class="form-control" required disabled>
+                        <label>Ruangan *</label>
+                        <select name="id_ruangan" class="form-control" required>
                             <option value="" hidden></option>
                             <?php foreach ($tb_ruangan as $key => $value) : ?>
-                                <option value="<?= $value->id_ruangan ?>" <?= $tb_sempro->id_ruangan == $value->id_ruangan ?
-                                    'selected' : null ?>><?= $value->nama_ruangan ?>
-                                </option>
+                                <option value="<?= $value->id_ruangan ?>"><?= $value->nama_ruangan ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

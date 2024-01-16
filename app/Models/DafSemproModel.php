@@ -13,12 +13,14 @@ class DafSemproModel extends Model
 
     protected $allowedFields    = [
         'id_dafsempro',
+        'id_mhs',
+        'nama_dafsempro',
         'transkrip_dafsempro',
         'pengesahan_dafsempro',
         'bukubimbingan_dafsempro',
         'kwkomputer_dafsempro',
         'kwinggris_dafsempro',
-        'kwkewirausahaan_dafsempro',
+        'kwkwu_dafsempro',
         'slippembayaran_dafsempro',
         'plagiasi_dafsempro',
         'tanggal_dafsempro',
@@ -30,7 +32,7 @@ class DafSemproModel extends Model
     public function getAll()
     {
         $builder = $this->db->table('tb_dafsempro');
-        $builder->select('tb_dafsempro.*, tb_mhs.nim_mhs AS nim_dafsempro, tb_mhs.nama_mhs AS nama_dafsempro');
+        $builder->select('tb_dafsempro.*, tb_mhs.nim_mhs AS nim_dafsempro, tb_mhs.nama_mhs AS nama_dafsempro', 'tb_mhs.id_mhs');
         $builder->join('tb_mhs', 'tb_mhs.id_mhs = tb_dafsempro.id_mhs', 'left');
 
         $query = $builder->get();

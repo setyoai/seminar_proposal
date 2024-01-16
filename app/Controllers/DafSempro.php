@@ -2,12 +2,17 @@
 
 namespace App\Controllers;
 
+use App\Models\DafSemproModel;
+use App\Models\MahasiswaModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
 class DafSempro extends ResourcePresenter
 {
-    protected $modelName = 'App\Models\DafSemproModel';
-    protected $helpers = ['custom'];
+    function __construct()
+    {
+        $this->tb_dafsempro = new DafSemproModel();
+        $this->tb_mhs = new MahasiswaModel();
+    }
 
     /**
      * Present a view of resource objects
@@ -16,7 +21,7 @@ class DafSempro extends ResourcePresenter
      */
     public function index()
     {
-        $data['tb_dafsempro'] = $this->model->getAll();
+        $data['tb_dafsempro'] = $this->tb_dafsempro->getAll();
         return view('dafsempro/index' ,$data);
     }
 
