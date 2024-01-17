@@ -17,6 +17,7 @@
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-6">
                     <div class="card">
+                        <?php $validation = \Config\Services::validation(); ?>
                         <form action="<?= site_url("dosen") ?>" method="post" autocomplete="off">
                             <div class="card-header">
                                 <h4>Tambah Data Dosen</h4>
@@ -24,14 +25,17 @@
                             <div class="card-body">
                                     <?= csrf_field() ?>
                                     <div class="form-group">
-                                        <label>Nidn</label>
+                                        <label>NIDN</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <i class="fas fa-id-badge"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="nidn_dosen" class="form-control" required autofocus>
+                                            <input type="text" name="nidn_dosen" class="form-control">
+                                            <div class="invalid-feedback">
+                                                <?=$validation->getError('nidn_dosen')?>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -42,7 +46,7 @@
                                                     <i class="fas fa-user"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="nama_dosen" class="form-control" required autofocus>
+                                            <input type="text" name="nama_dosen" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -53,7 +57,7 @@
                                                     <i class="fas fa-map-marker-alt"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="alamat_dosen" class="form-control" required autofocus>
+                                            <input type="text" name="alamat_dosen" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -64,7 +68,7 @@
                                                     <i class="fas fa-phone"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="nohp_dosen" class="form-control" required autofocus>
+                                            <input type="text" name="nohp_dosen" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -75,7 +79,7 @@
                                                     <i class="fas fa-envelope"></i>
                                                 </div>
                                             </div>
-                                            <input type="email" name="email_dosen" class="form-control" required autofocus>
+                                            <input type="email" name="email_dosen" class="form-control">
                                         </div>
                                     </div>
                             </div>

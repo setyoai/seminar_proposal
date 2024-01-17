@@ -14,8 +14,8 @@ class CreateDafSkripsi extends Migration
                 'auto_increment' => true,
             ],
             'tanggal_dafskripsi' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'type'       => 'DATE',
+                'null' => true,
             ],
             'nim_dafskripsi' => [
                 'type' => 'VARCHAR',
@@ -24,26 +24,32 @@ class CreateDafSkripsi extends Migration
             'krs_dafskripsi' => [
                 'type' => 'VARCHAR',
                 'constraint' => '100',
+                'null' => true,
             ],
             'transkrip_dafskripsi' => [
                 'type' => 'VARCHAR',
                 'constraint' => '100',
+                'null' => true,
             ],
             'slip_dafskripsi' => [
                 'type' => 'VARCHAR',
                 'constraint' => '100',
+                'null' => true,
             ],
             'status_dafskripsi' => [
                 'type' => 'VARCHAR',
                 'constraint' => '100',
+                'null' => true,
             ],
             'keterangan_dafskripsi' => [
                 'type' => 'VARCHAR',
                 'constraint' => '100',
+                'null' => true,
             ],
             'statusakhir_dafskripsi' => [
                 'type' => 'VARCHAR',
                 'constraint' => '100',
+                'null' => true,
             ],
         ]);
         $this->forge->addKey('id_dafskripsi', true);

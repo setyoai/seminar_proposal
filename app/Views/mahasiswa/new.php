@@ -78,9 +78,8 @@
                                         <input type="text" name="nohp_mhs" class="form-control phone-number" required autofocus>
                                     </div>
                                 </div>
-
                                 <div>
-                                    <button type="submit" class="btn-primary mr-1">Simpan</button>
+                                    <button type="submit" class="btn btn-primary mr-1">Simpan</button>
                                 </div>
                             </div>
                         </form>

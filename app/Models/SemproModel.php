@@ -26,13 +26,11 @@ class SemproModel extends Model
     public function getAll()
     {
         $builder = $this->db->table('tb_sempro');
-        $builder->select('tb_sempro.*, tb_ruangan.nama_ruangan, tb_dafsempro.id_mhs, 
-                        m.nama_mhs AS nama_sempro, m.nim_mhs AS nim_sempro,
+        $builder->select('tb_sempro.*, tb_ruangan.nama_ruangan, 
                        d1.nama_dosen AS penguji1_nama, d2.nama_dosen AS penguji2_nama, d3.nama_dosen AS penguji3_nama');
 
         $builder->join('tb_ruangan', 'tb_ruangan.id_ruangan = tb_sempro.id_ruangan', 'left');
         $builder->join('tb_dafsempro', 'tb_dafsempro.id_dafsempro = tb_sempro.id_dafsempro', 'left');
-        $builder->join('tb_mhs m',    'm.id_mhs = tb_dafsempro.id_mhs', 'left');
         $builder->join('tb_dosen d1', 'd1.id_dosen = tb_sempro.penguji1_sempro', 'left');
         $builder->join('tb_dosen d2', 'd2.id_dosen = tb_sempro.penguji2_sempro', 'left');
         $builder->join('tb_dosen d3', 'd3.id_dosen = tb_sempro.penguji3_sempro', 'left');

@@ -1,4 +1,4 @@
-<?php if (session()->level_iduser == 1 ): ?>
+<?php if (session()->level_iduser == 'Koordinator' ): ?>
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('content') ?>
@@ -80,7 +80,7 @@
 <?= $this->endSection() ?>
 <?php endif; ?>
 
-<?php if (session()->level_iduser == 2 ): ?>
+<?php if (session()->level_iduser == 'Operator' ): ?>
     <?= $this->extend('layout/default') ?>
 
     <?= $this->section('content') ?>

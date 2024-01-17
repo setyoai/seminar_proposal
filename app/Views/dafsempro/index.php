@@ -60,8 +60,8 @@
                         <?php foreach ($tb_dafsempro as $key => $value) : ?>
                             <tr>
                                 <td><?= $key + 1 ?></td>
-                                <td><?= $value->nim_dafsempro ?></td>
-                                <td><?= $value->nama_dafsempro ?></td>
+                                <td><?= $value->nim_dafsempro?></td>
+                                <td><?= $value->nama_dafsempro?></td>
                                 <td><a href="<?= base_url('upload/' . $value->transkrip_dafsempro) ?>" target="_blank">Transkrip Nilai</a></td>
                                 <td><a href="<?= base_url('upload/' . $value->pengesahan_dafsempro) ?>" target="_blank">Pengesahan</a></td>
                                 <td><a href="<?= base_url('upload/' . $value->bukubimbingan_dafsempro) ?>" target="_blank">Buku Bimbingan</a></td>

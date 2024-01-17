@@ -19,7 +19,6 @@ class Sempro extends ResourceController
         $this->tb_dosen = new DosenModel();
         $this->tb_ruangan = new RuanganModel() ;
         $this->tb_sempro = new SemproModel();
-        $this->tb_mhs = new MahasiswaModel();
     }
 
     /**
@@ -55,7 +54,6 @@ class Sempro extends ResourceController
         $data['tb_dosen'] = $this->tb_dosen->findAll();
         $data['tb_ruangan'] = $this->tb_ruangan->findAll();
         $data['tb_sempro'] = $this->tb_sempro->getAll();
-        $data['tb_mhs'] = $this->tb_mhs->findAll();
         return view('sempro/new' ,$data);
     }
 
@@ -81,7 +79,7 @@ class Sempro extends ResourceController
         $tb_sempro = $this->tb_sempro->find($id);
         if (is_object($tb_sempro)) {
             $data['tb_sempro'] = $tb_sempro;
-            $data['tb_dafsempro'] = $this->tb_dafsempro->getAll();
+            $data['tb_dafsempro'] = $this->tb_dafsempro->findAll();
             $data['tb_dosen'] = $this->tb_dosen->findAll();
             $data['tb_ruangan'] = $this->tb_ruangan->findAll();
             return view('sempro/edit', $data);

@@ -54,9 +54,27 @@ class Dosen extends ResourcePresenter
      */
     public function create()
     {
+        $validate = $this->validate([
+            'nidn_dosen' => [
+                'rules' => 'is_unique[tb_dosen.nidn_dosen]',
+                'label' => 'Nomor Induk Dosen Nasional',
+                'errors' => [
+                    'is_unique' => "{field} sudah ada"
+                ],
+            ],
+        ]);
+        if (!$validate) {
+            return redirect()->back()->withInput();
+        }
+
         $data = $this->request->getPost();
         $this->tb_dosen->insert($data);
         return redirect()->to(site_url('dosen'))->with('success', 'Data Berhasil Disimpan');
+//        if (!$save) {
+//            return redirect()->back()->withINput()->with('errors', $this->tb_dosen->errors());
+//        } else {
+//            return redirect()->to(site_url('dosen'))->with('success', 'Data Berhasil Disimpan');
+//        }
     }
 
     /**

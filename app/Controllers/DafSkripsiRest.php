@@ -18,7 +18,7 @@ class DafSkripsiRest extends ResourceController
         $data = [
             'message' => 'success',
             'error' => false,
-            'data_dafskripsi' => $this->model->findAll()
+            'data_dafskripsi' => $this->model->getAll()
         ];
 
         return $this->respond($data, 200);
@@ -72,7 +72,7 @@ class DafSkripsiRest extends ResourceController
             }
 
             // Save file names to the database
-            $data = array_merge(['nim_dafsempro' => $this->request->getPost('nim_dafsempro')], $uploadedFiles);
+            $data = array_merge(['nim_dafskripsi' => $this->request->getPost('nim_dafskripsi')], $uploadedFiles);
             $modelDafSem->insert($data);
 
             $response = [

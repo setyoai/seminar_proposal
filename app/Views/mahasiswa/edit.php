@@ -25,33 +25,74 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Nim</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-id-badge"></i>
+                                        </div>
+                                    </div>
                                 <input type="text" name="nidn_mhs" value="<?= $tb_mhs->nim_mhs ?>" class="form-control" required
                                        autofocus>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="text" name="nidn_mhs" value="<?= $tb_mhs->nim_mhs ?>" class="form-control" required
-                                       autofocus>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-lock"></i>
+                                        </div>
+                                    </div>
+                                <input type="password" name="nidn_mhs" value="" class="form-control">
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Nama</label>
-                                <input type="text" name="nama_mhs" value="<?= $tb_mhs->nama_mhs ?>" class="form-control"
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" name="nama_mhs" value="<?= $tb_mhs->nama_mhs ?>" class="form-control"
                                        required autofocus>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="text" name="email_mhs" value="<?= $tb_mhs->email_mhs ?>" class="form-control"
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" name="email_mhs" value="<?= $tb_mhs->email_mhs ?>" class="form-control"
                                        required autofocus>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Alamat</label>
-                                <input type="text" name="alamat_mhs" value="<?= $tb_mhs->alamat_mhs ?>" class="form-control"
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" name="alamat_mhs" value="<?= $tb_mhs->alamat_mhs ?>" class="form-control"
                                        required autofocus>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>No Handphone</label>
-                                <input type="text" name="nohp_mhs" value="<?= $tb_mhs->nohp_mhs ?>" class="form-control"
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" name="nohp_mhs" value="<?= $tb_mhs->nohp_mhs ?>" class="form-control"
                                        required autofocus>
+                                </div>
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary mr-1">Simpan</button>

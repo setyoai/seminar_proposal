@@ -1,4 +1,4 @@
-<?php if (session()->level_iduser == 1 ): ?>
+<?php if (session()->level_iduser == 'Koordinator' ): ?>
     <li class="menu-header">Menu Koordinator</li>
     <li><a class="nav-link" href="<?= site_url('home') ?>"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
     <!--<li><a class="nav-link" href="--><?php //= site_url("dosen") ?><!--"><i class="far fa-square"></i> <span>Main Menu</span></a>-->
@@ -35,12 +35,11 @@
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i> <span>Kelola User</span></a>
         <ul class="dropdown-menu">
             <li><a class="nav-link" href="<?= site_url('user') ?>">User</a></li>
-            <li><a class="nav-link" href="<?= site_url('ruangan') ?>">Level User</a></li>
         </ul>
     </li>
 <?php endif; ?>
 
-<?php if (session()->level_iduser == 2 ): ?>
+<?php if (session()->level_iduser == 'Operator' ): ?>
     <li class="menu-header">Menu Operator</li>
     <li><a class="nav-link" href="<?= site_url("dafsempro") ?>"><i class="fas fa-file-alt"></i> <span>Cek Berkas</span></a>
     </li>

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\DafSemproModel;
+use App\Models\DafSkripsiModel;
 use App\Models\MahasiswaModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
@@ -11,7 +12,6 @@ class DafSempro extends ResourcePresenter
     function __construct()
     {
         $this->tb_dafsempro = new DafSemproModel();
-        $this->tb_mhs = new MahasiswaModel();
     }
 
     /**
@@ -92,7 +92,7 @@ class DafSempro extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        $tb_dafsempro = $this->model->where('id_dafsempro', $id)->first();
+        $tb_dafsempro = $this->tb_dafsempro->where('id_dafsempro', $id)->first();
 
         if (is_object($tb_dafsempro)) {
             $data['tb_dafsempro'] = $tb_dafsempro;
@@ -102,6 +102,10 @@ class DafSempro extends ResourcePresenter
             $data['pengesahanFileName'] = $tb_dafsempro->pengesahan_dafsempro;
             $data['bukubimbinganFileName'] = $tb_dafsempro->bukubimbingan_dafsempro;
             $data['kwkomputerFileName'] = $tb_dafsempro->kwkomputer_dafsempro;
+            $data['kwinggrisFileName'] = $tb_dafsempro->kwinggris_dafsempro;
+            $data['kwKwuFileName'] = $tb_dafsempro->kwkwu_dafsempro;
+            $data['slipFileName'] = $tb_dafsempro->slippembayaran_dafsempro;
+            $data['plagiasiFileName'] = $tb_dafsempro->plagiasi_dafsempro;
 
             return view('dafsempro/edit', $data);
         } else {

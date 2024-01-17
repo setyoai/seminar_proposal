@@ -58,8 +58,7 @@ class DafSemproRest extends ResourceController
             // List of allowed file fields
             $allowedFields = [
                 'id_dafsempro',
-                'id_mhs',
-                'nama_dafsempro',
+                'id_dafskripsi',
                 'transkrip_dafsempro',
                 'pengesahan_dafsempro',
                 'bukubimbingan_dafsempro',
@@ -82,7 +81,7 @@ class DafSemproRest extends ResourceController
             }
 
             // Save file names to the database
-            $data = array_merge(['id_mhs' => $this->request->getPost('id_mhs')], $uploadedFiles);
+            $data = array_merge(['id_dafskripsi' => $this->request->getPost('id_dafskripsi')], $uploadedFiles);
             $modelDafSem->insert($data);
 
             $response = [

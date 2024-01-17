@@ -15,7 +15,7 @@ class DafSkripsi extends ResourceController
      */
     public function index()
     {
-        $data['tb_dafskripsi'] = $this->model->FindAll();
+        $data['tb_dafskripsi'] = $this->model->getAll();
         return view('dafskripsi/index' ,$data);
     }
 
@@ -62,12 +62,12 @@ class DafSkripsi extends ResourceController
             $data['tb_dafskripsi'] = $tb_dafskripsi;
 
             // Add file names to the data array
+            $data['krsFileName'] = $tb_dafskripsi->krs_dafskripsi;
             $data['transkripFileName'] = $tb_dafskripsi->transkrip_dafskripsi;
-            $data['pengesahanFileName'] = $tb_dafskripsi->pengesahan_dafskripsi;
-            $data['bukubimbinganFileName'] = $tb_dafskripsi->bukubimbingan_dafskripsi;
-            $data['kwkomputerFileName'] = $tb_dafskripsi->kwkomputer_dafskripsi;
+            $data['slipFileName'] = $tb_dafskripsi->slippembayaran_dafskripsi;
 
-            return view('dafsempro/edit', $data);
+
+            return view('dafskripsi/edit', $data);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }

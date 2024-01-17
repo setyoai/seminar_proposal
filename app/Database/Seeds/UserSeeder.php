@@ -18,18 +18,23 @@ class UserSeeder extends Seeder
 //        $this->db->table('tb_user')->insert($data);
 
         //multi user
+//        $authData = [
+//            ['level_nama' => 1],
+//            ['level_nama' => 2],
+//            // ... other auth data
+//        ];
+//        $this->db->table('tb_auth')->insertBatch($authData);
+
         $data = [
             [
-                'id_dosen' => 13,
-                'username_user' => 'budi@gmail.com',
+                'username_user' => '1234567890',
                 'password_user' => password_hash('1234', PASSWORD_BCRYPT),
-                'level_userid' => 1
+                'level_userid' => 'Koordinator'
             ],
             [
-                'id_dosen' => 2,
-                'username_user' => 'roni@gmail.com',
+                'username_user' => '0987654321',
                 'password_user' => password_hash('1234', PASSWORD_BCRYPT),
-                'level_userid' => 2
+                'level_userid' => 'Operator'
             ],
 
         ];

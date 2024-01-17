@@ -14,22 +14,32 @@
         </div>
 
         <div class="section-body">
-
-            <div class="card">
-                <div class="card-header">
-                    <h4>Tambah Data Ruangan</h4>
-                </div>
-                <div class="card-body col-md-6">
-                    <form action="<?= site_url("ruangan") ?>" method="post" autocomplete="off">
-                        <?= csrf_field() ?>
-                        <div class="form-group">
-                            <label>Nama Ruangan</label>
-                            <input type="text" name="nama_ruangan" class="form-control" required autofocus>
-                        </div>
-                        <div>
-                            <button type="submit" class="btn btn-primary mr-1">Simpan</button>
-                        </div>
-                    </form>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <form action="<?= site_url("ruangan") ?>" method="post" autocomplete="off">
+                            <div class="card-header">
+                                <h4>Tambah Data Ruangan</h4>
+                            </div>
+                            <div class="card-body">
+                                    <?= csrf_field() ?>
+                                    <div class="form-group">
+                                        <label>Nama Ruangan</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-building"></i>
+                                                </div>
+                                            </div>
+                                        <input type="text" name="nama_ruangan" class="form-control" required autofocus>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary mr-1">Simpan</button>
+                                    </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

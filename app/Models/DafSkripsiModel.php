@@ -13,13 +13,20 @@ class DafSkripsiModel extends Model
                                   'slip_dafskripsi', 'status_dafskripsi', 'keterangan_dafskripsi', 'status_akhir'];
 
     // Dates
-    protected $useTimestamps = false;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+//    protected $useTimestamps = false;
+//    protected $dateFormat    = 'datetime';
+//    protected $createdField  = 'created_at';
+//    protected $updatedField  = 'updated_at';
+//    protected $deletedField  = 'deleted_at';
 
 
-    // Callbacks
+    public function getAll()
+    {
+        $builder = $this->db->table('tb_dafskripsi');
+        $builder->select('tb_dafskripsi.*, tb_mhs.nama_mhs AS nama_dafskripsi');
+        $builder->join('tb_mhs', 'tb_mhs.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
 
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }

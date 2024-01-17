@@ -42,8 +42,9 @@
                         <tr>
                             <th>No</th>
                             <th>Nim</th>
+                            <th>Nama</th>
                             <th>Tanggal</th>
-                            <th>Kartu Hasil Studi</th>
+                            <th>KRS</th>
                             <th>Slip Pembayaran</th>
                             <th>Transkrip Nilai</th>
                             <th>Status</th>
@@ -57,9 +58,10 @@
                             <tr>
                                 <td><?= $key + 1 ?></td>
                                 <td><?= $value->nim_dafskripsi ?></td>
+                                <td><?= $value->nama_dafskripsi ?></td>
                                 <td><?= $value->tanggal_dafskripsi ?></td>
-                                <td><a href="<?= base_url('upload/' . $value->krs_dafskripsi) ?>" target="_blank">Kartu Hasil Studi</a></td>
-                                <td><a href="<?= base_url('upload/' . $value->slip_dafskripsi) ?>" target="_blank">Slip Pembayaran</a></td>
+                                <td><a href="<?= base_url('upload/' . $value->krs_dafskripsi) ?>" target="_blank">KRS</a></td>
+                                <td><a href="<?= base_url('upload/' . $value->slippembayaran_dafskripsi) ?>" target="_blank">Slip Pembayaran</a></td>
                                 <td><a href="<?= base_url('upload/' . $value->transkrip_dafskripsi) ?>" target="_blank">Transkrip Nilai</a></td>
                                 <td>
                                     <?php
@@ -86,7 +88,7 @@
                                 <td><?= $value->statusakhir_dafskripsi ?></td>
 
                                 <td>
-                                    <a href="<?= site_url('dafsempro/edit/' . $value->id_dafskripsi) ?>"
+                                    <a href="<?= site_url('dafskripsi/edit/' . $value->id_dafskripsi) ?>"
                                        class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                 </td>
                             </tr>

@@ -28,7 +28,7 @@
                                 <select name="id_dafsempro" class="form-control" required>
                                     <option value="" hidden></option>
                                     <?php foreach ($tb_dafsempro as $key => $value) : ?>
-                                        <option value="<?= $value->id_dafsempro ?>"><?= $value->nama_dafsempro ?></option>
+                                        <option value="<?= $value->id_dafskripsi ?>"><?= $value->id_dafskirpsi ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>

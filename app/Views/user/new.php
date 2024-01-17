@@ -23,22 +23,22 @@
                             </div>
                             <div class="card-body">
                                     <?= csrf_field() ?>
-                                    <div class="form-group">
-                                        <label>ID</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text">
-                                                    <i class="fas fa-id-badge"></i>
-                                                </div>
-                                            </div>
-                                            <select name="id_user" class="form-control" required>
-                                                <option value="" hidden></option>
-                                                <?php foreach ($tb_dosen as $key => $value) : ?>
-                                                    <option value="<?= $value->id_dosen ?>"><?= $value->nidn_dosen ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
+<!--                                    <div class="form-group">-->
+<!--                                        <label>ID</label>-->
+<!--                                        <div class="input-group">-->
+<!--                                            <div class="input-group-prepend">-->
+<!--                                                <div class="input-group-text">-->
+<!--                                                    <i class="fas fa-id-badge"></i>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <select name="id_user" class="form-control" required>-->
+<!--                                                <option value="" hidden></option>-->
+<!--                                                --><?php //foreach ($tb_dosen as $key => $value) : ?>
+<!--                                                    <option value="--><?php //= $value->id_dosen ?><!--">--><?php //= $value->nidn_dosen ?><!--</option>-->
+<!--                                                --><?php //endforeach; ?>
+<!--                                            </select>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                     <div class="form-group">
                                         <label>Username</label>
                                         <div class="input-group">
@@ -47,7 +47,12 @@
                                                     <i class="fas fa-user"></i>
                                                 </div>
                                             </div>
-                                            <input type="email" name="username_user" class="form-control" required autofocus>
+                                            <select name="username_user" class="form-control" required>
+                                                <option value="" hidden></option>
+                                                <?php foreach ($tb_dosen as $key => $value) : ?>
+                                                    <option value="<?= $value->nidn_dosen ?>"><?= $value->nama_dosen ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
