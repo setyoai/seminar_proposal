@@ -41,14 +41,14 @@
                                             <label>Username</label>
                                             <input type="text" name="username_user"
                                                    value="<?= $tb_user->username_user ?>"
-                                                   class="form-control" required autofocus>
+                                                   class="form-control" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>Level User</label>
                                             <select name="level_userid" class="form-control" required>
                                                 <option value="" hidden></option>
                                                 <?php foreach ($tb_auth as $value) : ?>
-                                                    <option value="<?= $value->id_auth ?>" <?= ($tb_user->level_userid == $value->id_auth) ? 'selected' : '' ?>>
+                                                    <option value="<?= $value->level_nama ?>" <?= ($tb_user->level_userid == $value->level_nama) ? 'selected' : '' ?>>
                                                         <?= $value->level_nama ?>
                                                     </option>
                                                 <?php endforeach; ?>

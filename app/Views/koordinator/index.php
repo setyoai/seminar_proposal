@@ -1,16 +1,13 @@
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('content') ?>
-    <title>Dosen</title>
+    <title>Koordinator</title>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
     <section class="section">
         <div class="section-header">
-            <h1>Dosen</h1>
-            <div class="section-header-button">
-                <a href="<?= site_url("dosen/new") ?>" class="btn btn-primary">Tambah Data</a>
-            </div>
+            <h1>Koordinator</h1>
         </div>
 
         <?php if (session()->getFlashdata('success')) : ?>
@@ -36,7 +33,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4>Data Dosen</h4>
+                    <h4>Data Koordinator</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -54,18 +51,18 @@
                             </thead>
                             <tbody>
                             <?php foreach ($tb_user as $key => $value) : ?>
-                                 <?php if ($value->level_userid == 'Dosen') : ?>
+                                 <?php if ($value->level_userid == 'Koordinator') : ?>
                                     <tr>
                                         <td><?= $key + 1 ?></td>
-                                        <td><?= $value->nidn_dosen ?></td>
-                                        <td><?= $value->nama_dosen ?></td>
-                                        <td><?= $value->alamat_dosen ?></td>
-                                        <td><?= $value->nohp_dosen ?></td>
-                                        <td><?= $value->email_dosen ?></td>
+                                        <td><?= $value->nidn_koordinator ?></td>
+                                        <td><?= $value->nama_koordinator ?></td>
+                                        <td><?= $value->alamat_koordinator ?></td>
+                                        <td><?= $value->nohp_koordinator ?></td>
+                                        <td><?= $value->email_koordinator ?></td>
                                         <td>
-                                            <a href="<?= site_url('dosen/edit/' . $value->id_dosen) ?>"
+                                            <a href="<?= site_url('koordinator/edit/' . $value->id_dosen) ?>"
                                                class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                            <form action="<?= site_url('dosen/delete/' . $value->id_dosen) ?>" method="post"
+                                            <form action="<?= site_url('koordinator/delete/' . $value->id_dosen) ?>" method="post"
                                                   class="d-inline" id="del-<?= $value->id_dosen ?>">
                                                 <?= csrf_field() ?>
                                                 <input type="hidden" name="_method" value="DELETE">

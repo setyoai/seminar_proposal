@@ -43,34 +43,6 @@ class User extends ResourcePresenter
     }
 
     /**
-     * Present a view to present a new single resource object
-     *
-     * @return mixed
-     */
-    public function new()
-    {
-        $data['tb_dosen'] = $this->tb_dosen->findAll();
-        $data['tb_auth'] = $this->tb_auth->findAll();
-        return view('user/new' ,$data);
-    }
-
-    /**
-     * Process the creation/insertion of a new resource object.
-     * This should be a POST.
-     *
-     * @return mixed
-     */
-    public function create()
-    {
-
-        $data = $this->request->getPost();
-        $password = password_hash($data['password_user'], PASSWORD_BCRYPT);
-        $data['password_user'] = $password;
-        $this->tb_user->insert($data);
-        return redirect()->to(site_url('user'))->with('success', 'Data Berhasil Disimpan');
-    }
-
-    /**
      * Present a view to edit the properties of a specific resource object
      *
      * @param mixed $id

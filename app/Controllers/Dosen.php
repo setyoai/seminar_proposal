@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\DosenUserModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 use App\Models\DosenModel;
 
@@ -11,6 +12,7 @@ class Dosen extends ResourcePresenter
 
     function __construct()
     {
+        $this->tb_user = new DosenUserModel();
         $this->tb_dosen = new DosenModel();
     }
     /**
@@ -20,7 +22,7 @@ class Dosen extends ResourcePresenter
      */
     public function index()
     {
-        $data['tb_dosen'] = $this->tb_dosen->findAll();
+        $data['tb_user'] = $this->tb_user->getAll();
         return view('dosen/index' ,$data);
     }
 
@@ -54,27 +56,33 @@ class Dosen extends ResourcePresenter
      */
     public function create()
     {
-        $validate = $this->validate([
-            'nidn_dosen' => [
-                'rules' => 'is_unique[tb_dosen.nidn_dosen]',
-                'label' => 'Nomor Induk Dosen Nasional',
-                'errors' => [
-                    'is_unique' => "{field} sudah ada"
-                ],
-            ],
-        ]);
-        if (!$validate) {
-            return redirect()->back()->withInput();
-        }
-
         $data = $this->request->getPost();
-        $this->tb_dosen->insert($data);
+
+        // Sesuaikan dengan struktur tabel tb_dosen
+        $dataDosen = [
+            'nidn_dosen'   => $data['nidn_dosen'],
+            'nama_dosen'   => $data['nama_dosen'],
+            'alamat_dosen' => $data['alamat_dosen'],
+            'nohp_dosen'   => $data['nohp_dosen'],
+            'email_dosen'  => $data['email_dosen'],
+        ];
+
+        // Menyisipkan data ke dalam tb_dosen
+        $this->tb_dosen->insert($dataDosen);
+
+        // Mengambil id_dosen dari data yang baru disisipkan
+
+        // Menggunakan id_dosen sebagai nilai nidn_dosen di tb_user
+        $dataUser = [
+            'username_user'  => $data['nidn_dosen'], // Menggunakan nidn_dosen sebagai username
+            'password_user'  => password_hash($data['password_user'], PASSWORD_BCRYPT),
+            'level_userid'  => $data['level_userid'],
+        ];
+
+        // Menyisipkan data ke dalam tb_user
+        $this->tb_user->insert($dataUser);
+
         return redirect()->to(site_url('dosen'))->with('success', 'Data Berhasil Disimpan');
-//        if (!$save) {
-//            return redirect()->back()->withINput()->with('errors', $this->tb_dosen->errors());
-//        } else {
-//            return redirect()->to(site_url('dosen'))->with('success', 'Data Berhasil Disimpan');
-//        }
     }
 
     /**

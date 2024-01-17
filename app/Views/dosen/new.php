@@ -1,7 +1,7 @@
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('content') ?>
-    <title>Dosen Add Data</title>
+    <title>Add Dosen</title>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -10,7 +10,7 @@
             <div class="section-header-back">
                 <a href="<?= site_url("dosen") ?>" class="btn"><i class="fas fa-arrow-left"></i></a>
             </div>
-            <h1>Dosen</h1>
+            <h1>Data Dosen</h1>
         </div>
 
         <div class="section-body">
@@ -24,6 +24,10 @@
                             </div>
                             <div class="card-body">
                                     <?= csrf_field() ?>
+
+                                <input type="hidden" name="username_user" value="<?= esc($data['nidn_dosen'] ?? '') ?>">
+                                <input type="hidden" name="password_user" value="12345">
+                                <input type="hidden" name="level_userid" value="Dosen">
                                     <div class="form-group">
                                         <label>NIDN</label>
                                         <div class="input-group">

@@ -17,6 +17,7 @@ $routes->get('/', 'Login::index');
 $routes->presenter('password',['filter' => 'isLoggedIn']);
 $routes->presenter('profile',['filter' => 'isLoggedIn']);
 $routes->presenter('operator',['filter' => 'isLoggedIn']);
+$routes->presenter('koordinator',['filter' => 'isLoggedIn']);
 $routes->presenter('dosen',['filter' => 'isLoggedIn']);
 $routes->presenter('user',['filter' => 'isLoggedIn']);
 

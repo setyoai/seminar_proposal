@@ -7,7 +7,8 @@
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-database"></i> <span>Master</span></a>
         <ul class="dropdown-menu">
             <li><a class="nav-link" href="<?= site_url('dosen') ?>">Dosen</a></li>
-<!--            <li><a class="nav-link" href="--><?php //= site_url('mahasiswaapi') ?><!--">Operator</a></li>-->
+            <li><a class="nav-link" href="<?= site_url('koordinator') ?>">Koordinator</a></li>
+            <li><a class="nav-link" href="<?= site_url('operator') ?>">Operator</a></li>
             <li><a class="nav-link" href="<?= site_url('mahasiswa') ?>">Mahasiswa</a></li>
         </ul>
     </li>
@@ -41,6 +42,11 @@
 
 <?php if (session()->level_iduser == 'Operator' ): ?>
     <li class="menu-header">Menu Operator</li>
-    <li><a class="nav-link" href="<?= site_url("dafsempro") ?>"><i class="fas fa-file-alt"></i> <span>Cek Berkas</span></a>
+    <li class="nav-item dropdown">
+        <a href="#" class="nav-link has-dropdown"><i class="fas fa-file-alt"></i> <span>Cek Berkas</span></a>
+        <ul class="dropdown-menu">
+            <li><a class="nav-link" href="<?= site_url('dafskripsi') ?>">Daftar Skripsi</a></li>
+            <li><a class="nav-link" href="<?= site_url('dafsempro') ?>">Daftar Seminar Proposal</a></li>
+        </ul>
     </li>
 <?php endif; ?>

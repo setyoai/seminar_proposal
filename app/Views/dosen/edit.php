@@ -1,7 +1,7 @@
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('content') ?>
-    <title>Main Menu Add Data</title>
+    <title>Edit Dosen</title>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -10,7 +10,7 @@
             <div class="section-header-back">
                 <a href="<?= site_url("dosen") ?>" class="btn"><i class="fas fa-arrow-left"></i></a>
             </div>
-            <h1>Main Menu</h1>
+            <h1>Data Dosen</h1>
         </div>
 
         <div class="section-body">

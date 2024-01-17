@@ -8,23 +8,23 @@
     <section class="section">
         <div class="section-header">
             <div class="section-header-back">
-                <a href="<?= site_url("operator") ?>" class="btn"><i class="fas fa-arrow-left"></i></a>
+                <a href="<?= site_url("koordinator") ?>" class="btn"><i class="fas fa-arrow-left"></i></a>
             </div>
-            <h1>Data Operator</h1>
+            <h1>Data Koordinator</h1>
         </div>
 
         <div class="section-body">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-6">
                     <div class="card">
-                        <form action="<?= site_url('operator/update/' . $tb_dosen->id_dosen) ?>" method="post" autocomplete="off">
+                        <form action="<?= site_url('koordinator/update/' . $tb_dosen->id_dosen) ?>" method="post" autocomplete="off">
                         <?= csrf_field() ?>
                             <div class="card-header">
-                                <h4>Edit Data Operator</h4>
+                                <h4>Edit Data Koordinator</h4>
                             </div>
                             <div class="card-body">
                                     <div class="form-group">
-                                        <label>Nim Operator</label>
+                                        <label>NIDN Koordinator</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
@@ -36,7 +36,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Nama Operator</label>
+                                        <label>Nama Koordinator</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
@@ -72,7 +72,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Email Operator</label>
+                                        <label>Email Koordinator</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
