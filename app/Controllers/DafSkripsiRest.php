@@ -61,7 +61,7 @@ class DafSkripsiRest extends ResourceController
                 'nim_dafskripsi',
                 'krs_dafskripsi',
                 'transkrip_dafskripsi',
-                'slip_dafskripsi',
+                'slippenbayaran_dafskripsi',
             ];
 
             foreach ($allowedFields as $fieldName) {

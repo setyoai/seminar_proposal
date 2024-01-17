@@ -49,7 +49,6 @@
                             <th>Transkrip Nilai</th>
                             <th>Status</th>
                             <th>Keterangan</th>
-                            <th>Status Akhir</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -85,8 +84,6 @@
                                 </td>
 
                                 <td><?= $value->keterangan_dafskripsi ?></td>
-                                <td><?= $value->statusakhir_dafskripsi ?></td>
-
                                 <td>
                                     <a href="<?= site_url('dafskripsi/edit/' . $value->id_dafskripsi) ?>"
                                        class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>

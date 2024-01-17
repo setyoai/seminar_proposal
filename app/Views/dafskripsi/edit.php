@@ -24,26 +24,6 @@
                         <form action="<?= site_url('dafskripsi/update/' . $tb_dafskripsi->id_dafskripsi) ?>" method="post"
                               autocomplete="off">
                             <?= csrf_field() ?>
-                            <div class="section-title">File Kartu Hasil Studi</div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="krs_dafskripsi"
-                                       id="customFile">
-                                <label class="custom-file-label"
-                                       for="customFile"><?= $tb_dafskripsi->krs_dafskripsi ?></label>
-                            </div>
-                            <div class="section-title">File Transkrip</div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="transkrip_dafskripsi" id="customFile">
-                                <label class="custom-file-label"
-                                       for="customFile"><?= $tb_dafskripsi->transkrip_dafskripsi ?></label>
-                            </div>
-                            <div class="section-title">File Slip Pembayaran</div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="slip_dafskripsi"
-                                       id="customFile">
-                                <label class="custom-file-label"
-                                       for="customFile"><?= $tb_dafskripsi->slip_dafskripsi ?></label>
-                            </div>
                             <div class="section-title">Select</div>
                             <div class="form-group">
                                 <label>Choose One</label>

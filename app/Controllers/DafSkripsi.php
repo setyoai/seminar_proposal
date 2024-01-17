@@ -2,12 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Models\DafSkripsiModel;
 use CodeIgniter\RESTful\ResourceController;
 
 class DafSkripsi extends ResourceController
 {
-    protected $modelName = 'App\Models\DafSkripsiModel';
-    protected $helpers = ['custom'];
+    function __construct()
+    {
+        $this->tb_dafskripsi = new DafSkripsiModel();
+    }
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -15,7 +18,7 @@ class DafSkripsi extends ResourceController
      */
     public function index()
     {
-        $data['tb_dafskripsi'] = $this->model->getAll();
+        $data['tb_dafskripsi'] = $this->tb_dafskripsi->getAll();
         return view('dafskripsi/index' ,$data);
     }
 
@@ -56,20 +59,12 @@ class DafSkripsi extends ResourceController
      */
     public function edit($id = null)
     {
-        $tb_dafskripsi = $this->model->where('id_dafskripsi', $id)->first();
-
+        $tb_dafskripsi = $this->tb_dafskripsi->where('id_dafskripsi', $id)->first();
         if (is_object($tb_dafskripsi)) {
             $data['tb_dafskripsi'] = $tb_dafskripsi;
-
-            // Add file names to the data array
-            $data['krsFileName'] = $tb_dafskripsi->krs_dafskripsi;
-            $data['transkripFileName'] = $tb_dafskripsi->transkrip_dafskripsi;
-            $data['slipFileName'] = $tb_dafskripsi->slippembayaran_dafskripsi;
-
-
             return view('dafskripsi/edit', $data);
         } else {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+            throw \CodeIgniter\Exceptions\PageNotFoundException:: forPageNotFound();
         }
     }
 
@@ -80,7 +75,9 @@ class DafSkripsi extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $data = $this->request->getPost();
+        $this->tb_dafskripsi->update($id, $data);
+        return redirect()->to(site_url('dafskripsi'))->with('success', 'Data Berhasil Diupdate');
     }
 
     /**
