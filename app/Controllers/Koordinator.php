@@ -8,6 +8,7 @@ use CodeIgniter\RESTful\ResourceController;
 
 class Koordinator extends ResourceController
 {
+    protected $helpers = ['custom'];
     function __construct()
     {
         $this->tb_user = new KoordinatorModel();

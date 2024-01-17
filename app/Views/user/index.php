@@ -51,7 +51,7 @@
                             <?php foreach ($tb_user as $key => $value) : ?>
                                 <tr>
                                     <td><?= $key + 1 ?></td>
-                                    <td><?= $value->nama_dosen?></td>
+                                    <td><?= $value->nama_user?></td>
                                     <td><?= $value->username_user ?></td>
                                     <td><?= $value->level_nama?></td>
                                     <td>

@@ -51,16 +51,32 @@ class User extends ResourcePresenter
      */
     public function edit($id = null)
     {
+        // Find the user with the given $id
+        $tb_user = $this->tb_user->getAll(); // Assuming you have a getAll method in your model
 
-        $tb_user = $this->tb_user->find($id);
+        // Check if the user with the given $id exists
+        if ($tb_user) {
+            // If the user exists, filter the user data based on $id
+            $user = array_filter($tb_user, function ($user) use ($id) {
+                return $user->id_user == $id;
+            });
 
-        if (is_object($tb_user)) {
-            $data['tb_user'] = $tb_user;
-            $data['tb_dosen'] = $this->tb_dosen->findAll();
-            $data['tb_auth'] = $this->tb_auth->findAll();
-            return view('user/edit', $data);
+            // Check if the user with the given $id was found
+            if (!empty($user)) {
+                // Prepare data for the view
+                $data['tb_user'] = reset($user); // Get the first element of the filtered array
+                $data['tb_dosen'] = $this->tb_dosen->findAll(); // Retrieve all records from tb_dosen
+                $data['tb_auth'] = $this->tb_auth->findAll();   // Retrieve all records from tb_auth
+
+                // Load the 'user/edit' view with the prepared data
+                return view('user/edit', $data);
+            } else {
+                // If the user with the given $id was not found, throw a PageNotFoundException
+                throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+            }
         } else {
-            throw \CodeIgniter\Exceptions\PageNotFoundException:: forPageNotFound();
+            // If there are no users, you may want to handle this situation accordingly
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
     }
 

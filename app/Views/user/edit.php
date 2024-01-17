@@ -1,7 +1,7 @@
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('content') ?>
-    <title>Main Menu Add Data</title>
+    <title>Edit User</title>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -37,6 +37,12 @@
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="profile" role="tabpanel"
                                          aria-labelledby="profile-tab">
+                                        <div class="form-group">
+                                            <label>Nama User</label>
+                                            <input type="text" name=""
+                                                   value="<?= $tb_user->nama_user ?>"
+                                                   class="form-control" readonly>
+                                        </div>
                                         <div class="form-group">
                                             <label>Username</label>
                                             <input type="text" name="username_user"

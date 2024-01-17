@@ -11,7 +11,6 @@ use CodeIgniter\RESTful\ResourceController;
 
 class DetSempro extends ResourceController
 {
-
     function __construct()
     {
         $this->tb_mhs = new MahasiswaModel();

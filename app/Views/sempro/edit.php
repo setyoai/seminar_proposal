@@ -24,15 +24,26 @@
                     <?= csrf_field() ?>
                     <input type="hidden" name="_method" value="PATCH">
                     <div class="form-group">
-                        <label>Nama *</label>
-                        <select name="id_mhs" class="form-control" required disabled>
-                            <option value="" hidden></option>
-                            <?php foreach ($tb_dafsempro as $key => $value) : ?>
-                                <option value="<?= $value->id_dafsempro ?>" <?= $tb_sempro->id_dafsempro == $value->id_mhs ?
-                                    'selected' : null ?>><?= $value->nama_dafsempro?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
+                        <label>NIM</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-id-badge"></i>
+                                </div>
+                            </div>
+                            <input type="text" name="" value="<?= $tb_sempro->nim_sempro ?>" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+                            <input type="text" name="" value="<?= $tb_sempro->nama_sempro ?>" class="form-control" readonly>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Ketua Penguji</label>

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\DafSkripsiModel;
+use App\Models\DosbingModel;
 use CodeIgniter\RESTful\ResourceController;
 
 class DafSkripsiRest extends ResourceController
@@ -52,7 +53,10 @@ class DafSkripsiRest extends ResourceController
     public function create()
     {
         try {
+            // Instantiate both models
             $modelDafSem = new DafSkripsiModel();
+            $modelDosbing = new DosbingModel();
+
             $uploadedFiles = [];
 
             // List of allowed file fields
@@ -61,7 +65,7 @@ class DafSkripsiRest extends ResourceController
                 'nim_dafskripsi',
                 'krs_dafskripsi',
                 'transkrip_dafskripsi',
-                'slippenbayaran_dafskripsi',
+                'slippembayaran_dafskripsi',
             ];
 
             foreach ($allowedFields as $fieldName) {
@@ -71,9 +75,23 @@ class DafSkripsiRest extends ResourceController
                 }
             }
 
-            // Save file names to the database
-            $data = array_merge(['nim_dafskripsi' => $this->request->getPost('nim_dafskripsi')], $uploadedFiles);
-            $modelDafSem->insert($data);
+            $nimDafskripsi = $this->request->getPost('nim_dafskripsi');
+            if ($modelDafSem->where('nim_dafskripsi', $nimDafskripsi)->first() !== null) {
+                // If nim_dafskripsi already exists, throw an exception
+                throw new \Exception("nim_dafskripsi '$nimDafskripsi' already exists");
+            }
+
+            // Save file names to the first table (DafSkripsiModel)
+            $dataDafSem = array_merge(['nim_dafskripsi' => $nimDafskripsi], $uploadedFiles);
+            $modelDafSem->insert($dataDafSem);
+
+            // Additional data for the second table (DosbingModel)
+            $dataDosbing = [
+                'dafskripsiid_dosbing' => $modelDafSem->getInsertID(),
+            ];
+
+            // Save data to the second table (DosbingModel)
+            $modelDosbing->insert($dataDosbing);
 
             $response = [
                 'error' => false,

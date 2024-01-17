@@ -3,11 +3,14 @@
 namespace App\Controllers;
 
 use App\Models\DafSemproModel;
+use App\Models\SemproModel;
 use CodeIgniter\RESTful\ResourceController;
 
 class DafSemproRest extends ResourceController
 {
+    protected $helpers = ['custom'];
     protected $modelName = 'App\Models\DafsemproModel';
+
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -53,6 +56,7 @@ class DafSemproRest extends ResourceController
     {
         try {
             $modelDafSem = new DafSemproModel();
+            $modelSempro = new SemproModel();
             $uploadedFiles = [];
 
             // List of allowed file fields
@@ -70,7 +74,6 @@ class DafSemproRest extends ResourceController
                 'tanggal_dafsempro',
                 'status_dafsempro',
                 'ket_dafsempro',
-                'judul',
             ];
 
             foreach ($allowedFields as $fieldName) {
@@ -83,6 +86,13 @@ class DafSemproRest extends ResourceController
             // Save file names to the database
             $data = array_merge(['id_dafskripsi' => $this->request->getPost('id_dafskripsi')], $uploadedFiles);
             $modelDafSem->insert($data);
+
+            $dataSempro = [
+                'id_dafsempro' => $modelDafSem->getInsertID(),
+            ];
+
+            // Save data to the second table (DosbingModel)
+            $modelSempro->insert($dataSempro);
 
             $response = [
                 'error' => false,
@@ -132,7 +142,25 @@ class DafSemproRest extends ResourceController
      */
     public function edit($id = null)
     {
-        //
+        $tb_dafsempro = $this->tb_dafsempro->where('id_dafsempro', $id)->first();
+
+        if (is_object($tb_dafsempro)) {
+            $data['tb_dafsempro'] = $tb_dafsempro;
+
+            // Add file names to the data array
+            $data['transkripFileName'] = $tb_dafsempro->transkrip_dafsempro;
+            $data['pengesahanFileName'] = $tb_dafsempro->pengesahan_dafsempro;
+            $data['bukubimbinganFileName'] = $tb_dafsempro->bukubimbingan_dafsempro;
+            $data['kwkomputerFileName'] = $tb_dafsempro->kwkomputer_dafsempro;
+            $data['kwinggrisFileName'] = $tb_dafsempro->kwinggris_dafsempro;
+            $data['kwKwuFileName'] = $tb_dafsempro->kwkwu_dafsempro;
+            $data['slipFileName'] = $tb_dafsempro->slippembayaran_dafsempro;
+            $data['plagiasiFileName'] = $tb_dafsempro->plagiasi_dafsempro;
+
+            return view('dafsempro/edit', $data);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
     }
 
     /**
@@ -142,7 +170,46 @@ class DafSemproRest extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $transkripFile = $this->request->getFile('transkrip_dafsempro');
+        $pengesahanFile = $this->request->getFile('pengesahan_dafsempro');
+        $bimbinganFile = $this->request->getFile('bukubimbingan_dafsempro');
+        $kwkomputerFile = $this->request->getFile('kwkomputer_dafsempro');
+        $statusDafsempro = $this->request->getPost('status_dafsempro');
+        $ketSempro = $this->request->getPost('ket_sempro');
+
+        // ... (same code as before)
+
+        // Prepare data for update
+        $data = [
+            'status_dafsempro' => $statusDafsempro,
+            'ket_sempro' => $ketSempro,
+        ];
+
+        // Include file names in the update only if new files are uploaded
+        if ($transkripFile && $transkripFile->isValid()) {
+            $data['transkrip_dafsempro'] = $transkripFile->getName();
+        }
+        if ($pengesahanFile && $pengesahanFile->isValid()) {
+            $data['pengesahan_dafsempro'] = $pengesahanFile->getName();
+        }
+        if ($bimbinganFile && $bimbinganFile->isValid()) {
+            $data['bukubimbingan_dafsempro'] = $bimbinganFile->getName();
+        }
+        if ($kwkomputerFile && $kwkomputerFile->isValid()) {
+            $data['kwkomputer_dafsempro'] = $kwkomputerFile->getName();
+        }
+
+        // Check if there is data to update
+        if (empty($data)) {
+            // Handle this situation as needed
+            // You might want to redirect back with an error message
+            return redirect()->back()->with('error', 'No data to update');
+        }
+
+        // Update the database
+        $this->model->update($id, $data);
+
+        return redirect()->to(site_url('dafsempro'))->with('success', 'Data Berhasil Diupdate');
     }
 
     /**

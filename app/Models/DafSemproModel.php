@@ -30,9 +30,7 @@ class DafSemproModel extends Model
     public function getAll()
     {
         $builder = $this->db->table('tb_dafsempro');
-        $builder->select('tb_dafsempro.*, tb_dafskripsi.nim_dafskripsi AS nim_dafsempro,
-                            m.nama_mhs AS nama_dafsempro,
-        ');
+        $builder->select('tb_dafsempro.*, tb_dafskripsi.nim_dafskripsi AS nim_dafsempro, m.nama_mhs AS nama_dafsempro,');
         $builder->join('tb_dafskripsi', 'tb_dafskripsi.id_dafskripsi = tb_dafsempro.id_dafskripsi', 'left');
         $builder->join('tb_mhs m',    'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
 

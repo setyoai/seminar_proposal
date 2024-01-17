@@ -36,8 +36,7 @@
                                         class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                         <img alt="image" src="<?= base_url() ?>/assets/assets/img/avatar/avatar-1.png"
                              class="rounded-circle mr-1">
-<!--                        --><?php //= userLogin()->nama_dosen ?>
-                        <div class="d-sm-none d-lg-inline-block">Hi, <?= session()->get('username_user'); ?></div>
+                        <div class="d-sm-none d-lg-inline-block">Hi, <?= userLogin()->nama_user?></div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
 <!--                        <a href="--><?php //= site_url('profile') ?><!--" class="dropdown-item has-icon">-->

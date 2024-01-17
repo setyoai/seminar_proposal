@@ -87,6 +87,16 @@
                                 <td>
                                     <a href="<?= site_url('dafskripsi/edit/' . $value->id_dafskripsi) ?>"
                                        class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                    <form action="<?= site_url('dafskripsi/delete/' . $value->id_dafskripsi) ?>" method="post"
+                                          class="d-inline" id="del-<?= $value->id_dafskripsi ?>">
+                                        <?= csrf_field() ?>
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button class="btn btn-danger btn-sm"
+                                                data-confirm="Hapus Data?|Apakah Anda yakin?"
+                                                data-confirm-yes="submitDel(<?= $value->id_dafskripsi ?>)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

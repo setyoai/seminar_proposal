@@ -23,15 +23,21 @@
                         </div>
                         <div class="card-body">
                             <?= csrf_field() ?>
-                            <div class="form-group">
-                                <label>Nama</label>
-                                <select name="id_dafsempro" class="form-control" required>
-                                    <option value="" hidden></option>
-                                    <?php foreach ($tb_dafsempro as $key => $value) : ?>
-                                        <option value="<?= $value->id_dafskripsi ?>"><?= $value->id_dafskirpsi ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
+<!--                            <div class="form-group">-->
+<!--                                <label>Nama</label>-->
+<!--                                <input type="text" name=""-->
+<!--                                       value="--><?php //= $tb_dafskripsi['nim_dafksripsi'] ?? '' ?><!--"-->
+<!--                                       class="form-control" readonly>-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label>Nama</label>-->
+<!--                                <select name="id_dafsempro" class="form-control" required>-->
+<!--                                    <option value="" hidden></option>-->
+<!--                                    --><?php //foreach ($tb_dafsempro as $key => $value) : ?>
+<!--                                        <option value="--><?php //= $value->id_dafskripsi ?><!--">--><?php //= $value->id_dafskirpsi ?><!--</option>-->
+<!--                                    --><?php //endforeach; ?>
+<!--                                </select>-->
+<!--                            </div>-->
                             <div class="form-group">
                                 <label>Ketua Penguji</label>
                                 <select name="penguji1_sempro" class="form-control" required>

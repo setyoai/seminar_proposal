@@ -22,6 +22,10 @@ $(document).ready( function (){
   $('#table1').DataTable();
 });
 
+$(document).ready( function (){
+  $('#table2').DataTable();
+});
+
 //modal confirmation
 function submitDel(id) {
   $('#del-'+id).submit()

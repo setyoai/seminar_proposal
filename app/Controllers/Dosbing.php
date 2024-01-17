@@ -10,6 +10,7 @@ use CodeIgniter\RESTful\ResourceController;
 
 class Dosbing extends ResourceController
 {
+    protected $helpers = ['custom'];
     function __construct()
     {
         $this->tb_dosbing = new DosbingModel();
@@ -65,15 +66,26 @@ class Dosbing extends ResourceController
      */
     public function edit($id = null)
     {
-        $tb_dosbing = $this->tb_dosbing->where('id_dosbing', $id)->first();
-        if (is_object($tb_dosbing)) {
-            $data['tb_dosbing'] = $tb_dosbing;
-            $data['tb_dafskripsi'] = $this->tb_dafskripsi->findAll();
-            $data['tb_mhs'] = $this->tb_mhs->findAll();
-            $data['tb_dosen'] = $this->tb_dosen->findAll();
-            return view('dosbing/edit', $data);
+        $tb_dosbing = $this->tb_dosbing->getAll();
+
+        if ($tb_dosbing) {
+            $dosbing = array_filter($tb_dosbing, function ($dosbing) use ($id) {
+                return $dosbing->id_dosbing == $id;
+            });
+
+            if (!empty($dosbing)) {
+                // Prepare data for the view
+                $data['tb_dosbing'] = reset($dosbing); // Get the first element of the filtered array
+                $data['tb_dafskripsi'] = $this->tb_dafskripsi->findAll();
+                $data['tb_mhs'] = $this->tb_mhs->findAll();
+                $data['tb_dosen'] = $this->tb_dosen->findAll();
+
+                return view('dosbing/edit', $data);
+            } else {
+                throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+            }
         } else {
-            throw \CodeIgniter\Exceptions\PageNotFoundException:: forPageNotFound();
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
     }
 

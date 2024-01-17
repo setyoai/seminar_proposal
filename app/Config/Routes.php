@@ -23,12 +23,15 @@ $routes->presenter('user',['filter' => 'isLoggedIn']);
 
 $routes->presenter('mahasiswa', ['filter' => 'isLoggedIn']);
 
-$routes->presenter('ruangan',['filter' => 'isLoggedIn']);
-$routes->presenter('dafsempro',['filter' => 'isLoggedIn']);
-$routes->presenter('detsempro',['filter' => 'isLoggedIn']);
 $routes->presenter('dafskripsi',['filter' => 'isLoggedIn']);
-
+$routes->presenter('dosbing',['filter' => 'isLoggedIn']);
 $routes->resource('sempro',['filter' => 'isLoggedIn']);
+$routes->presenter('dafsempro',['filter' => 'isLoggedIn']);
+$routes->presenter('ruangan',['filter' => 'isLoggedIn']);
+$routes->presenter('detsempro',['filter' => 'isLoggedIn']);
+
+
+
 
 $routes->get('mahasiswarest', 'MahasiswaRest::index');
 $routes->get('mahasiswarest/(:num)', 'MahasiswaRest::show/$1');

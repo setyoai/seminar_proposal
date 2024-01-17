@@ -7,6 +7,7 @@ use CodeIgniter\RESTful\ResourceController;
 
 class DafSkripsi extends ResourceController
 {
+    protected $helpers = ['custom'];
     function __construct()
     {
         $this->tb_dafskripsi = new DafSkripsiModel();
@@ -87,6 +88,7 @@ class DafSkripsi extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $this->tb_dafskripsi->delete($id);
+        return redirect()->to(site_url('dafskripsi'))->with('success', 'Data Berhasil Dihapus');
     }
 }

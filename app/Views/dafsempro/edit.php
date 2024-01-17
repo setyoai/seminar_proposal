@@ -24,61 +24,6 @@
                         <form action="<?= site_url('dafsempro/update/' . $tb_dafsempro->id_dafsempro) ?>" method="post"
                               autocomplete="off">
                             <?= csrf_field() ?>
-                            <div class="section-title">File Transkrip</div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="transkrip_dafsempro" id="customFile">
-                                <label class="custom-file-label"
-                                       for="customFile"><?= $tb_dafsempro->transkrip_dafsempro ?></label>
-                            </div>
-                            <div class="section-title">File Halaman Pengesahan/div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="pengesahan_dafsempro"
-                                       id="customFile">
-                                <label class="custom-file-label"
-                                       for="customFile"><?= $tb_dafsempro->pengesahan_dafsempro ?></label>
-                            </div>
-                            <div class="section-title">File Buku Bimbingan</div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="bukubimbingan_dafsempro"
-                                       id="customFile">
-                                <label class="custom-file-label"
-                                       for="customFile"><?= $tb_dafsempro->bukubimbingan_dafsempro ?></label>
-                            </div>
-                            <div class="section-title">File KW Komputer</div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="kwkomputer_dafsempro"
-                                       id="customFile">
-                                <label class="custom-file-label"
-                                       for="customFile"><?= $tb_dafsempro->kwkomputer_dafsempro ?></label>
-                            </div>
-                            <div class="section-title">File KW B.Inggris</div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="kwinggris_dafsempro"
-                                       id="customFile">
-                                <label class="custom-file-label"
-                                       for="customFile"><?= $tb_dafsempro->kwkomputer_dafsempro ?></label>
-                            </div>
-                            <div class="section-title">File KW Kewirausahaan</div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="kwkwu_dafsempro"
-                                       id="customFile">
-                                <label class="custom-file-label"
-                                       for="customFile"><?= $tb_dafsempro->kwkomputer_dafsempro ?></label>
-                            </div>
-                            <div class="section-title">File Slip Pembayaran</div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="slippembayaran_dafsempro"
-                                       id="customFile">
-                                <label class="custom-file-label"
-                                       for="customFile"><?= $tb_dafsempro->kwkomputer_dafsempro ?></label>
-                            </div>
-                            <div class="section-title">File Plagiasi</div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="plagiasi_dafsempro"
-                                       id="customFile">
-                                <label class="custom-file-label"
-                                       for="customFile"><?= $tb_dafsempro->kwkomputer_dafsempro ?></label>
-                            </div>
                             <div class="section-title">Select</div>
                             <div class="form-group">
                                 <label>Choose One</label>

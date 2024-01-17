@@ -1,8 +1,6 @@
 <?php if (session()->level_iduser == 'Koordinator' ): ?>
     <li class="menu-header">Menu Koordinator</li>
     <li><a class="nav-link" href="<?= site_url('home') ?>"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-    <!--<li><a class="nav-link" href="--><?php //= site_url("dosen") ?><!--"><i class="far fa-square"></i> <span>Main Menu</span></a>-->
-    </li>
     <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-database"></i> <span>Master</span></a>
         <ul class="dropdown-menu">
@@ -20,9 +18,13 @@
         </ul>
     </li>
     <li class="nav-item dropdown">
-        <a href="#" class="nav-link has-dropdown"><i class="fas fa-calendar-plus"></i> <span>Penjadwalan</span></a>
+        <a class="nav-link" href="<?= site_url('dosbing') ?>"> <i class="fas fa-chalkboard-teacher"></i>
+        <span>Pembagian Dosbing</span></a>
+    </li>
+    <li class="nav-item dropdown">
+        <a href="#" class="nav-link has-dropdown"><i class="fas fa-calendar-plus"></i> <span>Seminar</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="<?= site_url('sempro') ?>">Seminar</a></li>
+            <li><a class="nav-link" href="<?= site_url('sempro') ?>">Penjadwalan</a></li>
             <li><a class="nav-link" href="<?= site_url('ruangan') ?>">Ruangan</a></li>
         </ul>
     </li>

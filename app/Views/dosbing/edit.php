@@ -31,22 +31,22 @@
                                                     <i class="fas fa-id-badge"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="" value="<?=$tb_dosbing->dafskripsiid_dosbing?>"
-                                               class="form-control" readonly>
+                                            <input type="text" name="" value="<?= $tb_dosbing->nim_dafskripsi ?>"
+                                                   class="form-control" readonly>
                                         </div>
                                     </div>
-<!--                                    <div class="form-group">-->
-<!--                                        <label>Nama</label>-->
-<!--                                        <div class="input-group">-->
-<!--                                            <div class="input-group-prepend">-->
-<!--                                                <div class="input-group-text">-->
-<!--                                                    <i class="fas fa-user"></i>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <input type="text" name="" value="--><?php //= $tb_mhs->nama_mhs ?><!--"-->
-<!--                                               class="form-control" readonly>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
+                                    <div class="form-group">
+                                        <label>Nama</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-user"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text" name="" value="<?= $tb_dosbing->nama_mhs ?>"
+                                                   class="form-control" readonly>
+                                        </div>
+                                    </div>
                                 <div class="form-group">
                                     <label>Dosen Pembimbing</label>
                                     <select name="dosen1_dosbing" class="form-control" required>
