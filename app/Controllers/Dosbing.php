@@ -6,6 +6,7 @@ use App\Models\DafSkripsiModel;
 use App\Models\DosbingModel;
 use App\Models\DosenModel;
 use App\Models\MahasiswaModel;
+use App\Models\UserModel;
 use CodeIgniter\RESTful\ResourceController;
 
 class Dosbing extends ResourceController
@@ -17,6 +18,7 @@ class Dosbing extends ResourceController
         $this->tb_dafskripsi = new DafSkripsiModel();
         $this->tb_mhs = new MahasiswaModel();
         $this->tb_dosen = new DosenModel();
+        $this->tb_user = new UserModel();
     }
     /**
      * Return an array of resource objects, themselves in array format
@@ -77,6 +79,7 @@ class Dosbing extends ResourceController
                 // Prepare data for the view
                 $data['tb_dosbing'] = reset($dosbing); // Get the first element of the filtered array
                 $data['tb_dafskripsi'] = $this->tb_dafskripsi->findAll();
+                $data['tb_user'] = $this->tb_user->getAll();
                 $data['tb_mhs'] = $this->tb_mhs->findAll();
                 $data['tb_dosen'] = $this->tb_dosen->findAll();
 
@@ -108,6 +111,7 @@ class Dosbing extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $this->tb_dosbing->delete($id);
+        return redirect()->to(site_url('dosbing'))->with('success', 'Data Berhasil Dihapus');
     }
 }

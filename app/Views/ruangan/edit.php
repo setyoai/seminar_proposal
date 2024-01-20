@@ -25,7 +25,8 @@
                         <div class="card-body">
                             <?= csrf_field() ?>
                             <div class="form-group">
-                                <label>Nama Ruangan</label><div class="input-group">
+                                <label>Nama Ruangan</label>
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fas fa-building"></i>

@@ -32,15 +32,27 @@ $routes->presenter('detsempro',['filter' => 'isLoggedIn']);
 
 
 
-
+// Api Mahasiswa
 $routes->get('mahasiswarest', 'MahasiswaRest::index');
 $routes->get('mahasiswarest/(:num)', 'MahasiswaRest::show/$1');
 $routes->post('mahasiswarest', 'MahasiswaRest::create');
 $routes->put('mahasiswarest/(:num)', 'MahasiswaRest::update/$1');
 
+//Api Daftar Skripsi
+$routes->get('dafskripsirest', 'DafSkripsiRest::index');
+$routes->get('dafskripsirest/(:num)', 'DafSkripsiRest::show/$1');
+$routes->post('dafskripsirest', 'DafSkripsiRest::create');
+$routes->put('dafskripsirest/(:num)', 'DafSkripsiRest::update/$1');
+
+//Api User
+$routes->get('userrest', 'UserRest::index');
+$routes->get('userrest/(:num)', 'UserRest::show/$1');
+$routes->post('userrest', 'UserRest::create');
+$routes->put('userrest/(:num)', 'UserRest::update/$1');
+
+
 $routes->resource('dafsemprorest');
 $routes->resource('judulrest');
-$routes->resource('dafskripsirest');
 
 
 

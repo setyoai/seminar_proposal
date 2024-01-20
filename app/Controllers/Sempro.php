@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\DafSemproModel;
 use App\Models\DafSkripsiModel;
 use App\Models\DosbingModel;
+use App\Models\UserModel;
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\SemproModel;
 use App\Models\MahasiswaModel;
@@ -22,6 +23,7 @@ class Sempro extends ResourceController
         $this->tb_dafskripsi = new DafSkripsiModel();
         $this->tb_mhs = new MahasiswaModel();
         $this->tb_dosen = new DosenModel();
+        $this->tb_user = new UserModel();
         $this->tb_dosbing = new DosbingModel();
         $this->tb_ruangan = new RuanganModel() ;
 
@@ -103,6 +105,7 @@ class Sempro extends ResourceController
                 $data['tb_sempro'] = reset($sempro); // Get the first element of the filtered array
                 $data['tb_dafsempro'] = $this->tb_dafsempro->findAll();
                 $data['tb_mhs'] = $this->tb_mhs->findAll();
+                $data['tb_user'] = $this->tb_user->getAll();
                 $data['tb_dosen'] = $this->tb_dosen->findAll();
                 $data['tb_ruangan'] = $this->tb_ruangan->findAll();
 

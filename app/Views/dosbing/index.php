@@ -93,8 +93,8 @@
                                                 <td><?= $key + 1 ?></td>
                                                 <td><?= $value->nim_dafskripsi ?></td>
                                                 <td><?= $value->nama_mhs ?></td>
-                                                <td><?= $value->nama_dosen1 ?></td>
-                                                <td><?= $value->nama_dosen2 ?></td>
+                                                <td><?= $value->nama_dosen1?></td>
+                                                <td><?= $value->nama_dosen2?></td>
                                                 <td>
                                                     <a href="<?= site_url('dosbing/edit/' . $value->id_dosbing) ?>"
                                                        class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>

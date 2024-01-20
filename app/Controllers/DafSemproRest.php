@@ -83,12 +83,20 @@ class DafSemproRest extends ResourceController
                 }
             }
 
+            $idDafskripsi = $this->request->getPost('id_dafskripsi');
+            if ($modelDafSem->where('id_dafskripsi', $idDafskripsi)->first() !== null) {
+                // If id_dafskripsi already exists, throw an exception
+                throw new \Exception("id_dafskripsi '$idDafskripsi' already exists");
+            }
+
             // Save file names to the database
             $data = array_merge(['id_dafskripsi' => $this->request->getPost('id_dafskripsi')], $uploadedFiles);
             $modelDafSem->insert($data);
 
             $dataSempro = [
                 'id_dafsempro' => $modelDafSem->getInsertID(),
+                'penguji2_sempro' ,
+                'penguji3_sempro' ,
             ];
 
             // Save data to the second table (DosbingModel)

@@ -38,12 +38,15 @@ class MahasiswaRest extends ResourceController
 
                 $token = JWT::encode($token, getenv("TOKEN_KEY"), 'HS256');
 
+                $role = "mahasiswa";
+
                 $user_data = [
                     'token' => $token,
                     'nim_mhs' => $nim_mhs,
                     'id_mhs' => $row['id_mhs'],
                     'email_mhs' => $row['email_mhs'],
                     'nama_mhs' => $row['nama_mhs'],
+                    'role' => $role
                 ];
 
                 // Prepare the login result array

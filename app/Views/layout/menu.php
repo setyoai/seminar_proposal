@@ -29,7 +29,7 @@
         </ul>
     </li>
 <!--    <li class="nav-item dropdown">-->
-<!--        <a href="#" class="nav-link has-dropdown"><i class="fas fa-table"></i> <span>Seminar</span></a>-->
+<!--        <a href="#" class="nav-link has-dropdown"><i class="fas fa-table"></i> <span>Penilaian</span></a>-->
 <!--        <ul class="dropdown-menu">-->
 <!--            <li><a class="nav-link" href="--><?php //= site_url('detsempro') ?><!--">Hasil Seminar</a></li>-->
 <!--        </ul>-->
@@ -52,3 +52,4 @@
         </ul>
     </li>
 <?php endif; ?>
+

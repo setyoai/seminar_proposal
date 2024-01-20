@@ -8,7 +8,7 @@ use CodeIgniter\RESTful\ResourceController;
 
 class DafSkripsiRest extends ResourceController
 {
-    protected $modelName = 'App\Models\DafSkripsiModel';
+//    protected $modelName = 'App\Models\DafSkripsiModel';
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -32,7 +32,38 @@ class DafSkripsiRest extends ResourceController
      */
     public function show($id = null)
     {
-        //
+        $modelDafSem = new DafSkripsiModel();
+
+        // Querying the MahasiswaModel for a specific ID
+        $data = $modelDafSem->where('nim_dafskripsi', $id)
+            ->get()
+            ->getResult();
+
+        if (!empty($data)) {
+            // If the data for the specified ID is found
+            $dafskripsi = $data[0]; // Use the first (and only) result
+
+            $dafskripsi_data = [
+                'id_dafskripsi' => $dafskripsi->id_dafskripsi,
+                'nim_dafskripsi' => $dafskripsi->nim_dafskripsi,
+                'krs_dafskripsi' => $dafskripsi->krs_dafskripsi,
+                'transkrip_dafskripsi' => $dafskripsi->transkrip_dafskripsi,
+                'slippembayaran_dafskripsi' => $dafskripsi->slippembayaran_dafskripsi,
+                'status_dafskripsi' => $dafskripsi->status_dafskripsi,
+                'keterangan_dafskripsi' => $dafskripsi->keterangan_dafskripsi,
+            ];
+            $response = [
+                'status' => 200,
+                'error' => false,
+                'message' => 'success',
+                'dafskripsi_data' => $dafskripsi_data,
+            ];
+
+            return $this->respond($response, 200);
+        } else {
+            // If no result found, return a 404 response
+            return $this->failNotFound('Maaf data ' . $id . ' tidak Ditemukan');
+        }
     }
 
     /**
@@ -96,7 +127,9 @@ class DafSkripsiRest extends ResourceController
             $response = [
                 'error' => false,
                 'message' => 'success',
-                'upload_result' => $uploadedFiles
+                'upload_result' => [
+                        'id_dafskripsi' => $modelDafSem->getInsertID(),
+                ] + $uploadedFiles,
             ];
 
             // Return a success response

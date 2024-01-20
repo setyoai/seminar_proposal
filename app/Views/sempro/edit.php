@@ -47,50 +47,97 @@
                     </div>
                     <div class="form-group">
                         <label>Ketua Penguji</label>
-                        <select name="penguji1_sempro" class="form-control" required>
-                            <option value="" hidden></option>
-                            <?php foreach ($tb_dosen as $key => $value) : ?>
-                                <option value="<?= $value->id_dosen ?>"><?= $value->nama_dosen ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Dosen Pembimbing 1</label>
-                        <select name="penguji2_sempro" class="form-control" required>
-                            <option value="" hidden></option>
-                            <?php foreach ($tb_dosen as $key => $value) : ?>
-                                <option value="<?= $value->id_dosen ?>"><?= $value->nama_dosen ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Dosen Pembimbing 2</label>
-                        <select name="penguji3_sempro" class="form-control" required>
-                            <option value="" hidden></option>
-                            <?php foreach ($tb_dosen as $key => $value) : ?>
-                                <option value="<?= $value->id_dosen ?>"><?= $value->nama_dosen ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                            </div>
+                            <select name="penguji1_sempro" class="form-control" required>
+                                <option value="" hidden></option>
+                                <?php foreach ($tb_user as $key => $value) : ?>
+                                    <?php if ($value->level_userid !== 'Operator') : ?>
+                                    <option value="<?= $value->nama_user ?>"><?= $value->nama_user ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>Ruangan *</label>
-                        <select name="id_ruangan" class="form-control" required>
-                            <option value="" hidden></option>
-                            <?php foreach ($tb_ruangan as $key => $value) : ?>
-                                <option value="<?= $value->id_ruangan ?>"><?= $value->nama_ruangan ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                        <label>Anggota Penguji 1</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                            </div>
+                            <select name="penguji2_sempro" class="form-control" required>
+                                <option value="" hidden></option>
+                                <?php foreach ($tb_user as $key => $value) : ?>
+                                    <?php if ($value->level_userid !== 'Operator') : ?>
+                                        <option value="<?= $value->nama_user ?>"><?= $value->nama_user ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Anggota Penguji 2</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                            </div>
+                            <select name="penguji3_sempro" class="form-control" required>
+                                <option value="" hidden></option>
+                                <?php foreach ($tb_user as $key => $value) : ?>
+                                    <?php if ($value->level_userid !== 'Operator') : ?>
+                                        <option value="<?= $value->nama_user ?>"><?= $value->nama_user ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Ruangan</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                            </div>
+                                <select name="id_ruangan" class="form-control" required>
+                                    <option value="" hidden></option>
+                                    <?php foreach ($tb_ruangan as $key => $value) : ?>
+                                        <option value="<?= $value->id_ruangan ?>"><?= $value->nama_ruangan ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                         </div>
                     </div>
                     <div class="form-group">
                         <label>Tanggal</label>
-                        <input type="date" name="tanggal_sempro" value="<?= $tb_sempro->tanggal_sempro ?>"
-                               class="form-control" required autofocus>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                            </div>
+                            <input type="date" name="tanggal_sempro" value="<?= $tb_sempro->tanggal_sempro ?>"
+                                   class="form-control" required autofocus>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Jam</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                            </div>
                         <input type="time" name="jam_sempro" value="<?= $tb_sempro->jam_sempro ?>" class="form-control"
                                required autofocus>
+                        </div>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-primary mr-1">Simpan</button>

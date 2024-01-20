@@ -86,8 +86,8 @@
                                     <th>Jam</th>
                                     <th>Tanggal</th>
                                     <th>Ketua Penguji</th>
-                                    <th>Dosen Pembimbing 1</th>
-                                    <th>Dosen Pembimbing 2</th>
+                                    <th>Anggota Penguji 1</th>
+                                    <th>Anggota Penguji 2</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -101,9 +101,9 @@
                                             <td><?= $value->nama_ruangan ?></td>
                                             <td><?= $value->jam_sempro ?></td>
                                             <td><?= $value->tanggal_sempro ?></td>
-                                            <td><?= $value->penguji1_nama ?></td>
-                                            <td><?= $value->penguji2_nama ?></td>
-                                            <td><?= $value->penguji3_nama ?></td>
+                                            <td><?= $value->penguji1_sempro?></td>
+                                            <td><?= $value->penguji2_sempro ?></td>
+                                            <td><?= $value->penguji3_sempro ?></td>
                                             <td>
                                                 <a href="<?= site_url('sempro/' . $value->id_sempro . '/edit') ?>"
                                                    class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>

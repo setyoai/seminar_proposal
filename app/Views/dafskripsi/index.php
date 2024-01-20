@@ -45,8 +45,8 @@
                             <th>Nama</th>
                             <th>Tanggal</th>
                             <th>KRS</th>
-                            <th>Slip Pembayaran</th>
                             <th>Transkrip Nilai</th>
+                            <th>Slip Pembayaran</th>
                             <th>Status</th>
                             <th>Keterangan</th>
                             <th>Action</th>
@@ -60,8 +60,8 @@
                                 <td><?= $value->nama_dafskripsi ?></td>
                                 <td><?= $value->tanggal_dafskripsi ?></td>
                                 <td><a href="<?= base_url('upload/' . $value->krs_dafskripsi) ?>" target="_blank">KRS</a></td>
-                                <td><a href="<?= base_url('upload/' . $value->slippembayaran_dafskripsi) ?>" target="_blank">Slip Pembayaran</a></td>
                                 <td><a href="<?= base_url('upload/' . $value->transkrip_dafskripsi) ?>" target="_blank">Transkrip Nilai</a></td>
+                                <td><a href="<?= base_url('upload/' . $value->slippembayaran_dafskripsi) ?>" target="_blank">Slip Pembayaran</a></td>
                                 <td>
                                     <?php
                                     $status = $value->status_dafskripsi;
