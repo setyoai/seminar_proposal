@@ -14,6 +14,7 @@ class DafSemproModel extends Model
     protected $allowedFields    = [
         'id_dafsempro',
         'id_dafskripsi',
+        'judul_dafsempro',
         'transkrip_dafsempro',
         'pengesahan_dafsempro',
         'bukubimbingan_dafsempro',

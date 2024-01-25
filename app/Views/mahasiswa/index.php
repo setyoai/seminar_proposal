@@ -49,6 +49,7 @@
                                 <th>Email</th>
                                 <th>Alamat</th>
                                 <th>No Handphone</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -61,6 +62,26 @@
                                     <td><?= $value->email_mhs ?></td>
                                     <td><?= $value->alamat_mhs ?></td>
                                     <td><?= $value->nohp_mhs ?></td>
+                                    <td>
+                                        <?php
+                                        $status = $value->status_mhs;
+
+                                        // Determine the appropriate badge class and text based on the status
+                                        if ($status == 1) {
+                                            $badge_class = 'badge-success';
+                                            $badge_text = 'Diterima';
+                                        } elseif ($status == 2) {
+                                            $badge_class = 'badge-danger';
+                                            $badge_text = 'Ditolak'; // Change this to your desired text for status 2
+                                        } else {
+                                            $badge_class = 'badge-warning';
+                                            $badge_text = 'Menunggu';
+                                        }
+                                        ?>
+
+                                        <!-- Display a badge with the determined class and text -->
+                                        <span class="badge <?= $badge_class ?>"><?= $badge_text ?></span>
+                                    </td>
                                     <td>
                                         <a href="<?= site_url('mahasiswa/edit/' . $value->id_mhs) ?>"
                                            class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>

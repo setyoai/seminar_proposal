@@ -4,10 +4,8 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 
-class JudulRest extends ResourceController
+class SemproRest extends ResourceController
 {
-
-        protected $modelName = 'App\Models\JudulModel';
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -15,11 +13,7 @@ class JudulRest extends ResourceController
      */
     public function index()
     {
-        $data = [
-            'tb_judulskripsi' => $this->model->findAll()
-        ];
-
-        return $this->respond($data, 200);
+        //
     }
 
     /**

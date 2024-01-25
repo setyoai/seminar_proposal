@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\DafSemproModel;
 use App\Models\DafSkripsiModel;
+use App\Models\DetSemproModel;
 use App\Models\DosbingModel;
 use App\Models\UserModel;
 use CodeIgniter\RESTful\ResourceController;
@@ -16,10 +17,12 @@ class Sempro extends ResourceController
 {
     protected $helpers = ['custom'];
 
+
     function __construct()
     {
         $this->tb_sempro = new SemproModel();
         $this->tb_dafsempro = new DafSemproModel();
+        $this->tb_detsempro = new DetSemproModel();
         $this->tb_dafskripsi = new DafSkripsiModel();
         $this->tb_mhs = new MahasiswaModel();
         $this->tb_dosen = new DosenModel();
@@ -36,6 +39,7 @@ class Sempro extends ResourceController
      */
     public function index()
     {
+        $data['dosbingModel'] = new \App\Models\DosbingModel();
         $data['tb_dafsempro'] = $this->tb_dafsempro->getAll();
         $data['tb_sempro'] = $this->tb_sempro->getAll();
         return view('sempro/index' ,$data);
@@ -89,6 +93,7 @@ class Sempro extends ResourceController
      */
     public function edit($id = null)
     {
+        $data['dosbingModel'] = new \App\Models\DosbingModel();
         // Find the user with the given $id
         $tb_sempro = $this->tb_sempro->getAll(); // Assuming you have a getAll method in your model
 
@@ -128,9 +133,86 @@ class Sempro extends ResourceController
      */
     public function update($id = null)
     {
+//        $modelSempro = new DetSemproModel();
+        $modelSempro = new SemproModel();
+        $data = $modelSempro->where('id_sempro', $id)
+            ->get()
+            ->getResult();
+
+        $sempro = $data[0];
+
         $data = $this->request->getPost();
         $this->tb_sempro->update($id, $data);
+
+        $detSemproData = $modelSempro->find($id);
+
+        $this->insertDetSempro($id,  $sempro->id_dafsempro, $sempro->penguji1_sempro, "Ketua Penguji", $sempro->tanggal_sempro);
+        // Insert into tb_detsempro for Anggota Penguji 1 (penguji2_sempro)
+        $this->insertDetSempro($id,  $sempro->id_dafsempro, $sempro->penguji2_sempro, "Anggota Penguji", $sempro->tanggal_sempro);
+//        // Insert into tb_detsempro for Anggota Penguji 2 (penguji3_sempro)
+        $this->insertDetSempro($id,  $sempro->id_dafsempro, $sempro->penguji3_sempro, "Anggota Penguji", $sempro->tanggal_sempro);
+
         return redirect()->to(site_url('sempro'))->with('success', 'Data Berhasil Diupdate');
+    }
+
+//    private function isUnique($data)
+//    {
+//        if (!isset($data['id_sempro'])) {
+//            return false; // Return false if 'id_sempro' is not set
+//        }
+//
+//        // Extract relevant fields for uniqueness check
+//        $id_ruangan = $data['id_ruangan'];
+//        $jam_sempro = $data['jam_sempro'];
+//        $tanggal_sempro = $data['tanggal_sempro'];
+//
+//        // Query to check if the combination is unique
+//        $existingRecord = $this->tb_sempro
+//            ->where('id_ruangan', $id_ruangan)
+//            ->where('jam_sempro', $jam_sempro)
+//            ->where('tanggal_sempro', $tanggal_sempro)
+//            ->where('id_sempro !=', $data['id_sempro']) // Exclude the current record being updated
+//            ->first();
+//
+//        // Return true if the combination is unique, false otherwise
+//        return $existingRecord === null;
+//    }
+
+    /**
+     * Insert data into tb_detsempro
+     *
+     * @param int $idSempro
+     * @param int $idDafsempro
+     * @param int $idDosen
+     * @param string $levelDosen
+     * @param string $tanggalDetsempro
+     */
+
+    private function insertDetSempro(int $idSempro, int $idDafsempro, int $idDosen, string $levelDosen, string $tanggalDetsempro)
+    {
+        $existingRecord = $this->tb_detsempro
+            ->where('id_sempro', $idSempro)
+            ->where('id_dafsempro', $idDafsempro)
+            ->where('id_dosen', $idDosen)
+            ->first();
+
+        // If no record found, insert the new data
+        if (!$existingRecord) {
+            $detSemproData = [
+                'id_sempro' => $idSempro,
+                'id_dafsempro' => $idDafsempro,
+                'id_dosen' => $idDosen,
+                'leveldosen_detsempro' => $levelDosen,
+                'tanggal_detsempro' => $tanggalDetsempro,
+            ];
+
+            // Insert the data into tb_detsempro
+            $this->tb_detsempro->insert($detSemproData);
+        } else {
+            // Handle the case where a record with the same combination already exists
+            // You can throw an exception, log a message, or handle it according to your application's requirements
+            // Example: throw new \Exception('Record with the same combination already exists.');
+        }
     }
 
     /**

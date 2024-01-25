@@ -24,6 +24,28 @@
                         <form action="<?= site_url('dafsempro/update/' . $tb_dafsempro->id_dafsempro) ?>" method="post"
                               autocomplete="off">
                             <?= csrf_field() ?>
+                            <h2 class="section-title mt-1">File </h2>
+                            <div class="col-12" style="margin-bottom: 20px;">
+                                <h6 style="color: #718eef;">Transkrip Nilai</h6>
+                                <a href="<?= base_url('upload/' . $tb_dafsempro->transkrip_dafsempro) ?>" target="_blank">
+                                    <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                        <path fill="#6777ef" d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm160-14.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"/></svg>
+                                </a>
+                            </div>
+                            <div class="col-12" style="margin-bottom: 20px;">
+                                <h6 style="color: #718eef;">Halaman Pengesahan</h6>
+                                <a href="<?= base_url('upload/' . $tb_dafsempro->pengesahan_dafsempro) ?>" target="_blank">
+                                    <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                        <path fill="#6777ef" d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm160-14.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"/></svg>
+                                </a>
+                            </div>
+                            <div class="col-12">
+                                <h6 style="color: #718eef;">Slip Pembayaran</h6>
+                                <a href="<?= base_url('upload/' . $tb_dafsempro->slippembayaran_dafsempro) ?>" target="_blank">
+                                    <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                        <path fill="#6777ef" d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm160-14.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"/></svg>
+                                </a>
+                            </div>
                             <div class="section-title">Select</div>
                             <div class="form-group">
                                 <label>Choose One</label>

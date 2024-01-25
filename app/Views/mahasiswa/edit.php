@@ -55,7 +55,7 @@
                                         </div>
                                     </div>
                                     <input type="text" name="nama_mhs" value="<?= $tb_mhs->nama_mhs ?>" class="form-control"
-                                       required autofocus>
+                                      >
                                 </div>
                             </div>
                             <div class="form-group">
@@ -67,7 +67,7 @@
                                         </div>
                                     </div>
                                     <input type="text" name="email_mhs" value="<?= $tb_mhs->email_mhs ?>" class="form-control"
-                                       required autofocus>
+                                      >
                                 </div>
                             </div>
                             <div class="form-group">
@@ -79,7 +79,7 @@
                                         </div>
                                     </div>
                                     <input type="text" name="alamat_mhs" value="<?= $tb_mhs->alamat_mhs ?>" class="form-control"
-                                       required autofocus>
+                                      >
                                 </div>
                             </div>
                             <div class="form-group">
@@ -91,8 +91,20 @@
                                         </div>
                                     </div>
                                     <input type="text" name="nohp_mhs" value="<?= $tb_mhs->nohp_mhs ?>" class="form-control"
-                                       required autofocus>
+                                      >
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Choose One</label>
+                                <select class="custom-select" name="status_mhs">
+                                    <option selected>Select status</option>
+                                    <option <?php echo $tb_mhs->status_mhs == '1' ? 'selected' : ''; ?>
+                                            value="1">Diterima
+                                    </option>
+                                    <option <?php echo $tb_mhs->status_mhs == '2' ? 'selected' : ''; ?>
+                                            value="2">Ditolak
+                                    </option>
+                                </select>
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary mr-1">Simpan</button>

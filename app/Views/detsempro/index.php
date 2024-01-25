@@ -54,25 +54,25 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($tb_sempro as $key => $value) : ?>
+                        <?php foreach ($tb_detsempro as $key => $value) : ?>
                             <tr>
                                 <td><?= $key + 1 ?></td>
-                                <td><?= $value->nim_mhs ?></td>
-                                <td><?= $value->nama_mhs?></td>
+                                <td><?= $value->nim_detsempro ?></td>
+                                <td><?= $value->nama_detsempro?></td>
                                 <td><?= $value->nama_ruangan?></td>
                                 <td><?= $value->jam_sempro ?></td>
                                 <td><?= $value->tanggal_sempro ?></td>
                                 <td><?= $value->hasil_sempro?></td>
                                 <td>
-                                    <a href="<?= site_url('sempro/' . $value->id_sempro . '/edit') ?>"
+                                    <a href="<?= site_url('detsempro/' . $value->id_detsempro . '/edit') ?>"
                                        class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                    <form action="<?= site_url('sempro/' . $value->id_sempro) ?>" method="post"
-                                          class="d-inline" id="del-<?= $value->id_sempro ?>">
+                                    <form action="<?= site_url('detsempro/' . $value->id_detsempro) ?>" method="post"
+                                          class="d-inline" id="del-<?= $value->id_detsempro ?>">
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button class="btn btn-danger btn-sm"
                                                 data-confirm="Hapus Data?|Apakah Anda yakin?"
-                                                data-confirm-yes="submitDel(<?= $value->id_sempro ?>)">
+                                                data-confirm-yes="submitDel(<?= $value->id_detsempro ?>)">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>

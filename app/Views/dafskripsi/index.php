@@ -1,3 +1,15 @@
+<?php
+// Define a custom sorting function to compare dates
+function sortByDate($a, $b) {
+    $dateA = strtotime($a->tanggal_dafskripsi);
+    $dateB = strtotime($b->tanggal_dafskripsi);
+
+    return $dateB - $dateA; // Sort in descending order
+}
+
+// Sort the array based on the custom sorting function
+usort($tb_dafskripsi, 'sortByDate');
+?>
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('content') ?>
@@ -44,9 +56,6 @@
                             <th>Nim</th>
                             <th>Nama</th>
                             <th>Tanggal</th>
-                            <th>KRS</th>
-                            <th>Transkrip Nilai</th>
-                            <th>Slip Pembayaran</th>
                             <th>Status</th>
                             <th>Keterangan</th>
                             <th>Action</th>
@@ -58,10 +67,7 @@
                                 <td><?= $key + 1 ?></td>
                                 <td><?= $value->nim_dafskripsi ?></td>
                                 <td><?= $value->nama_dafskripsi ?></td>
-                                <td><?= $value->tanggal_dafskripsi ?></td>
-                                <td><a href="<?= base_url('upload/' . $value->krs_dafskripsi) ?>" target="_blank">KRS</a></td>
-                                <td><a href="<?= base_url('upload/' . $value->transkrip_dafskripsi) ?>" target="_blank">Transkrip Nilai</a></td>
-                                <td><a href="<?= base_url('upload/' . $value->slippembayaran_dafskripsi) ?>" target="_blank">Slip Pembayaran</a></td>
+                                <td><?= (new DateTime($value->tanggal_dafskripsi))->format('d-m-Y') ?></td>
                                 <td>
                                     <?php
                                     $status = $value->status_dafskripsi;

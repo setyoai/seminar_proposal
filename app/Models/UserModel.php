@@ -13,8 +13,13 @@ class UserModel extends Model
 
     public function cekLogin($username_user)
     {
-        $query = $this->table($this->table)->getWhere(['username_user' => $username_user]);
-        return $query;
+        $query = $this->db->table('tb_user')
+            ->select('tb_user.*, tb_dosen.id_dosen AS id_dosen')
+            ->join('tb_dosen', 'tb_dosen.nidn_dosen = tb_user.username_user', 'left')
+            ->where(['username_user' => $username_user])
+            ->get();
+
+        return $query->getRow();
     }
 
     function getAll()

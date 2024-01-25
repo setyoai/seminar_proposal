@@ -18,6 +18,7 @@ class DetSempro extends ResourceController
         $this->tb_dosen= new DosenModel();
         $this->tb_ruangan = new RuanganModel() ;
         $this->tb_sempro = new SemproModel();
+        $this->tb_detsempro = new DetSemproModel();
     }
     /**
      * Return an array of resource objects, themselves in array format
@@ -26,8 +27,8 @@ class DetSempro extends ResourceController
      */
     public function index()
     {
-//        $data['tb_detsempro'] = $this->model->findAll();
-        $data['tb_sempro'] = $this->tb_sempro->getAll();
+        $data['tb_detsempro'] = $this->tb_detsempro->getAll();
+//        $data['tb_sempro'] = $this->tb_sempro->getAll();
         return view('detsempro/index' ,$data);
     }
 

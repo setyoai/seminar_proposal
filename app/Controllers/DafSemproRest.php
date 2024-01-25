@@ -63,6 +63,7 @@ class DafSemproRest extends ResourceController
             $allowedFields = [
                 'id_dafsempro',
                 'id_dafskripsi',
+                'judul_dafsempro',
                 'transkrip_dafsempro',
                 'pengesahan_dafsempro',
                 'bukubimbingan_dafsempro',
@@ -90,13 +91,12 @@ class DafSemproRest extends ResourceController
             }
 
             // Save file names to the database
-            $data = array_merge(['id_dafskripsi' => $this->request->getPost('id_dafskripsi')], $uploadedFiles);
+            $data = array_merge(['id_dafskripsi' => $this->request->getPost('id_dafskripsi')], $uploadedFiles,
+                ['judul_dafsempro' => $this->request->getPost('judul_dafsempro')]);
             $modelDafSem->insert($data);
 
             $dataSempro = [
                 'id_dafsempro' => $modelDafSem->getInsertID(),
-                'penguji2_sempro' ,
-                'penguji3_sempro' ,
             ];
 
             // Save data to the second table (DosbingModel)

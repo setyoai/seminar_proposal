@@ -25,4 +25,15 @@ class DosbingModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+
+    public function getDosenNameById($id_dosen)
+    {
+        $builder = $this->db->table('tb_dosen');
+        $builder->select('nama_dosen');
+        $builder->where('id_dosen', $id_dosen);
+        $query = $builder->get();
+        $result = $query->getRow();
+
+        return ($result) ? $result->nama_dosen : null;
+    }
 }

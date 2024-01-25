@@ -85,12 +85,14 @@ class MahasiswaRest extends ResourceController
             // If the data for the specified ID is found
             $mahasiswa = $data[0]; // Use the first (and only) result
 
+            $role = "mahasiswa";
             $user_data = [
                 'id_mhs' => $mahasiswa->id_mhs,
                 'nim_mhs' => $mahasiswa->nim_mhs,
                 'nama_mhs' => $mahasiswa->nama_mhs,
                 'alamat_mhs' => $mahasiswa->alamat_mhs,
                 'photo_mhs' => $mahasiswa->photo_mhs,
+                'role' => $role
             ];
             $response = [
                 'status' => 200,

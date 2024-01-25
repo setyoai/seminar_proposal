@@ -22,10 +22,8 @@ class UserRest extends ResourceController
 
         $cekUser = $loginUser->cekLogin($username_user);
 
-        if (count($cekUser->getResultArray()) > 0 ) {
-
-            $row = $cekUser->getRowArray();
-            $password_hash = $row['password_user'];
+        if ($cekUser) {
+            $password_hash = $cekUser->password_user;
 
             if (password_verify($password_user, $password_hash)) {
                 $issuedate_claim = time();
@@ -39,16 +37,12 @@ class UserRest extends ResourceController
                 $token = JWT::encode($token, getenv("TOKEN_KEY"), 'HS256');
 
                 $role = "dosen";
-                foreach ($users as $user) {
-                    // Akses informasi nama dosen
-                    $namaDosen = $user->nama_user;
-                }
 
                 $user_data = [
                     'token' => $token,
                     'username_user' => $username_user,
-                    'id_user' => $row['id_user'],
-                    'nama_dosen' => $namaDosen,
+                    'id_user' => $cekUser->id_user,
+                    'id_dosen' => $cekUser->id_dosen,
                     'role' => $role
                 ];
 
@@ -77,41 +71,49 @@ class UserRest extends ResourceController
      */
     public function show($id = null)
     {
-        $usermodel = new UserModel();
-        $users = $usermodel->getAll();
+        $userModel = new UserModel();
+        $userData = $userModel->find($id);
 
-        // Querying the MahasiswaModel for a specific ID
-        $data = $usermodel->where('id_user', $id)
-            ->get()
-            ->getResult();
+        if (!empty($userData)) {
+            // Use $userData directly as an object
+            $namaDosen = $this->getNamaDosen($userData->username_user);
 
-        foreach ($users as $user) {
-            // Akses informasi nama dosen
-            $namaDosen = $user->nama_user;
-        }
-
-        if (!empty($data)) {
-            // If the data for the specified ID is found
-            $user = $data[0]; // Use the first (and only) result
-
-            $user_dosen = [
-                'id_user' => $user->id_user,
-                'username' => $user->username_user,
-                'nama' => $namaDosen
+            $userDetails = [
+                'id_user' => $userData->id_user,
+                'username' => $userData->username_user,
+                'nama_dosen' => $namaDosen,
             ];
+
             $response = [
                 'status' => 200,
                 'error' => false,
                 'message' => 'success',
-                'user_dosen' => $user_dosen,
+                'user_details' => $userDetails,
             ];
 
             return $this->respond($response, 200);
         } else {
-            // If no result found, return a 404 response
             return $this->failNotFound('Maaf data ' . $id . ' tidak Ditemukan');
         }
     }
+
+    private function getNamaDosen($usernameUser)
+    {
+        $db = \Config\Database::connect();
+
+        $builder = $db->table('tb_dosen');
+        $builder->select('nama_dosen');
+        $builder->where('nidn_dosen', $usernameUser);
+        $query = $builder->get();
+
+        if ($query->getResult()) {
+            return $query->getRow()->nama_dosen;
+        } else {
+            return null;
+        }
+    }
+
+
 
     /**
      * Return a new resource object, with default properties

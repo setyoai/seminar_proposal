@@ -50,8 +50,12 @@ $routes->get('userrest/(:num)', 'UserRest::show/$1');
 $routes->post('userrest', 'UserRest::create');
 $routes->put('userrest/(:num)', 'UserRest::update/$1');
 
+//Api Penilain Sempro
+$routes->get('detsemprorest', 'DetSemproRest::index');
+$routes->get('detsemprorest/(:num)', 'DetSemproRest::show/$1');
+$routes->post('detsemprorest', 'DetSemproRest::create');
+$routes->put('detsemprorest/(:num)', 'DetSemproRest::update/$1');
 
-$routes->resource('dafsemprorest');
 $routes->resource('judulrest');
 
 

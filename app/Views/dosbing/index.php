@@ -1,3 +1,15 @@
+<?php
+// Define a custom sorting function to compare dates
+function sortByDate($a, $b) {
+    $dateA = strtotime($a->tanggal_dosbing);
+    $dateB = strtotime($b->tanggal_dosbing);
+
+    return $dateB - $dateA; // Sort in descending order
+}
+
+// Sort the array based on the custom sorting function
+usort($tb_dosbing, 'sortByDate');
+?>
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('content') ?>

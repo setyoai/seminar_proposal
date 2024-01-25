@@ -20,7 +20,7 @@
         </div>
     <?php endif; ?>
     <?php if (session()->getFlashdata('error')) : ?>
-        <div class="alert alert-danger alert-dismissable show fade">
+        <div class="alert alert-danger alert-dismissible show fade">
             <div class="alert-body">
                 <button class="close" data-dismiss="alert">x</button>
                 <b>Error !</b>
@@ -57,7 +57,7 @@
                                 </thead>
                                 <tbody>
                                 <?php foreach ($tb_sempro as $key => $value) : ?>
-                                    <?php if ($value->id_ruangan == null) : ?>
+                                    <?php if ($value->nama_ruanganid == null && $value->status_dafsempro == 1) : ?>
                                         <tr>
                                             <td><?= $key + 1 ?></td>
                                             <td><?= $value->nim_sempro?></td>
@@ -93,30 +93,30 @@
                                 </thead>
                                 <tbody>
                                 <?php foreach ($tb_sempro as $key => $value) : ?>
-                                    <?php if ($value->id_ruangan !== null) : ?>
+                                    <?php if ($value->nama_ruanganid !== null) : ?>
                                         <tr>
                                             <td><?= $key + 1 ?></td>
                                             <td><?= $value->nim_sempro ?></td>
                                             <td><?= $value->nama_sempro ?></td>
                                             <td><?= $value->nama_ruangan ?></td>
-                                            <td><?= $value->jam_sempro ?></td>
-                                            <td><?= $value->tanggal_sempro ?></td>
-                                            <td><?= $value->penguji1_sempro?></td>
-                                            <td><?= $value->penguji2_sempro ?></td>
-                                            <td><?= $value->penguji3_sempro ?></td>
+                                            <td><?= (new DateTime($value->jam_sempro))->format('H:i') ?></td>
+                                            <td><?= (new DateTime($value->tanggal_sempro))->format('d-m-Y') ?></td>
+                                            <td><?= esc($dosbingModel->getDosenNameById($value->penguji1_sempro)) ?></td>
+                                            <td><?= esc($dosbingModel->getDosenNameById($value->penguji2_sempro)) ?></td>
+                                            <td><?= esc($dosbingModel->getDosenNameById($value->penguji3_sempro)) ?></td>
                                             <td>
                                                 <a href="<?= site_url('sempro/' . $value->id_sempro . '/edit') ?>"
                                                    class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                                <form action="<?= site_url('sempro/' . $value->id_sempro) ?>" method="post"
-                                                      class="d-inline" id="del-<?= $value->id_sempro ?>">
-                                                    <?= csrf_field() ?>
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <button class="btn btn-danger btn-sm"
-                                                            data-confirm="Hapus Data?|Apakah Anda yakin?"
-                                                            data-confirm-yes="submitDel(<?= $value->id_sempro ?>)">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </form>
+<!--                                                <form action="--><?php //= site_url('sempro/' . $value->id_sempro) ?><!--" method="post"-->
+<!--                                                      class="d-inline" id="del---><?php //= $value->id_sempro ?><!--">-->
+<!--                                                    --><?php //= csrf_field() ?>
+<!--                                                    <input type="hidden" name="_method" value="DELETE">-->
+<!--                                                    <button class="btn btn-danger btn-sm"-->
+<!--                                                            data-confirm="Hapus Data?|Apakah Anda yakin?"-->
+<!--                                                            data-confirm-yes="submitDel(--><?php //= $value->id_sempro ?><!--)">-->
+<!--                                                        <i class="fas fa-trash"></i>-->
+<!--                                                    </button>-->
+<!--                                                </form>-->
                                             </td>
                                         </tr>
                                     <?php endif; ?>
