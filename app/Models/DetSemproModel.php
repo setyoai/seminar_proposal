@@ -30,6 +30,7 @@ class DetSemproModel extends Model
             tb_sempro.jam_sempro,
              tb_sempro.nama_ruanganid, 
             tb_sempro.hasil_sempro,
+            tb_dafsempro.judul_dafsempro,
             tb_dafskripsi.nim_dafskripsi AS nim_detsempro, 
             m.nama_mhs AS nama_detsempro, 
             tb_ruangan.nama_ruangan'

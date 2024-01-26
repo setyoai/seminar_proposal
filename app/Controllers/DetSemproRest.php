@@ -68,21 +68,20 @@ class DetSemproRest extends ResourceController
 
             foreach ($data as $detSempro) {
                 $detsempro_data[] = [
+                    'id_detsempro' => $detSempro->id_detsempro,
                     'id_sempro' => $detSempro->id_sempro,
                     'ketrev_detsempro' => $detSempro->ketrev_detsempro,
                     'level_dosen' => $detSempro->leveldosen_detsempro,
                     'nim_detsempro' => $detSempro->nim_detsempro,
                     'nama_detsempro' => $detSempro->nama_detsempro,
                     'nama_ruangan' => $detSempro->nama_ruangan,
+                    'judul_dafsempro' => $detSempro->judul_dafsempro,
                     'jam_sempro' => $detSempro->jam_sempro,
                     'tanggal_sempro' => $detSempro->tanggal_sempro,
                 ];
             }
 
             $response = [
-                'status' => 200,
-                'error' => false,
-                'message' => 'success',
                 'detsempro_data' => $detsempro_data,
             ];
 
@@ -93,23 +92,6 @@ class DetSemproRest extends ResourceController
         }
     }
 
-
-
-    private function getIdDafSkripsi($usernameUser)
-    {
-        $db = \Config\Database::connect();
-
-        $builder = $db->table('tb_dafskripsi');
-        $builder->select('nim_dafskripsi');
-        $builder->where('id_dafskripsi', $usernameUser);
-        $query = $builder->get();
-
-        if ($query->getResult()) {
-            return $query->getRow()->nim_dafskripsi;
-        } else {
-            return null;
-        }
-    }
 
     /**
      * Return a new resource object, with default properties
@@ -149,30 +131,51 @@ class DetSemproRest extends ResourceController
     public function update($id = null)
     {
         $detSemproModel = new DetSemproModel();
-        $data = $detSemproModel->where('id_detsempro', $id)
+        $semproModel = new SemproModel();
+
+        // Retrieve data from the 'tb_detsempro' table
+        $dataDetSempro = $detSemproModel->where('id_detsempro', $id)
             ->get()
             ->getResult();
 
-        if (empty($data)) {
+        if (empty($dataDetSempro)) {
             return $this->failNotFound('Maaf data ' . $id . ' tidak Ditemukan');
         }
 
-        $dafsempro = $data[0];
+        $dafsempro = $dataDetSempro[0];
+
+        // Retrieve data from the 'tb_sempro' table
+        $dataSempro = $semproModel->where('id_sempro', $dafsempro->id_sempro)
+            ->get()
+            ->getResult();
+
+        if (empty($dataSempro)) {
+            return $this->failNotFound('Maaf data sempro tidak Ditemukan');
+        }
 
         $rawData = $this->request->getRawInput();
 
-        $updateData = [
+        // Update data for 'tb_detsempro'
+        $updateDataDetSempro = [
             'ketrev_detsempro' => $rawData['ketrev_detsempro'] ?? $dafsempro->ketrev_detsempro,
         ];
 
-        $detSemproModel->update(['id_detsempro' => $id], $updateData);
+        $detSemproModel->update(['id_detsempro' => $id], $updateDataDetSempro);
+
+        // Update data for 'tb_sempro'
+        $updateDataSempro = [
+            'status_sempro' => $rawData['status_sempro'] ?? $dataSempro[0]->status_sempro,
+            'hasil_sempro' => $rawData['hasil_sempro'] ?? $dataSempro[0]->hasil_sempro,
+            // Add other fields to update in 'tb_sempro' if needed
+        ];
+
+        $semproModel->update(['id_sempro' => $dafsempro->id_sempro], $updateDataSempro);
 
         // Prepare a response
         $response = [
-            'status' => 200,
-            'error' => false,
-            'message' => 'success',
-            'user_update' => [
+            'update_status' => [
+                'error' => false,
+                'message' => 'success',
                 'ketrev_detsempro' => $dafsempro->ketrev_detsempro,
             ]
         ];

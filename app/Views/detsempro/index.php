@@ -54,25 +54,44 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($tb_detsempro as $key => $value) : ?>
+                        <?php foreach ($tb_sempro as $key => $value) : ?>
                             <tr>
                                 <td><?= $key + 1 ?></td>
-                                <td><?= $value->nim_detsempro ?></td>
-                                <td><?= $value->nama_detsempro?></td>
+                                <td><?= $value->nim_sempro ?></td>
+                                <td><?= $value->nama_sempro?></td>
                                 <td><?= $value->nama_ruangan?></td>
                                 <td><?= $value->jam_sempro ?></td>
-                                <td><?= $value->tanggal_sempro ?></td>
-                                <td><?= $value->hasil_sempro?></td>
+                                <td><?= (new DateTime($value->tanggal_sempro))->format('d-m-Y') ?></td>
                                 <td>
-                                    <a href="<?= site_url('detsempro/' . $value->id_detsempro . '/edit') ?>"
+                                    <?php
+                                    $status = $value->hasil_sempro;
+
+                                    // Determine the appropriate badge class and text based on the status
+                                    if ($status == 'Diterima') {
+                                        $badge_class = 'badge-success';
+                                        $badge_text = 'Diterima';
+                                    } elseif ($status == 'Ditolak') {
+                                        $badge_class = 'badge-danger';
+                                        $badge_text = 'Ditolak'; // Change this to your desired text for status 2
+                                    } else {
+                                        $badge_class = 'badge-warning';
+                                        $badge_text = 'Menunggu';
+                                    }
+                                    ?>
+
+                                    <!-- Display a badge with the determined class and text -->
+                                    <span class="badge <?= $badge_class ?>"><?= $badge_text ?></span>
+                                </td>
+                                <td>
+                                    <a href="<?= site_url('detsempro/' . $value->id_sempro . '/edit') ?>"
                                        class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                    <form action="<?= site_url('detsempro/' . $value->id_detsempro) ?>" method="post"
-                                          class="d-inline" id="del-<?= $value->id_detsempro ?>">
+                                    <form action="<?= site_url('detsempro/' . $value->id_sempro) ?>" method="post"
+                                          class="d-inline" id="del-<?= $value->id_sempro ?>">
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button class="btn btn-danger btn-sm"
                                                 data-confirm="Hapus Data?|Apakah Anda yakin?"
-                                                data-confirm-yes="submitDel(<?= $value->id_detsempro ?>)">
+                                                data-confirm-yes="submitDel(<?= $value->id_sempro ?>)">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
