@@ -100,7 +100,7 @@
                                             <td><?= $value->nama_sempro ?></td>
                                             <td><?= $value->nama_ruangan ?></td>
                                             <td><?= (new DateTime($value->jam_sempro))->format('H:i') ?></td>
-                                            <td><?= (new DateTime($value->tanggal_sempro))->format('d-m-Y') ?></td>
+                                            <td><?= (new DateTime($value->tanggal_sempro))->format('D, d M Y') ?></td>
                                             <td><?= esc($dosbingModel->getDosenNameById($value->penguji1_sempro)) ?></td>
                                             <td><?= esc($dosbingModel->getDosenNameById($value->penguji2_sempro)) ?></td>
                                             <td><?= esc($dosbingModel->getDosenNameById($value->penguji3_sempro)) ?></td>

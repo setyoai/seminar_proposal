@@ -54,7 +54,7 @@
                             </thead>
                             <tbody>
                             <?php foreach ($tb_user as $key => $value) : ?>
-                                 <?php if ($value->level_userid == 'Dosen') : ?>
+                                 <?php if ($value->level_userid != 'Operator') : ?>
                                     <tr>
                                         <td><?= $key + 1 ?></td>
                                         <td><?= $value->nidn_dosen ?></td>

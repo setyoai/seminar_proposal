@@ -15,7 +15,7 @@ class DosbingModel extends Model
     {
         $builder = $this->db->table('tb_dosbing');
         $builder->select('tb_dosbing.*, tb_dafskripsi.nim_dafskripsi, m.nama_mhs AS nama_mhs, 
-                d1.nama_dosen AS nama_dosen1, d2.nama_dosen AS nama_dosen2,');
+                d1.nama_dosen AS nama_dosen1, d2.nama_dosen AS nama_dosen2, tb_dafskripsi.status_dafskripsi');
 
         $builder->join('tb_dafskripsi', 'tb_dafskripsi.id_dafskripsi = tb_dosbing.dafskripsiid_dosbing ', 'left');
         $builder->join('tb_mhs m',    'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');

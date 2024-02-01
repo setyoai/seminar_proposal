@@ -69,7 +69,7 @@ usort($tb_dosbing, 'sortByDate');
                                     </thead>
                                     <tbody>
                                     <?php foreach ($tb_dosbing as $key => $value) : ?>
-                                            <?php if ($value->dosen1_dosbing == null) : ?>
+                                            <?php if ($value->dosen1_dosbing == null && $value->status_dafskripsi == 1) : ?>
                                             <tr>
                                                 <td><?= $key + 1 ?></td>
                                                 <td><?= $value->nim_dafskripsi ?></td>

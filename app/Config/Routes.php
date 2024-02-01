@@ -44,6 +44,12 @@ $routes->get('dafskripsirest/(:num)', 'DafSkripsiRest::show/$1');
 $routes->post('dafskripsirest', 'DafSkripsiRest::create');
 $routes->put('dafskripsirest/(:num)', 'DafSkripsiRest::update/$1');
 
+//Api Daftar Seminar
+$routes->get('dafsemprorest', 'DafSemproRest::index');
+$routes->get('dafsemprorest/(:num)', 'DafSemproRest::show/$1');
+$routes->post('dafsemprorest', 'DafSemproRest::create');
+$routes->put('dafsemprorest/(:num)', 'DafSemproRest::update/$1');
+
 //Api User
 $routes->get('userrest', 'UserRest::index');
 $routes->get('userrest/(:num)', 'UserRest::show/$1');
@@ -55,6 +61,12 @@ $routes->get('detsemprorest', 'DetSemproRest::index');
 $routes->get('detsemprorest/(:num)', 'DetSemproRest::show/$1');
 $routes->post('detsemprorest', 'DetSemproRest::create');
 $routes->put('detsemprorest/(:num)', 'DetSemproRest::update/$1');
+
+//Api Dosbing Sempro
+$routes->get('dosbingrest', 'DosbingRest::index');
+$routes->get('dosbingrest/(:num)', 'DosbingRest::show/$1');
+$routes->post('dosbingrest', 'DosbingRest::create');
+$routes->put('dosbingrest/(:num)', 'DosbingRest::update/$1');
 
 $routes->resource('judulrest');
 

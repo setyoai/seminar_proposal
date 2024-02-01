@@ -12,6 +12,7 @@ use App\Models\RuanganModel;
 use App\Models\SemproModel;
 use App\Models\UserModel;
 use CodeIgniter\RESTful\ResourceController;
+use DateTime;
 
 class DetSemproRest extends ResourceController
 {
@@ -77,7 +78,11 @@ class DetSemproRest extends ResourceController
                     'nama_ruangan' => $detSempro->nama_ruangan,
                     'judul_dafsempro' => $detSempro->judul_dafsempro,
                     'jam_sempro' => $detSempro->jam_sempro,
-                    'tanggal_sempro' => $detSempro->tanggal_sempro,
+                    'hasil_sempro' => $detSempro->hasil_sempro,
+                    'status_sempro' => $detSempro->status_sempro,
+                    'status_dafsempro' => $detSempro->status_dafsempro,
+                    'tanggal_sempro' => (new DateTime($detSempro->tanggal_sempro))->format('d M Y'),
+                    'tanggal_dafsempro' => (new DateTime($detSempro->tanggal_dafsempro))->format('d M Y'),
                 ];
             }
 

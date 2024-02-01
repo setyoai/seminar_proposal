@@ -130,10 +130,10 @@ class Sempro extends ResourceController
      * Add or update a model resource, from "posted" properties
      *
      * @return mixed
+     * @throws \ReflectionException
      */
     public function update($id = null)
     {
-//        $modelSempro = new DetSemproModel();
         $modelSempro = new SemproModel();
         $data = $modelSempro->where('id_sempro', $id)
             ->get()
@@ -144,13 +144,18 @@ class Sempro extends ResourceController
         $data = $this->request->getPost();
         $this->tb_sempro->update($id, $data);
 
-        $detSemproData = $modelSempro->find($id);
+        if ($sempro->penguji1_sempro !== null) {
+            $this->insertDetSempro($id, $sempro->id_dafsempro, $sempro->penguji1_sempro, "Ketua Penguji", $sempro->tanggal_sempro);
+        }
 
-        $this->insertDetSempro($id,  $sempro->id_dafsempro, $sempro->penguji1_sempro, "Ketua Penguji", $sempro->tanggal_sempro);
-        // Insert into tb_detsempro for Anggota Penguji 1 (penguji2_sempro)
-        $this->insertDetSempro($id,  $sempro->id_dafsempro, $sempro->penguji2_sempro, "Anggota Penguji", $sempro->tanggal_sempro);
-//        // Insert into tb_detsempro for Anggota Penguji 2 (penguji3_sempro)
-        $this->insertDetSempro($id,  $sempro->id_dafsempro, $sempro->penguji3_sempro, "Anggota Penguji", $sempro->tanggal_sempro);
+        if ($sempro->penguji2_sempro !== null) {
+            $this->insertDetSempro($id, $sempro->id_dafsempro, $sempro->penguji2_sempro, "Anggota Penguji 1", $sempro->tanggal_sempro);
+        }
+
+        // Check if $sempro->penguji3_sempro is not null before calling insertDetSempro
+        if ($sempro->penguji3_sempro !== null) {
+            $this->insertDetSempro($id, $sempro->id_dafsempro, $sempro->penguji3_sempro, "Anggota Penguji 2", $sempro->tanggal_sempro);
+        }
 
         return redirect()->to(site_url('sempro'))->with('success', 'Data Berhasil Diupdate');
     }
@@ -186,6 +191,7 @@ class Sempro extends ResourceController
      * @param int $idDosen
      * @param string $levelDosen
      * @param string $tanggalDetsempro
+     * @throws \ReflectionException
      */
 
     private function insertDetSempro(int $idSempro, int $idDafsempro, int $idDosen, string $levelDosen, string $tanggalDetsempro)

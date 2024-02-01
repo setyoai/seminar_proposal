@@ -85,7 +85,7 @@
                                     <span class="badge <?= $badge_class ?>"><?= $badge_text ?></span>
                                 </td>
 
-                                <td><?= $value->ket_dafsempro ?></td>
+                                <td><?= $value->keterangan_dafsempro ?></td>
 
                                 <td>
                                     <a href="<?= site_url('dafsempro/edit/' . $value->id_dafsempro) ?>"

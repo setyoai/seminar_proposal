@@ -34,7 +34,36 @@ class DafSemproRest extends ResourceController
      */
     public function show($id = null)
     {
-        //
+        $modelDafSem = new DafSemproModel();
+
+        // Querying the MahasiswaModel for a specific ID
+        $data = $modelDafSem->where('id_dafskripsi', $id)
+            ->get()
+            ->getResult();
+
+        if (!empty($data)) {
+            // If the data for the specified ID is found
+            $dafsempro = $data[0]; // Use the first (and only) result
+
+            $dafsempro_data = [
+                'id_dafsempro' => $dafsempro->id_dafsempro,
+                'transkrip_dafsempro' => $dafsempro->transkrip_dafsempro,
+                'slippembayaran_dafsempro' => $dafsempro->slippembayaran_dafsempro,
+                'status_dafsempro' => $dafsempro->status_dafsempro,
+                'keterangan_dafsempro' => $dafsempro->keterangan_dafsempro,
+            ];
+            $response = [
+                'status' => 200,
+                'error' => false,
+                'message' => 'success',
+                'dafsempro_data' => $dafsempro_data,
+            ];
+
+            return $this->respond($response, 200);
+        } else {
+            // If no result found, return a 404 response
+            return $this->failNotFound('Maaf data ' . $id . ' tidak Ditemukan');
+        }
     }
 
     /**
@@ -74,7 +103,7 @@ class DafSemproRest extends ResourceController
                 'plagiasi_dafsempro',
                 'tanggal_dafsempro',
                 'status_dafsempro',
-                'ket_dafsempro',
+                'keterangan_dafsempro',
             ];
 
             foreach ($allowedFields as $fieldName) {

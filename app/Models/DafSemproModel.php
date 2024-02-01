@@ -25,7 +25,7 @@ class DafSemproModel extends Model
         'plagiasi_dafsempro',
         'tanggal_dafsempro',
         'status_dafsempro',
-        'ket_dafsempro',
+        'keterangan_dafsempro'
     ];
 
     public function getAll()

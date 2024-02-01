@@ -62,7 +62,7 @@
                             <div class="form-group">
                                 <div class="section-title">Keterangan</div>
                                 <textarea class="form-control"
-                                          name="ket_dafsempro"><?= $tb_dafsempro->ket_dafsempro ?></textarea>
+                                          name="ket_dafsempro"><?= $tb_dafsempro->keterangan_dafsempro ?></textarea>
                             </div
                         </form>
                     </div>
