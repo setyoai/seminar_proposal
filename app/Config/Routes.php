@@ -68,6 +68,17 @@ $routes->get('dosbingrest/(:num)', 'DosbingRest::show/$1');
 $routes->post('dosbingrest', 'DosbingRest::create');
 $routes->put('dosbingrest/(:num)', 'DosbingRest::update/$1');
 
+$routes->get('dosbingapi', 'DosbingApi::index');
+$routes->get('dosbingapi/(:num)', 'DosbingApi::show/$1');
+$routes->post('dosbingapi', 'DosbingApi::create');
+$routes->put('dosbingapi/(:num)', 'DosbingApi::update/$1');
+
+//Api Bimbingan
+$routes->get('bimbinganrest', 'BimbinganRest::index');
+$routes->get('bimbinganrest/(:num)', 'BimbinganRest::show/$1');
+$routes->post('bimbinganrest', 'BimbinganRest::create');
+$routes->put('bimbinganrest/(:num)', 'BimbinganRest::update/$1');
+
 $routes->resource('judulrest');
 
 

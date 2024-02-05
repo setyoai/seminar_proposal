@@ -11,7 +11,7 @@ class DosbingModel extends Model
     protected $returnType       = 'object';
     protected $allowedFields    = ['id_dosbing','dafskripsiid_dosbing', 'dosen1_dosbing', 'dosen2_dosbing', 'tanggal_dosbing'];
 
-    public function getAll()
+    public function getAll($id_dafskripsi = null)
     {
         $builder = $this->db->table('tb_dosbing');
         $builder->select('tb_dosbing.*, tb_dafskripsi.nim_dafskripsi, m.nama_mhs AS nama_mhs, 
@@ -21,6 +21,10 @@ class DosbingModel extends Model
         $builder->join('tb_mhs m',    'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
         $builder->join('tb_dosen d1', 'd1.id_dosen = tb_dosbing.dosen1_dosbing', 'left');
         $builder->join('tb_dosen d2', 'd2.id_dosen = tb_dosbing.dosen2_dosbing', 'left');
+
+        if ($id_dafskripsi !== null) {
+            $builder->where('tb_dosbing.dafskripsiid_dosbing', $id_dafskripsi);
+        }
 
         $query = $builder->get();
         return $query->getResult();
