@@ -33,40 +33,45 @@
         <?php endif; ?>
 
         <div class="section-body">
-
-            <div class="card">
-                <div class="card-header">
-                    <h4>Data Ruangan</h4>
-                </div>
-                <div class="card-body p-0">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-md">
-                            <tbody>
-                            <tr class="text-center">
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Action</th>
-                            </tr>
-                            <?php foreach ($tb_ruangan as $key => $value) : ?>
-                                <tr class="text-center">
-                                    <td><?= $key + 1 ?></td>
-                                    <td><?= $value->nama_ruangan ?></td>
-                                    <td class="text-center" style="width:15%">
-                                        <a href="<?= site_url('ruangan/edit/' . $value->id_ruangan) ?>"
-                                           class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                        <form action="<?= site_url('ruangan/delete/' . $value->id_ruangan) ?>"
-                                              method="post" class="d-inline"
-                                              onsubmit="return confirm('Yakin hapus data?')">
-                                            <?= csrf_field() ?>
-                                            <button class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                            </tbody>
-                        </table>
+            <div class="row">
+                <div class="col-12 col-md-8 col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Data Ruangan</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-md" id="table1">
+                                    <thead>
+                                    <tr class="text-center">
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach ($tb_ruangan as $key => $value) : ?>
+                                        <tr>
+                                            <td><?= $key + 1 ?></td>
+                                            <td><?= $value->nama_ruangan ?></td>
+                                            <td class="text-center" style="width:15%">
+                                                <a href="<?= site_url('ruangan/edit/' . $value->id_ruangan) ?>"
+                                                   class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                                <form action="<?= site_url('ruangan/delete/' . $value->id_ruangan) ?>"
+                                                      method="post" class="d-inline"
+                                                      onsubmit="return confirm('Yakin hapus data?')">
+                                                    <?= csrf_field() ?>
+                                                    <button class="btn btn-danger btn-sm">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

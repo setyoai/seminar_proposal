@@ -10,7 +10,7 @@
         <div class="section-header-back">
             <a href="<?= site_url("dafskripsi") ?>" class="btn"><i class="fas fa-arrow-left"></i></a>
         </div>
-        <h1>Edit Data Pendaftaran Skripsi</h1>
+        <h1>Pendaftaran Skripsi</h1>
     </div>
 
     <div class="section-body">
@@ -18,7 +18,7 @@
             <div class="col-12 col-md-6 col-lg-6">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Edit Data Pendaftaran Skripsi</h4>
+                        <h4>Cek Berkas Pendaftaran Skripsi</h4>
                     </div>
                     <div class="card-body">
                         <form action="<?= site_url('dafskripsi/update/' . $tb_dafskripsi->id_dafskripsi) ?>" method="post"

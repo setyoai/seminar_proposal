@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\BimbinganModel;
+use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\RESTful\ResourceController;
 use DateTime;
 
@@ -13,9 +14,14 @@ class BimbinganRest extends ResourceController
      *
      * @return mixed
      */
+
+    use ResponseTrait;
+
     public function index()
     {
-        //
+        $modelBimbingan = new BimbinganModel();
+        $data = $modelBimbingan->findAll();
+        return $this->respond($data, 200);
     }
 
     /**
@@ -23,14 +29,15 @@ class BimbinganRest extends ResourceController
      *
      * @return mixed
      */
-    public function show($id = null)
+    public function show($dosbingid_bimbingan = null, $dosenid_bimbingan = null)
     {
         $bimbinganModel = new BimbinganModel();
 
         // Querying the MahasiswaModel for a specific ID
-        $data = $bimbinganModel->where('mhsnim_bimbingan', $id)
-            ->get()
-            ->getResult();
+        $data = $bimbinganModel->where('dosbingid_bimbingan', $dosbingid_bimbingan)
+                            ->where('dosenid_bimbingan', $dosenid_bimbingan)
+                            ->get()
+                            ->getResult();
 
         if (!empty($data)) {
             // If the data for the specified ID is found
@@ -38,10 +45,10 @@ class BimbinganRest extends ResourceController
 
             foreach ($data as $bimbingan) {
                 $bimbingan_data[] = [
-                    'tanggal_bimbingan' => (new DateTime($bimbingan->tanggal_bimbingan))->format('d M Y, H:i'),
+                    'tanggal_bimbingan' => (new DateTime($bimbingan->created_at))->format('d M Y, H:i'),
                     'ket_bimbingan' => $bimbingan->ket_bimbingan,
                     'balasanket_bimbingan' => $bimbingan->balasanket_bimbingan,
-                    'balasantanggal_bimbingan' => $bimbingan->balasantanggal_bimbingan,
+                    'balasantanggal_bimbingan' => (new DateTime($bimbingan->updated_at))->format('d M Y, H:i'),
 
                 ];
             }
@@ -53,7 +60,14 @@ class BimbinganRest extends ResourceController
             return $this->respond($response, 200);
         } else {
             // If no result found, return a 404 response
-            return $this->failNotFound('Maaf data ' . $id . ' tidak Ditemukan');
+            $response = [
+                'bimbingan_data' => [
+                    'tanggal_bimbingan' => null,
+                    'ket_bimbingan' => null,
+                ],
+            ];
+
+            return $this->respond($response, 404);
         }
     }
 
@@ -112,7 +126,9 @@ class BimbinganRest extends ResourceController
                 ['dosbingid_bimbingan' => $this->request->getPost('dosbingid_bimbingan')],
                 ['mhsnim_bimbingan' => $this->request->getPost('mhsnim_bimbingan')],
                 ['file_bimbingan' => $this->request->getPost('file_bimbingan')],
-                ['ket_bimbingan' => $this->request->getPost('ket_bimbingan')]);
+                ['ket_bimbingan' => $this->request->getPost('ket_bimbingan')],
+                ['dosenid_bimbingan' => $this->request->getPost('dosenid_bimbingan')]
+            );
             $modelBimbingan->insert($data);
 
             $response = [
@@ -152,7 +168,7 @@ class BimbinganRest extends ResourceController
         }
 
         // Move the file to the 'upload' directory
-        $file->move('upload');
+        $file->move('upload/bimbingan');
 
         return $file;
     }
@@ -172,71 +188,50 @@ class BimbinganRest extends ResourceController
      *
      * @return mixed
      */
+    /**
+     * Add or update a model resource, from "posted" properties
+     *
+     * @param int|null $id
+     * @return mixed
+     * @throws \ReflectionException
+     */
     public function update($id = null)
     {
-        try {
-            $modelBimbingan = new BimbinganModel();
-            $bimbinganFiles = [];
+        $bimbinganModel = new BimbinganModel();
 
-            $allowedFields = [
-                'dosbingid_bimbingan',
-                'mhsnim_bimbingan',
-                'bab_bimbingan',
-                'ket_bimbingan',
-                'file_bimbingan',
-                'tanggal_bimbingan',
-                'dosenid_bimbingan',
-                'balasanfile_bimbingan',
-                'balasanket_bimbingan',
-                'balasantanggal_bimbingan',
-                'status_bimbingan'
-            ];
+        // Retrieve data from the 'tb_detsempro' table
+        $dataBimbingan = $bimbinganModel->where('id_bimbingan', $id)
+            ->get()
+            ->getResult();
 
-            foreach ($allowedFields as $fieldName) {
-                // Validate and move each file if present in the request
-                if ($this->request->getFile($fieldName)) {
-                    $bimbinganFiles[$fieldName] = $this->validateAndMoveFile($fieldName)->getName();
-                }
-            }
+        if (empty($dataBimbingan)) {
+            return $this->failNotFound('Maaf data ' . $id . ' tidak Ditemukan');
+        }
 
-            // Check if the specified ID exists
-            $existingBimbingan = $modelBimbingan->find($id);
-            if (empty($existingBimbingan)) {
-                return $this->failNotFound('Maaf data ' . $id . ' tidak Ditemukan');
-            }
+        $bimbingan = $dataBimbingan[0];
 
-            // Update the existing record
-            $data = array_merge(
-                $bimbinganFiles,
-                [
-                    'balasanfile_bimbingan' => $this->request->getPost('balasanfile_bimbingan'),
-                    'balasanket_bimbingan' => $this->request->getPost('balasanket_bimbingan'),
-                    'balasantanggal_bimbingan' => $this->request->getPost('balasantanggal_bimbingan'),
-                ]
-            );
+        $rawData = $this->request->getRawInput();
 
-            $modelBimbingan->update($id, $data);
+        // Update data for 'tb_detsempro'
+        $updateDataBimbingan = [
+            'balasanket_bimbingan' => $rawData['balasanket_bimbingan'] ?? $bimbingan->balasanket_bimbingan,
+        ];
 
-            $response = [
+        $bimbinganModel->update(['id_bimbingan' => $id], $updateDataBimbingan);
+
+        // Prepare a response
+        $response = [
+            'update_status' => [
                 'error' => false,
                 'message' => 'success',
-                'bimbingan_result' => [
-                    'tanggal_bimbingan' => date('d M Y, H:i'),
-                    'balasanket_bimbingan' => $this->request->getPost('balasanket_bimbingan')
-                ],
-            ];
-            return $this->respond($response, 200);
-        } catch (\Exception $e) {
-            // Handle any exceptions or errors that may occur
-            $response = [
-                'error' => true,
-                'message' => 'An error occurred: ' . $e->getMessage(),
-            ];
+                'balasanket_bimbingan' => $bimbingan->balasanket_bimbingan,
+            ]
+        ];
 
-            // Return an error response
-            return $this->respond($response, 500);
-        }
+        // Respond with the prepared response
+        return $this->respond($response, 200);
     }
+
 
     /**
      * Delete the designated resource object from the model

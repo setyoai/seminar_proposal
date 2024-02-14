@@ -79,7 +79,17 @@ $routes->get('bimbinganrest/(:num)', 'BimbinganRest::show/$1');
 $routes->post('bimbinganrest', 'BimbinganRest::create');
 $routes->put('bimbinganrest/(:num)', 'BimbinganRest::update/$1');
 
+$routes->get('bimbingandosenrest', 'BimbinganDosenRest::index');
+$routes->get('bimbingandosenrest/(:num)', 'BimbinganDosenRest::show/$1');
+$routes->post('bimbingandosenrest', 'BimbinganDosenRest::create');
+$routes->put('bimbingandosenrest/(:num)', 'BimbinganDosenRest::update/$1');
+
+
+$routes->get('updatebimbingandosenrest/(:num)', 'UpdateBimbinganDosenRest::show/$1');
+$routes->put('updatebimbingandosenrest/(:num)', 'UpdateBimbinganDosenRest::update/$1');
+
 $routes->resource('judulrest');
+$routes->resource('penilaianrest');
 
 
 

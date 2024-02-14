@@ -71,7 +71,6 @@ class DetSemproRest extends ResourceController
                 $detsempro_data[] = [
                     'id_detsempro' => $detSempro->id_detsempro,
                     'id_sempro' => $detSempro->id_sempro,
-                    'ketrev_detsempro' => $detSempro->ketrev_detsempro,
                     'level_dosen' => $detSempro->leveldosen_detsempro,
                     'nim_detsempro' => $detSempro->nim_detsempro,
                     'nama_detsempro' => $detSempro->nama_detsempro,
@@ -162,7 +161,18 @@ class DetSemproRest extends ResourceController
 
         // Update data for 'tb_detsempro'
         $updateDataDetSempro = [
-            'ketrev_detsempro' => $rawData['ketrev_detsempro'] ?? $dafsempro->ketrev_detsempro,
+            'judul' => $rawData['judul'] ?? $dafsempro->judul,
+            'latar_belakang' => $rawData['latar_belakang'] ?? $dafsempro->latar_belakang,
+            'rumusan_masalah' => $rawData['rumusan_masalah'] ?? $dafsempro->rumusan_masalah,
+            'batasan_masalah' => $rawData['batasan_masalah'] ?? $dafsempro->batasan_masalah,
+            'tujuan' => $rawData['tujuan'] ?? $dafsempro->tujuan,
+            'manfaat' => $rawData['manfaat'] ?? $dafsempro->manfaat,
+            'tinjauan pustaka' => $rawData['tinjauan pustaka'] ?? $dafsempro->tinjauan_pustaka,
+            'metodologi' => $rawData['metodologi'] ?? $dafsempro->metodologi,
+            'kerangka_pemikiran' => $rawData['kerangka_pemikiran'] ?? $dafsempro->kerangka_pemikiran,
+            'jadwal_kegiatan' => $rawData['jadwal_kegiatan'] ?? $dafsempro->jadwal_kegiatan,
+            'riwayat_penilitian' => $rawData['riwayat_penilitian'] ?? $dafsempro->riwayat_penilitian,
+            'daftar_pustaka' => $rawData['daftar_pustaka'] ?? $dafsempro->daftar_pustaka,
         ];
 
         $detSemproModel->update(['id_detsempro' => $id], $updateDataDetSempro);

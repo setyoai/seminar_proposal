@@ -28,31 +28,20 @@
                 <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                     <div class="login-brand">
                          <img src="<?= base_url() ?>/assets/assets/img/avatar/logo.svg" alt="logo" width="120">
+                        <h4 class="text-dark font-weight-bold">Aplikasi Seminar Proposal</h4>
                     </div>
 
                     <div class="card card-primary">
                         <div class="card-header"><h4>Login</h4></div>
-
                         <div class="card-body">
-<!--                            <form method="POST" action="--><?php //= site_url('login/cekUser') ?><!--" class="needs-validation"-->
-<!--                                  novalidate="">-->
                                 <?= form_open('login/cekUser'); ?>
                                 <?= csrf_field(); ?>
                                 <div class="form-group">
                                     <?php
-//                                        if (session()->getFlashdata('errIdUser')) {
-//                                            $isInvalidUser = 'is-invalid';
-//                                        } else {
-//                                            $isInvalidUser = '';
-//
-
                                     $isInvalidUser = (session()->getFlashdata('errIdUser')) ? 'is-invalid' : '';
                                     ?>
                                     <label for="email">Username</label>
                                     <input id="email" type="text" class="form-control <?= $isInvalidUser ?>"  name="username_user" >
-<!--                                    <div class="invalid-feedback">-->
-<!--                                        Please fill in your email-->
-<!--                                    </div>-->
                                     <?php
                                     if (session()->getFlashdata('errIdUser')) {
                                         echo '<div id="validationServer03Feedback" class="invalid-feedback">
@@ -68,16 +57,8 @@
                                     ?>
                                     <div class="d-block">
                                         <label for="password" class="control-label">Password</label>
-<!--                                        <div class="float-right">-->
-<!--                                            <a href="auth-forgot-password.html" class="text-small">-->
-<!--                                                Forgot Password?-->
-<!--                                            </a>-->
-<!--                                        </div>-->
                                     </div>
                                     <input id="password" type="password" class="form-control <?= $isInvalidPassword ?>" name="password_user" >
-<!--                                    <div class="invalid-feedback">-->
-<!--                                        please fill in your password-->
-<!--                                    </div>-->
                                     <?php
                                     if (session()->getFlashdata('errPassword')) {
                                         echo '<div id="validationServer03Feedback" class="invalid-feedback">
@@ -97,7 +78,7 @@
                         </div>
                     </div>
                     <div class="simple-footer">
-                        Copyright &copy; Setyo Adi Sasono 2023
+                        Copyright &copy; Setyo Adi Sasono 2024
                     </div>
                 </div>
             </div>

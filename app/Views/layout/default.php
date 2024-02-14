@@ -57,6 +57,9 @@
         <div class="main-sidebar sidebar-style-2">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
+                    <div style="text-align: center;">
+                        <img src="<?= base_url() ?>/assets/assets/img/avatar/logo.svg" alt="logo" width="80">
+                    </div>
                     <a href="<?= site_url('home/index') ?>">Seminar Proposal</a>
                 </div>
                 <div class="sidebar-brand sidebar-brand-sm">

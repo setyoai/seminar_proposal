@@ -20,7 +20,7 @@
                         <form action="<?= site_url('dosbing/update/' . $tb_dosbing->id_dosbing) ?>" method="post" autocomplete="off">
                         <?= csrf_field() ?>
                             <div class="card-header">
-                                <h4>Edit Data Dosen Pembimbing</h4>
+                                <h4>Tambah Data Dosen Pembimbing</h4>
                             </div>
                             <div class="card-body">
                                     <div class="form-group">

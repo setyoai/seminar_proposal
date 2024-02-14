@@ -32,7 +32,6 @@ class DosbingApi extends ResourceController
             // If data is found
             $dosbing = $data[0];
 
-
             $dosbing_data = [
                 'dosbing_id' => $dosbing->id_dosbing,
                 'dafskripsiid_dosbing' => $dosbing->dafskripsiid_dosbing,
@@ -41,7 +40,6 @@ class DosbingApi extends ResourceController
                 'dosen2_dosbing' => $dosbing->dosen2_dosbing,
                 'nama2_dosbing' => $dosbing->nama_dosen2,
             ];
-
 
             $response = [
                 'error' => false,
@@ -52,7 +50,7 @@ class DosbingApi extends ResourceController
             return $this->respond($response, 200);
         } else {
             // If no result found, return a 404 response
-            return $this->failNotFound('Maaf data dengan id dafskripsi ' . $id . 'tidak ditemukan');
+            return $this->failNotFound('Maaf data dengan id dafskripsi ' . $id_dafskripsi . 'tidak ditemukan');
         }
     }
 

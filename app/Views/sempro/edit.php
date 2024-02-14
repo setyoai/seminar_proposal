@@ -6,7 +6,7 @@ $usedUserIds = [$tb_sempro->dosen1_sempro, $tb_sempro->dosen2_sempro];
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('content') ?>
-<title>Edit Data</title>
+<title>Sempro Data</title>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -15,7 +15,7 @@ $usedUserIds = [$tb_sempro->dosen1_sempro, $tb_sempro->dosen2_sempro];
         <div class="section-header-back">
             <a href="<?= site_url("sempro") ?>" class="btn"><i class="fas fa-arrow-left"></i></a>
         </div>
-        <h1>Edit Data Sempro</h1>
+        <h1>Tambah Data Sempro</h1>
     </div>
 
     <div class="section-body">
@@ -25,7 +25,7 @@ $usedUserIds = [$tb_sempro->dosen1_sempro, $tb_sempro->dosen2_sempro];
                     <form action="<?= site_url('sempro/' . $tb_sempro->id_sempro) ?>" method="post" autocomplete="off">
                         <?= csrf_field() ?>
                         <div class="card-header">
-                            <h4>Edit Data Sempro</h4>
+                            <h4>Tambah Data Sempro</h4>
                         </div>
                         <div class="card-body">
                             <input type="hidden" name="_method" value="PATCH">
@@ -148,7 +148,6 @@ $usedUserIds = [$tb_sempro->dosen1_sempro, $tb_sempro->dosen2_sempro];
                                     </select>
                                 </div>
                             </div>
-
                             <?php if (session()->has('errors')) : ?>
                                 <div class="alert alert-danger alert-dismissible show fade">
                                     <div class="alert-body">
