@@ -66,7 +66,6 @@ class JudulRest extends ResourceController
                         'dosen1_dosbing' => $dosen1_name, // Using the function to get dosen name
                         'dosen2_dosbing' => $dosen2_name, //
                         'tahun_skripsi' => $judulList[$item[0]]['tahun_skripsi'],
-                        
                     ];
                 },  $topThreeTheses, array_keys($topThreeTheses));
 

@@ -23,10 +23,8 @@ class UpdateBimbinganDosenRest extends ResourceController
         'mhsnim_bimbingan',
         'bab_bimbingan',
         'ket_bimbingan',
-        'file_bimbingan',
         'tanggal_bimbingan',
         'dosenid_bimbingan',
-        'balasanfile_bimbingan',
         'balasanket_bimbingan',
         'balasantanggal_bimbingan',
         'status_bimbingan'
@@ -57,10 +55,10 @@ class UpdateBimbinganDosenRest extends ResourceController
                     'id_bimbingan' => $dosbing->id_bimbingan,
                     'mhsnim_bimbingan' => $dosbing->mhsnim_bimbingan,
                     'nama_bimbingan' => $dosbing->nama_mhs,
-                    'tanggal_bimbingan' => (new DateTime($dosbing->created_at))->format('d M Y, H:i'),
+                    'tanggal_bimbingan' => (new DateTime($dosbing->tanggal_bimbingan))->format('d M Y, H:i'),
                     'ket_bimbingan' => $dosbing->ket_bimbingan,
                     'balasanket_bimbingan' => $dosbing->balasanket_bimbingan,
-                    'balasantanggal_bimbingan' =>(new DateTime($dosbing->updated_at))->format('d M Y, H:i'),
+                    'balasantanggal_bimbingan' => (new DateTime($dosbing->tanggalbalasan_bimbingan))->format('d M Y, H:i'),
 
                 ];
             }

@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class LoginMahasiswaModel extends Model
 {
-    protected $table            = 'tb_mhs';
+    protected $table            = 'tb_mahasiswa';
     protected $primaryKey       = 'id_mhs';
 //    protected $returnType       = 'array';
 //

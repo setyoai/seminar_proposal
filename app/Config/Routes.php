@@ -30,8 +30,6 @@ $routes->presenter('dafsempro',['filter' => 'isLoggedIn']);
 $routes->presenter('ruangan',['filter' => 'isLoggedIn']);
 $routes->presenter('detsempro',['filter' => 'isLoggedIn']);
 
-
-
 // Api Mahasiswa
 $routes->get('mahasiswarest', 'MahasiswaRest::index');
 $routes->get('mahasiswarest/(:num)', 'MahasiswaRest::show/$1');
@@ -84,14 +82,14 @@ $routes->get('bimbingandosenrest/(:num)', 'BimbinganDosenRest::show/$1');
 $routes->post('bimbingandosenrest', 'BimbinganDosenRest::create');
 $routes->put('bimbingandosenrest/(:num)', 'BimbinganDosenRest::update/$1');
 
-
 $routes->get('updatebimbingandosenrest/(:num)', 'UpdateBimbinganDosenRest::show/$1');
 $routes->put('updatebimbingandosenrest/(:num)', 'UpdateBimbinganDosenRest::update/$1');
 
 $routes->resource('judulrest');
 $routes->resource('penilaianrest');
 
-
+$routes->get('kbbiapi/search', 'KBBIApi::search');
+$routes->get('kbbirest/index', 'KBBIRest::index');
 
 //make database
 $routes->get('create-db', function() {

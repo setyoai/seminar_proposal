@@ -54,7 +54,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($tb_mhs as $key => $value) : ?>
+                            <?php foreach ($tb_mahasiswa as $key => $value) : ?>
                                 <tr>
                                     <td><?= $key + 1 ?></td>
                                     <td><?= $value->nim_mhs ?></td>

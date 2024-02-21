@@ -15,8 +15,8 @@ class DafSkripsiModel extends Model
     public function getAll()
     {
         $builder = $this->db->table('tb_dafskripsi');
-        $builder->select('tb_dafskripsi.*, tb_mhs.nama_mhs AS nama_dafskripsi');
-        $builder->join('tb_mhs', 'tb_mhs.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
+        $builder->select('tb_dafskripsi.*, tb_mahasiswa.nama_mhs AS nama_dafskripsi');
+        $builder->join('tb_mahasiswa', 'tb_mahasiswa.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
 
         $query = $builder->get();
         return $query->getResult();

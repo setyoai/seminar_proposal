@@ -15,7 +15,7 @@ class Ruangan extends ResourcePresenter
      */
     public function index()
     {
-        //        $data['tb_mhs'] = $this->mahasiswa->findAll();
+        //        $data['tb_mahasiswa'] = $this->mahasiswa->findAll();
         $data['tb_ruangan'] = $this->model->findAll();
         return view('ruangan/index' ,$data);
     }

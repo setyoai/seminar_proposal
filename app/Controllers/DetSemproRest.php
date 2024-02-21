@@ -22,7 +22,7 @@ class DetSemproRest extends ResourceController
         $this->tb_dafsempro = new DafSemproModel();
         $this->tb_dafskripsi = new DafSkripsiModel();
         $this->tb_detsempro = new DetSemproModel();
-        $this->tb_mhs = new MahasiswaModel();
+        $this->tb_mahasiswa = new MahasiswaModel();
         $this->tb_dosen = new DosenModel();
         $this->tb_ruangan = new RuanganModel() ;
 
@@ -68,7 +68,7 @@ class DetSemproRest extends ResourceController
             $detsempro_data = [];
 
             foreach ($data as $detSempro) {
-                $detsempro_data[] = [
+                $formattedDetSempro = [
                     'id_detsempro' => $detSempro->id_detsempro,
                     'id_sempro' => $detSempro->id_sempro,
                     'level_dosen' => $detSempro->leveldosen_detsempro,
@@ -76,6 +76,9 @@ class DetSemproRest extends ResourceController
                     'nama_detsempro' => $detSempro->nama_detsempro,
                     'nama_ruangan' => $detSempro->nama_ruangan,
                     'judul_dafsempro' => $detSempro->judul_dafsempro,
+                    'ketua_penguji' => $detSemproModel->getDosenNameById($detSempro->penguji1_sempro),
+                    'anggota_penguji1' => $detSemproModel->getDosenNameById($detSempro->penguji2_sempro),
+                    'anggota_penguji2' => $detSemproModel->getDosenNameById($detSempro->penguji3_sempro),
                     'jam_sempro' => $detSempro->jam_sempro,
                     'hasil_sempro' => $detSempro->hasil_sempro,
                     'status_sempro' => $detSempro->status_sempro,
@@ -83,6 +86,12 @@ class DetSemproRest extends ResourceController
                     'tanggal_sempro' => (new DateTime($detSempro->tanggal_sempro))->format('d M Y'),
                     'tanggal_dafsempro' => (new DateTime($detSempro->tanggal_dafsempro))->format('d M Y'),
                 ];
+
+                if ($detSempro->hasil_sempro === null) {
+                    array_unshift($detsempro_data, $formattedDetSempro); // Add record to the beginning of the array
+                } else {
+                    $detsempro_data[] = $formattedDetSempro; // Add record to the end of the array
+                }
             }
 
             $response = [

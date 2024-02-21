@@ -31,7 +31,7 @@ class BimbinganDosenModel extends Model
 
         $builder->join('tb_dosbing', 'tb_dosbing.id_dosbing = tb_bimbingan.dosbingid_bimbingan', 'left');
         $builder->join('tb_dafskripsi', 'tb_dafskripsi.id_dafskripsi = tb_dosbing.dafskripsiid_dosbing ', 'left');
-        $builder->join('tb_mhs m',    'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
+        $builder->join('tb_mahasiswa m',    'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
 
         if ($id_bimbingan!== null) {
             $builder->where('id_bimbingan', $id_bimbingan);

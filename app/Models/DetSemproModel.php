@@ -43,6 +43,9 @@ class DetSemproModel extends Model
             tb_sempro.nama_ruanganid, 
             tb_sempro.hasil_sempro,
             tb_sempro.status_sempro,
+            tb_sempro.penguji1_sempro,
+            tb_sempro.penguji2_sempro,
+            tb_sempro.penguji3_sempro,
             tb_dafsempro.status_dafsempro,
             tb_dafsempro.judul_dafsempro,
             tb_dafskripsi.nim_dafskripsi AS nim_detsempro, 
@@ -54,7 +57,7 @@ class DetSemproModel extends Model
         $builder->join('tb_dafskripsi', 'tb_dafskripsi.id_dafskripsi = tb_dafsempro.id_dafskripsi', 'left');
         $builder->join('tb_ruangan', 'tb_ruangan.id_ruangan = tb_sempro.nama_ruanganid', 'left');
         $builder->join('tb_dosen', 'tb_dosen.id_dosen = tb_detsempro.id_dosen', 'left');
-        $builder->join('tb_mhs m', 'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
+        $builder->join('tb_mahasiswa m', 'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
 
         if ($id_dosen !== null) {
             $builder->where('tb_detsempro.id_dosen', $id_dosen);
@@ -87,7 +90,7 @@ class DetSemproModel extends Model
         $builder->join('tb_dafskripsi', 'tb_dafskripsi.id_dafskripsi = tb_dafsempro.id_dafskripsi', 'left');
         $builder->join('tb_ruangan', 'tb_ruangan.id_ruangan = tb_sempro.nama_ruanganid', 'left');
         $builder->join('tb_dosen', 'tb_dosen.id_dosen = tb_detsempro.id_dosen', 'left');
-        $builder->join('tb_mhs m', 'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
+        $builder->join('tb_mahasiswa m', 'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
 
         if ($id_sempro !== null) {
             $builder->where('tb_detsempro.id_sempro', $id_sempro);
@@ -95,5 +98,15 @@ class DetSemproModel extends Model
 
         $query = $builder->get();
         return $query->getResult();
+    }
+
+    public function getDosenNameById($id)
+    {
+        return $this->db->table('tb_dosen')
+            ->select('nama_dosen')
+            ->where('id_dosen', $id)
+            ->get()
+            ->getRow()
+            ->nama_dosen;
     }
 }

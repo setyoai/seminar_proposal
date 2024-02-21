@@ -24,7 +24,7 @@ class Sempro extends ResourceController
         $this->tb_dafsempro = new DafSemproModel();
         $this->tb_detsempro = new DetSemproModel();
         $this->tb_dafskripsi = new DafSkripsiModel();
-        $this->tb_mhs = new MahasiswaModel();
+        $this->tb_mahasiswa = new MahasiswaModel();
         $this->tb_dosen = new DosenModel();
         $this->tb_user = new UserModel();
         $this->tb_dosbing = new DosbingModel();
@@ -109,7 +109,7 @@ class Sempro extends ResourceController
                 // Prepare data for the view
                 $data['tb_sempro'] = reset($sempro); // Get the first element of the filtered array
                 $data['tb_dafsempro'] = $this->tb_dafsempro->findAll();
-                $data['tb_mhs'] = $this->tb_mhs->findAll();
+                $data['tb_mahasiswa'] = $this->tb_mahasiswa->findAll();
                 $data['tb_user'] = $this->tb_user->getAll();
                 $data['tb_dosen'] = $this->tb_dosen->findAll();
                 $data['tb_ruangan'] = $this->tb_ruangan->findAll();

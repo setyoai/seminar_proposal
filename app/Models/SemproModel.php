@@ -33,7 +33,7 @@ class SemproModel extends Model
         $builder->join('tb_ruangan', 'tb_ruangan.id_ruangan = tb_sempro.nama_ruanganid', 'left');
         $builder->join('tb_dafsempro', 'tb_dafsempro.id_dafsempro = tb_sempro.id_dafsempro', 'left');
         $builder->join('tb_dafskripsi', 'tb_dafskripsi.id_dafskripsi = tb_dafsempro.id_dafskripsi', 'left');
-        $builder->join('tb_mhs m', 'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
+        $builder->join('tb_mahasiswa m', 'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
         $builder->join('tb_dosbing d', 'd.dafskripsiid_dosbing = tb_dafskripsi.id_dafskripsi', 'left');
 
         $query = $builder->get();

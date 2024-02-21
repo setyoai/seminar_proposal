@@ -24,7 +24,7 @@
                                 <h4>Total Mahasiswa</h4>
                             </div>
                             <div class="card-body">
-                                <?=countData('tb_mhs')?>
+                                <?=countData('tb_mahasiswa')?>
                             </div>
                         </div>
                     </div>

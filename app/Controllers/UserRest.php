@@ -78,6 +78,9 @@ class UserRest extends ResourceController
             // Use $userData directly as an object
             $namaDosen = $this->getNamaDosen($userData->username_user);
 
+            // Manipulate $namaDosen to remove additional qualifications
+            $namaDosen = strtok($namaDosen, ',');
+
             $userDetails = [
                 'id_user' => $userData->id_user,
                 'username' => $userData->username_user,

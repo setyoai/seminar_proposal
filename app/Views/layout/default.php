@@ -1,3 +1,8 @@
+<?php
+// Misalkan $nama_user berisi "Yudie Irawan, S.Kom M.Kom., MTA, MOS"
+$nama_user_parts = explode(",", userLogin()->nama_user);
+$nama_user = $nama_user_parts[0]; // Mengambil bagian nama pertama sebelum koma
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +41,7 @@
                                         class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                         <img alt="image" src="<?= base_url() ?>/assets/assets/img/avatar/avatar-1.png"
                              class="rounded-circle mr-1">
-                        <div class="d-sm-none d-lg-inline-block">Hi, <?= userLogin()->nama_user?></div>
+                        <div class="d-sm-none d-lg-inline-block">Hi, <?= $nama_user ?></div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
 <!--                        <a href="--><?php //= site_url('profile') ?><!--" class="dropdown-item has-icon">-->
@@ -58,7 +63,9 @@
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
                     <div style="text-align: center;">
-                        <img src="<?= base_url() ?>/assets/assets/img/avatar/logo.svg" alt="logo" width="80">
+                        <a href="<?= site_url('home/index') ?>">
+                            <img src="<?= base_url() ?>/assets/assets/img/avatar/logo.svg" alt="logo" width="80">
+                        </a>
                     </div>
                     <a href="<?= site_url('home/index') ?>">Seminar Proposal</a>
                 </div>

@@ -80,7 +80,7 @@ class Dosbing extends ResourceController
                 $data['tb_dosbing'] = reset($dosbing); // Get the first element of the filtered array
                 $data['tb_dafskripsi'] = $this->tb_dafskripsi->findAll();
                 $data['tb_user'] = $this->tb_user->getAll();
-                $data['tb_mhs'] = $this->tb_mhs->findAll();
+                $data['tb_mahasiswa'] = $this->tb_mhs->findAll();
                 $data['tb_dosen'] = $this->tb_dosen->findAll();
 
                 return view('dosbing/edit', $data);

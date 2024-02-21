@@ -5,28 +5,28 @@ class AlgorithmRatcliffObershelp
 {
     public function similarity($s1, $s2)
     {
-        // Pengecekan Kesamaan Awal:
         if ($s1 === $s2) {
             return 1.0;
         }
-        // Mendapatkan Daftar Cocokan:
-        $matches = $this->getMatchList($s1, $s2);
+//      Jika kedua string identik, maka kesamaannya adalah 1.0 (100%).
 
-        // Menghitung Total Panjang Cocokan:
+        $matches = $this->getMatchList($s1, $s2);
         $sumOfMatches = 0;
         foreach ($matches as $match) {
             $sumOfMatches += strlen($match);
         }
+//        Metode getMatchList() dipanggil untuk mendapatkan daftar substring yang cocok di antara kedua string.
+//        Setiap panjang substring yang cocok ditambahkan ke variabel $sumOfMatches
 
-        // Menghitung dan Mengembalikan Skor Kesamaan:
         return 2.0 * $sumOfMatches / (strlen($s1) + strlen($s2));
+//        Skor kesamaan dihitung dengan rumus (2 * total panjang substring yang cocok) dibagi dengan (panjang total kedua string).
     }
 
     private function getMatchList($s1, $s2)
     {
-        // Inisialisasi List dan Pencarian Cocokan Utama:
         $list = [];
         $match = $this->frontMaxMatch($s1, $s2);
+//      Metode frontMaxMatch() dipanggil untuk mendapatkan substring terpanjang yang cocok di awal kedua string(anchor).
 
         // Pengecekan Jika Ada Cocokan:
         if (!empty($match)) {
@@ -34,17 +34,18 @@ class AlgorithmRatcliffObershelp
             $frontSource = substr($s1, 0, strpos($s1, $match));
             $frontTarget = substr($s2, 0, strpos($s2, $match));
             $frontQueue = $this->getMatchList($frontSource, $frontTarget);
+//          Metode getMatchList() dipanggil secara rekursif untuk mendapatkan daftar
+//          substring yang cocok di bagian depan dan belakang kedua string.
 
             $endSource = substr($s1, strpos($s1, $match) + strlen($match));
             $endTarget = substr($s2, strpos($s2, $match) + strlen($match));
             $endQueue = $this->getMatchList($endSource, $endTarget);
 
-            // Penambahan ke Daftar dan Penggabungan Hasil Rekursi:
             $list[] = $match;
             $list = array_merge($list, $frontQueue);
             $list = array_merge($list, $endQueue);
+//          Hasil substring yang cocok dari bagian depan, tengah, dan belakang digabungkan ke dalam satu daftar dan dikembalikan.
         }
-
         return $list;
     }
 
@@ -64,7 +65,7 @@ class AlgorithmRatcliffObershelp
                     $longest = strlen($substring);
                     $longestSubstring = $substring;
                 }
-            }
+             }
         }
         return $longestSubstring;
     }

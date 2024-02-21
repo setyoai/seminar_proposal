@@ -20,8 +20,7 @@ class Mahasiswa extends ResourcePresenter
      */
     public function index()
     {
-//        $data['tb_mhs'] = $this->mahasiswa->findAll();
-        $data['tb_mhs'] = $this->model->findAll();
+        $data['tb_mahasiswa'] = $this->model->findAll();
         return view('mahasiswa/index' ,$data);
     }
 
@@ -69,9 +68,9 @@ class Mahasiswa extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        $tb_mhs = $this->model->where('id_mhs', $id)->first();
-        if (is_object($tb_mhs)) {
-            $data['tb_mhs'] = $tb_mhs;
+        $tb_mahasiswa = $this->model->where('id_mhs', $id)->first();
+        if (is_object($tb_mahasiswa)) {
+            $data['tb_mahasiswa'] = $tb_mahasiswa;
             return view('mahasiswa/edit', $data);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException:: forPageNotFound();

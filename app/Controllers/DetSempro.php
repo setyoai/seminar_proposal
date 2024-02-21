@@ -14,7 +14,7 @@ class DetSempro extends ResourceController
     protected $helpers = ['custom'];
     function __construct()
     {
-        $this->tb_mhs = new MahasiswaModel();
+        $this->tb_mahasiswa = new MahasiswaModel();
         $this->tb_dosen= new DosenModel();
         $this->tb_ruangan = new RuanganModel() ;
         $this->tb_sempro = new SemproModel();

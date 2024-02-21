@@ -15,16 +15,18 @@ class BimbinganModel extends Model
         'dosbingid_bimbingan',
         'mhsnim_bimbingan',
         'bab_bimbingan',
-        'created_at',
+        'tanggal_bimbingan',
         'ket_bimbingan',
         'file_bimbingan',
         'dosenid_bimbingan',
         'balasanfile_bimbingan',
         'balasanket_bimbingan',
-        'updated_at',
+        'tanggalbalasan_bimbingan',
         'status_bimbingan'
     ];
     protected $useTimestamps = true;
+    protected $createdField     = 'tanggal_bimbingan';
+    protected $updatedField     = 'tanggalbalasan_bimbingan';
 
     public function getAll($dosenid_bimbingan = null)
     {
@@ -33,7 +35,7 @@ class BimbinganModel extends Model
 
         $builder->join('tb_dosbing', 'tb_dosbing.id_dosbing = tb_bimbingan.dosbingid_bimbingan', 'left');
         $builder->join('tb_dafskripsi', 'tb_dafskripsi.id_dafskripsi = tb_dosbing.dafskripsiid_dosbing ', 'left');
-        $builder->join('tb_mhs m',    'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
+        $builder->join('tb_mahasiswa m',    'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
 
         if ($dosenid_bimbingan!== null) {
             $builder->where('dosenid_bimbingan', $dosenid_bimbingan);

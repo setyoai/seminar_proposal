@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class MahasiswaModel extends Model
 {
-    protected $table            = 'tb_mhs';
+    protected $table            = 'tb_mahasiswa';
     protected $primaryKey       = 'id_mhs';
     protected $returnType       = 'object';
     protected $allowedFields    = ['nim_mhs', 'nama_mhs', 'password_mhs', 'email_mhs', 'alamat_mhs', 'nohp_mhs', 'status_mhs','photo_mhs'];

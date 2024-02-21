@@ -18,7 +18,7 @@ class DosbingModel extends Model
                 d1.nama_dosen AS nama_dosen1, d2.nama_dosen AS nama_dosen2, tb_dafskripsi.status_dafskripsi');
 
         $builder->join('tb_dafskripsi', 'tb_dafskripsi.id_dafskripsi = tb_dosbing.dafskripsiid_dosbing ', 'left');
-        $builder->join('tb_mhs m',    'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
+        $builder->join('tb_mahasiswa m',    'm.nim_mhs = tb_dafskripsi.nim_dafskripsi', 'left');
         $builder->join('tb_dosen d1', 'd1.id_dosen = tb_dosbing.dosen1_dosbing', 'left');
         $builder->join('tb_dosen d2', 'd2.id_dosen = tb_dosbing.dosen2_dosbing', 'left');
 

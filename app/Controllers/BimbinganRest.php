@@ -45,10 +45,10 @@ class BimbinganRest extends ResourceController
 
             foreach ($data as $bimbingan) {
                 $bimbingan_data[] = [
-                    'tanggal_bimbingan' => (new DateTime($bimbingan->created_at))->format('d M Y, H:i'),
+                    'tanggal_bimbingan' => (new DateTime($bimbingan->tanggal_bimbingan))->format('d M Y, H:i'),
                     'ket_bimbingan' => $bimbingan->ket_bimbingan,
                     'balasanket_bimbingan' => $bimbingan->balasanket_bimbingan,
-                    'balasantanggal_bimbingan' => (new DateTime($bimbingan->updated_at))->format('d M Y, H:i'),
+                    'balasantanggal_bimbingan' => (new DateTime($bimbingan->tanggalbalasan_bimbingan))->format('d M Y, H:i'),
 
                 ];
             }
@@ -97,10 +97,8 @@ class BimbinganRest extends ResourceController
                 'mhsnim_bimbingan',
                 'bab_bimbingan',
                 'ket_bimbingan',
-                'file_bimbingan',
                 'tanggal_bimbingan',
                 'dosenid_bimbingan',
-                'balasanfile_bimbingan',
                 'balasanket_bimbingan',
                 'balasantanggal_bimbingan',
                 'status_bimbingan'
@@ -125,7 +123,6 @@ class BimbinganRest extends ResourceController
                 $bimbinganFiles,
                 ['dosbingid_bimbingan' => $this->request->getPost('dosbingid_bimbingan')],
                 ['mhsnim_bimbingan' => $this->request->getPost('mhsnim_bimbingan')],
-                ['file_bimbingan' => $this->request->getPost('file_bimbingan')],
                 ['ket_bimbingan' => $this->request->getPost('ket_bimbingan')],
                 ['dosenid_bimbingan' => $this->request->getPost('dosenid_bimbingan')]
             );
@@ -135,7 +132,6 @@ class BimbinganRest extends ResourceController
                 'error' => false,
                 'message' => 'success',
                 'bimbingan_result' => [
-//                    'bimbingan_files' => $uploadedFiles,
                     'tanggal_bimbingan' => date('d M Y, H:i'),
                     'ket_bimbingan' => $this->request->getPost('ket_bimbingan')
                 ],

@@ -11,8 +11,11 @@
     },
     "require": {
         "php": "^7.4 || ^8.0",
+        "ext-json": "*",
         "codeigniter4/framework": "^4.0",
-        "firebase/php-jwt": "^6.10"
+        "dipantry/kbbi": "^1.0",
+        "firebase/php-jwt": "^6.10",
+      "ext-curl": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",
