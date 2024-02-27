@@ -64,7 +64,7 @@ $nama_user = $nama_user_parts[0]; // Mengambil bagian nama pertama sebelum koma
                 <div class="sidebar-brand">
                     <div style="text-align: center;">
                         <a href="<?= site_url('home/index') ?>">
-                            <img src="<?= base_url() ?>/assets/assets/img/avatar/logo.svg" alt="logo" width="80">
+                            <img src="<?= base_url() ?>/assets/assets/img/avatar/logo.svg" alt="logo" width="60">
                         </a>
                     </div>
                     <a href="<?= site_url('home/index') ?>">Seminar Proposal</a>

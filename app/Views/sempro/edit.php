@@ -67,7 +67,9 @@ $usedUserIds = [$tb_sempro->dosen1_sempro, $tb_sempro->dosen2_sempro];
                                             $isOperator = $value->level_userid === 'Operator';
                                             if (!$isUsed && !$isOperator) :
                                                 ?>
-                                                <option value="<?= $value->id_dosen ?>"><?= $value->nama_user ?></option>
+                                                <option value="<?= $value->id_dosen ?>" <?= ($tb_user->id_user == $value->id_dosen) ? 'selected' : '' ?>>
+                                                    <?= $value->nama_user ?>
+                                                </option>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
                                     </select>

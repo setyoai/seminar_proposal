@@ -144,9 +144,14 @@ class Sempro extends ResourceController
         $data = $this->request->getPost();
         $this->tb_sempro->update($id, $data);
 
+        error_log('Contents of $sempro: ' . print_r($sempro, true));
+
+
         if ($sempro->penguji1_sempro !== null) {
             $this->insertDetSempro($id, $sempro->id_dafsempro, $sempro->penguji1_sempro, "Ketua Penguji", $sempro->tanggal_sempro);
         }
+
+        error_log('Contents of $sempro after first insertion attempt: ' . print_r($sempro, true));
 
         if ($sempro->penguji2_sempro !== null) {
             $this->insertDetSempro($id, $sempro->id_dafsempro, $sempro->penguji2_sempro, "Anggota Penguji 1", $sempro->tanggal_sempro);

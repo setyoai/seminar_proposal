@@ -42,6 +42,10 @@
                         <a class="nav-link" id="schedule-tab" data-toggle="tab" href="#schedule"
                            role="tab" aria-controls="schedule" aria-selected="false">Sudah Dapat Jadwal</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="schedule-tab" data-toggle="tab" href="#schedule"
+                           role="tab" aria-controls="schedule" aria-selected="false">Sudah Dapat Jadwal</a>
+                    </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="noschedule" role="tabpanel" aria-labelledby="noschedule-tab">

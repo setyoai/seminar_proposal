@@ -68,7 +68,7 @@
                                                 </div>
                                             </div>
                                             <input type="text" name="nohp_dosen" value="<?= $tb_dosen->nohp_dosen ?>"
-                                               class="form-control" required autofocus>
+                                               class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">

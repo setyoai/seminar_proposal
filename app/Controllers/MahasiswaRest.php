@@ -91,6 +91,8 @@ class MahasiswaRest extends ResourceController
                 'nim_mhs' => $mahasiswa->nim_mhs,
                 'nama_mhs' => $mahasiswa->nama_mhs,
                 'alamat_mhs' => $mahasiswa->alamat_mhs,
+                'nohp_mhs' => $mahasiswa->nohp_mhs,
+                'email_mhs' => $mahasiswa->email_mhs,
                 'photo_mhs' => $mahasiswa->photo_mhs,
                 'role' => $role
             ];
@@ -178,9 +180,13 @@ class MahasiswaRest extends ResourceController
             'password_mhs' => $hashedPassword,
             'nama_mhs' => $rawData['nama_mhs'] ?? $mahasiswa->nama_mhs,
             'alamat_mhs' => $rawData['alamat_mhs'] ?? $mahasiswa->alamat_mhs,
+            'nohp_mhs' => $rawData['nohp_mhs'] ?? $mahasiswa->nohp_mhs,
+            'email_mhs' => $rawData['email_mhs'] ?? $mahasiswa->email_mhs,
         ];
 
         $mhsmodel->update(['id_mhs' => $id], $updateData);
+
+
 
         // Prepare a response
         $response = [
@@ -191,6 +197,8 @@ class MahasiswaRest extends ResourceController
                 'nim_mhs' => $mahasiswa->nim_mhs,
                 'nama_mhs' => $mahasiswa->nama_mhs,
                 'alamat_mhs' => $mahasiswa->alamat_mhs,
+                'nohp_mhs' => $mahasiswa->nohp_mhs,
+                'email_mhs' => $mahasiswa->email_mhs,
             ]
         ];
 

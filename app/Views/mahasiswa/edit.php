@@ -43,7 +43,7 @@
                                             <i class="fas fa-lock"></i>
                                         </div>
                                     </div>
-                                <input type="password" name="nidn_mhs" value="" class="form-control">
+                                <input type="password" name="password_mhs" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">

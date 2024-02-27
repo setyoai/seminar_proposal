@@ -85,8 +85,14 @@ $routes->put('bimbingandosenrest/(:num)', 'BimbinganDosenRest::update/$1');
 $routes->get('updatebimbingandosenrest/(:num)', 'UpdateBimbinganDosenRest::show/$1');
 $routes->put('updatebimbingandosenrest/(:num)', 'UpdateBimbinganDosenRest::update/$1');
 
+$routes->get('mahasiswasemprorest/(:num)', 'MahasiswaSemproRest::index');
+$routes->get('mahasiswasemprorest/(:num)', 'MahasiswaSemproRest::show/$1');
+
+$routes->resource('dosenrest');
+
 $routes->resource('judulrest');
 $routes->resource('penilaianrest');
+
 
 $routes->get('kbbiapi/search', 'KBBIApi::search');
 $routes->get('kbbirest/index', 'KBBIRest::index');

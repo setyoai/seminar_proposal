@@ -88,9 +88,19 @@ class Mahasiswa extends ResourcePresenter
     public function update($id = null)
     {
         $data = $this->request->getPost();
+
+        // Check if password field is present in the data
+        if(isset($data['password_mhs'])) {
+            // Hash the password
+            $data['password_mhs'] = password_hash($data['password_mhs'], PASSWORD_BCRYPT);
+        }
+
+        // Update the record in the database
         $this->model->update($id, $data);
+
         return redirect()->to(site_url('mahasiswa'))->with('success', 'Data Berhasil Diupdate');
     }
+
 
     /**
      * Present a view to confirm the deletion of a specific resource object

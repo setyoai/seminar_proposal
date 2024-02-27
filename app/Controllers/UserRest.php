@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\DosenModel;
 use App\Models\UserModel;
 use CodeIgniter\RESTful\ResourceController;
 use Firebase\JWT\JWT;
@@ -155,7 +156,7 @@ class UserRest extends ResourceController
      */
     public function update($id = null)
     {
-        //
+
     }
 
     /**

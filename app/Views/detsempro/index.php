@@ -50,6 +50,7 @@
                             <th>Jam</th>
                             <th>Tanggal</th>
                             <th>Hasil</th>
+                            <th>Status Revisi</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -82,6 +83,7 @@
                                     <!-- Display a badge with the determined class and text -->
                                     <span class="badge <?= $badge_class ?>"><?= $badge_text ?></span>
                                 </td>
+                                <td><?= $value->status_sempro ?></td>
                                 <td>
                                     <a href="<?= site_url('detsempro/' . $value->id_sempro . '/edit') ?>"
                                        class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>

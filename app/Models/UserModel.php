@@ -22,6 +22,11 @@ class UserModel extends Model
         return $query->getRow();
     }
 
+    public function getUserById($id_user)
+    {
+        return $this->where('id_user', $id_user)->get()->getRow();
+    }
+
     function getAll()
     {
         $builder = $this->db->table('tb_user');

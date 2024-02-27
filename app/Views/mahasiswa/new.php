@@ -75,7 +75,7 @@
                                                 <i class="fas fa-phone"></i>
                                             </div>
                                         </div>
-                                        <input type="text" name="nohp_mhs" class="form-control phone-number" required autofocus>
+                                        <input type="text" name="nohp_mhs" class="form-control phone-number">
                                     </div>
                                 </div>
                                 <div>

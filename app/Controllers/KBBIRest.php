@@ -7,12 +7,14 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class KBBIRest extends BaseController
 {
+
     public function index()
     {
+        $similarity = new AlgorithmRatcliffObershelp;
         $kbbiApi = new KBBIApi();
 
         // Search for each word in the phrase separately for the first phrase
-        $words_1 = explode(' ', 'impor jagung biru');
+        $words_1 = explode(' ', 'Sistem informasi pengelolaan program kerja pkk di kecamatan kaliwungu berbasis web dengan notifikasi');
         $definitions_1 = [];
 
         foreach ($words_1 as $word_1) {
@@ -23,12 +25,12 @@ class KBBIRest extends BaseController
                 $definitions_1[] = $result_1['arti'][0];
             } else {
                 // Handle the case where definition is not found for a word
-                return $this->response->setJSON(['error' => "Definition not found for '$word_1'"]);
+                $definitions_1[] = null;
             }
         }
 
         // Search for each word in the phrase separately for the second phrase
-        $words_2 = explode(' ', 'ekspor jagung merah');
+        $words_2 = explode(' ', 'sistem informasi penggajian');
         $definitions_2 = [];
 
         foreach ($words_2 as $word_2) {
@@ -39,7 +41,7 @@ class KBBIRest extends BaseController
                 $definitions_2[] = $result_2['arti'][0];
             } else {
                 // Handle the case where definition is not found for a word
-                return $this->response->setJSON(['error' => "Definition not found for '$word_2'"]);
+                $definitions_2[] = null;
             }
         }
 
@@ -47,19 +49,18 @@ class KBBIRest extends BaseController
         $combined_definition_1 = implode(', ', $definitions_1);
         $combined_definition_2 = implode(', ', $definitions_2);
 
-        // Remove whitespace and normalize case for comparison
-        $combined_definition_1 = strtoupper(str_replace(' ', '', $combined_definition_1));
-        $combined_definition_2 = strtoupper(str_replace(' ', '', $combined_definition_2));
-
-        // Compute similarity between combined definitions
-        $result_similarity = similar_text($combined_definition_1, $combined_definition_2);
-
-        $normalized_similarity = ($result_similarity / strlen($combined_definition_1)) * 100;
-        $similarity_percentage = number_format($normalized_similarity, 2);
+          // Remove whitespace and normalize case for comparison
+//        $combined_definition_1 = str_replace(' ', '', $combined_definition_1);
+//        $combined_definition_2 = str_replace(' ', '', $combined_definition_2);
 
         echo "Combined Definition 1: $combined_definition_1\n";
         echo "Combined Definition 2: $combined_definition_2\n";
 
-        return $this->response->setJSON('Similarity: ' . $similarity_percentage . ' %');
+        // Compute similarity between combined definitions
+        $result_similarity = $similarity->similarity($combined_definition_1, $combined_definition_2);
+
+        $normalized_similarity = ($result_similarity * 100);
+//        $similarity_percentage = number_format($result_similarity, 2);
+        return $this->response->setJSON('Similarity: ' . number_format($normalized_similarity, 2) . ' %');
     }
 }
