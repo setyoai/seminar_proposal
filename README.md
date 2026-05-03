@@ -1,69 +1,217 @@
-# CodeIgniter 4 Application Starter
+# Sistem Seminar Proposal
 
-## What is CodeIgniter?
+## Deskripsi Proyek
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Aplikasi ini adalah sistem manajemen seminar proposal dan skripsi untuk perguruan tinggi, dibangun menggunakan CodeIgniter 4.
+Fungsinya meliputi pengelolaan mahasiswa, dosen, seminar proposal, daftar skripsi, bimbingan, penilaian, dan API REST untuk berbagai entitas.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Fitur Utama
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+- Login dan otentikasi pengguna
+- Manajemen mahasiswa, dosen, koordinator, operator, dan profil pengguna
+- CRUD untuk daftar skripsi, daftar seminar proposal, ruangan, dan detail sempro
+- REST API untuk Mahasiswa, Daftar Skripsi, Daftar Seminar, Dosen, Judul, Penilaian, Bimbingan, dan lainnya
+- Upload file bimbingan dan validasi berkas
+- Penerapan filter akses (`isLoggedIn`) untuk halaman terproteksi
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+## Teknologi dan Dependensi
 
-## Installation & updates
+- PHP `^8.2`
+- CodeIgniter 4 `^4.7`
+- PHPUnit `^10.5.16`
+- FakerPHP untuk pengujian
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+## Struktur Proyek
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+- `app/Controllers/` - kontroler utama dan API
+- `app/Models/` - model database untuk entitas seperti Mahasiswa, Dosen, Sempro, dll.
+- `app/Config/` - konfigurasi aplikasi, rute, database, filter, dan layanan
+- `app/Database/Migrations/` - skema database dan tabel
+- `app/Database/Seeds/` - data awal untuk pengujian atau pengembangan
+- `app/Views/` - tampilan antarmuka pengguna
+- `public/` - root publik untuk web server
+- `writable/` - cache, log, upload, session
 
-## Setup
+## Instalasi
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+1. Clone repository:
 
-## Important Change with index.php
+   ```bash
+   git clone https://github.com/username/seminar_proposal.git
+   cd seminar_proposal
+   ```
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+2. Install dependensi Composer:
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+   ```bash
+   composer install
+   ```
 
-**Please** read the user guide for a better explanation of how CI4 works!
+3. Duplikat file `env` ke `.env` dan sesuaikan:
 
-## Repository Management
+   ```bash
+   cp .env.example .env
+   ```
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+4. Atur konfigurasi database di `.env`:
+   - `database.default.hostname`
+   - `database.default.database`
+   - `database.default.username`
+   - `database.default.password`
+   - `app.baseURL`
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+5. Jalankan migrasi database:
 
-## Server Requirements
+   ```bash
+   php spark migrate
+   ```
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+6. (Opsional) Isi data awal dengan seeder:
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+   ```bash
+   php spark db:seed NamaSeeder
+   ```
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+## Menjalankan Aplikasi
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+- Di lingkungan pengembangan lokal:
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+  ```bash
+  php spark serve
+  ```
+
+- Pastikan web server diarahkan ke folder `public/`.
+
+## Konfigurasi Rute dan Akses
+
+Rute utama aplikasi:
+
+- `GET /` → `Login::index`
+- `POST /login/cek-user` → `Login::cekUser`
+- `GET /home` → `Home::index`
+- `GET /login/logout` → `Login::logout`
+
+Halaman terproteksi menggunakan filter `isLoggedIn`:
+
+- `password`
+- `profile`
+- `operator`
+- `koordinator`
+- `dosen`
+- `user`
+- `mahasiswa`
+- `dafskripsi`
+- `dosbing`
+- `sempro`
+- `dafsempro`
+- `ruangan`
+- `detsempro`
+
+## Dokumentasi API REST
+
+### Mahasiswa
+
+- `GET /mahasiswarest` → list mahasiswa
+- `GET /mahasiswarest/{id}` → detail mahasiswa
+- `POST /mahasiswarest` → tambah mahasiswa
+- `PUT /mahasiswarest/{id}` → update mahasiswa
+
+### Daftar Skripsi
+
+- `GET /dafskripsirest`
+- `GET /dafskripsirest/{id}`
+- `POST /dafskripsirest`
+- `PUT /dafskripsirest/{id}`
+
+### Daftar Seminar Proposal
+
+- `GET /dafsemprorest`
+- `GET /dafsemprorest/{id}`
+- `POST /dafsemprorest`
+- `PUT /dafsemprorest/{id}`
+
+### User
+
+- `GET /userrest`
+- `GET /userrest/{id}`
+- `POST /userrest`
+- `PUT /userrest/{id}`
+
+### Penilaian Sempro
+
+- `GET /detsemprorest`
+- `GET /detsemprorest/{id}`
+- `POST /detsemprorest`
+- `PUT /detsemprorest/{id}`
+
+### Dosen Pembimbing (Dosbing)
+
+- `GET /dosbingrest`
+- `GET /dosbingrest/{id}`
+- `POST /dosbingrest`
+- `PUT /dosbingrest/{id}`
+
+### Bimbingan
+
+- `GET /bimbinganrest`
+- `GET /bimbinganrest/{id}`
+- `POST /bimbinganrest`
+- `PUT /bimbinganrest/{id}`
+
+### Bimbingan Dosen
+
+- `GET /bimbingandosenrest`
+- `GET /bimbingandosenrest/{id}`
+- `POST /bimbingandosenrest`
+- `PUT /bimbingandosenrest/{id}`
+
+### Update Bimbingan Dosen
+
+- `GET /updatebimbingandosenrest/{id}`
+- `PUT /updatebimbingandosenrest/{id}`
+
+### Mahasiswa Sempro
+
+- `GET /mahasiswasemprorest/{id}`
+- `GET /mahasiswasemprorest/{id}`
+
+### Dosen, Judul, dan Penilaian
+
+- `resource('dosenrest')`
+- `resource('judulrest')`
+- `resource('penilaianrest')`
+
+### KBBI
+
+- `GET /kbbiapi/search`
+- `GET /kbbirest/index`
+
+## Basis Data
+
+Terdapat migrasi dan tabel untuk entitas utama:
+
+- `users`
+- `mahasiswa`
+- `dosen`
+- `daftar_sempro`
+- `daftar_skripsi`
+- `sempro`
+- `det_sempro`
+- `bimbingan`
+- `dosbing`
+- `ruangan`
+- `periode`
+- `judul_skripsi`
+
+
+## Tips Pengembangan
+
+- Pastikan `public/` digunakan sebagai document root.
+- Gunakan `.env` untuk menyimpan konfigurasi sensitif.
+- Periksa filter di `app/Config/Filters.php` jika menyesuaikan otentikasi.
+- Tambahkan rute baru di `app/Config/Routes.php` untuk endpoint tambahan.
+
+## Kontak dan Pengembangan
+
+Dokumentasi ini berfungsi sebagai panduan dasar untuk memahami struktur proyek, menjalankan aplikasi, dan menggunakan endpoint API.
+Jika Anda ingin memperluas proyek, tambahkan modul baru di `app/Controllers/`, model di `app/Models/`, dan tampilan di `app/Views/`.
