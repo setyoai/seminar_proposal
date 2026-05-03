@@ -19,6 +19,7 @@ class Login extends BaseController
 
     public function cekUser()
     {
+        session()->set('logged_in', true);
         $username_user = $this->request->getPost('username_user');
         $password_user = $this->request->getPost('password_user');
 
@@ -49,7 +50,7 @@ class Login extends BaseController
             ];
 
             session()->setFlashdata($sessError);
-            return redirect()->to(site_url('login/index'));
+            return redirect()->to(site_url('login'));
         } else {
             $loginModel = new LoginModel();
             $cekUserLogin = $loginModel->where('username_user', $username_user)->first();
@@ -60,7 +61,7 @@ class Login extends BaseController
                 ];
 
                 session()->setFlashdata($sessError);
-                return redirect()->to(site_url('login/index'));
+                return redirect()->to(site_url('login'));
             } else {
                 $passwordUser = $cekUserLogin['password_user'];
 
@@ -76,14 +77,14 @@ class Login extends BaseController
 
                     session()->set($save_session);
 
-                    return redirect()->to('home/index');
+                    return redirect()->to('/home');
                 } else {
                     $sessError = [
                         'errPassword' => 'Password Anda Salah',
                     ];
 
                     session()->setFlashdata($sessError);
-                    return redirect()->to(site_url('login/index'));
+                    return redirect()->to(site_url('login'));
                 }
 
             }
@@ -92,7 +93,7 @@ class Login extends BaseController
 
     public function logout()
     {
-        session()->remove('id_user');
+         session()->destroy();
         return redirect()->to(site_url('login'));
     }
 

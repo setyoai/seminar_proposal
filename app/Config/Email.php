@@ -26,9 +26,14 @@ class Email extends BaseConfig
     public string $mailPath = '/usr/sbin/sendmail';
 
     /**
-     * SMTP Server Address
+     * SMTP Server Hostname
      */
     public string $SMTPHost = '';
+
+    /**
+     * Which SMTP authentication method to use: login, plain
+     */
+    public string $SMTPAuthMethod = 'login';
 
     /**
      * SMTP Username

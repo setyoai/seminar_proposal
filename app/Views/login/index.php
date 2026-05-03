@@ -34,7 +34,7 @@
                     <div class="card card-primary">
                         <div class="card-header"><h4>Login</h4></div>
                         <div class="card-body">
-                                <?= form_open('login/cekUser'); ?>
+                                <?= form_open('login/cek-user'); ?>
                                 <?= csrf_field(); ?>
                                 <div class="form-group">
                                     <?php

@@ -20,4 +20,3 @@ class LoginFilter implements FilterInterface
         // Do something here
     }
 }
-

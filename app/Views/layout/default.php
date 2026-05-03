@@ -51,10 +51,14 @@ $nama_user = $nama_user_parts[0]; // Mengambil bagian nama pertama sebelum koma
 <!--                            <i class="fas fa-lock"></i> Password-->
 <!--                        </a>-->
                         <div class="dropdown-divider"></div>
-                        <a href="<?= site_url('login/logout') ?>" class="dropdown-item has-icon text-danger" id="logout"
-                           data-confirm="Logout?|Yakin keluar aplikasi?" data-confirm-yes="returnLogout()">
-                            <i class="fas fa-sign-out-alt"></i> Logout
+
+            <a href="<?= site_url('login/logout') ?>" 
+                class="dropdown-item has-icon text-danger"
+                        data-confirm="Logout?|Yakin keluar aplikasi?"
+            data-confirm-yes="window.location.href='<?= site_url('login/logout') ?>'">
+                     <i class="fas fa-sign-out-alt"></i> Logout
                         </a>
+                        
                     </div>
                 </li>
             </ul>
@@ -63,11 +67,11 @@ $nama_user = $nama_user_parts[0]; // Mengambil bagian nama pertama sebelum koma
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
                     <div style="text-align: center;">
-                        <a href="<?= site_url('home/index') ?>">
+                        <a href="<?= site_url('home') ?>">
                             <img src="<?= base_url() ?>/assets/assets/img/avatar/logo.svg" alt="logo" width="60">
                         </a>
                     </div>
-                    <a href="<?= site_url('home/index') ?>">Seminar Proposal</a>
+                    <a href="<?= site_url('home') ?>">Seminar Proposal</a>
                 </div>
                 <div class="sidebar-brand sidebar-brand-sm">
                     <a href="<?= site_url('home/index') ?>"><img src="<?= base_url() ?>/assets/assets/img/avatar/logo.svg" alt="logo" width=25></a>

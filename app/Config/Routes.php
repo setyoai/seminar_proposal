@@ -6,10 +6,13 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
-//$routes->get('login', 'Login::login');
 $routes->get('/', 'Login::index');
+$routes->get('login', 'Login::index');
+$routes->post('login/cek-user', 'Login::cekUser');
+$routes->get('home', 'Home::index');
+$routes->get('login/logout', 'Login::logout');
 
 //$routes->get('/', 'Home::index');
 //$routes->addRedirect('/', 'home');
